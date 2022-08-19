@@ -1,1 +1,1 @@
-Sitemap: https://fastpages.fast.ai/sitemap.xml
+Sitemap: https://dtsivkovski.github.io/csa23/sitemap.xml
