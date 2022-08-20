@@ -14,7 +14,7 @@
     
         ,"post1": {
             "title": "Java Notebook Test",
-            "content": "This is some small javascript code to test the jupyter notebook&#39;s recognition of a different language. . System.out.println(&quot;Mr. Mortensen reminds all of you to CODE CODE CODE!&quot;) . Mr. Mortensen reminds all of you to CODE CODE CODE! . public class HelloWorld { public static void main(String[] args) { System.out.println(&quot;Hello world!&quot;); } } HelloWorld.main(null); . Hello world! .",
+            "content": "This is some small javascript code to test the jupyter notebook&#39;s use of a different language. . System.out.println(&quot;Darmok and Jalad on the ocean&quot;) . Darmok and Jalad on the ocean . public class HelloWorld { public static void main(String[] args) { System.out.println(&quot;Hello world!&quot;); } } HelloWorld.main(null); . Hello world! .",
             "url": "https://dtsivkovski.github.io/csa23/jupyter/2022/08/20/javanb.html",
             "relUrl": "/jupyter/2022/08/20/javanb.html",
             "date": " • Aug 20, 2022"
