@@ -92,10 +92,7 @@
   
 
   
-  
-
-  
-      ,"page11": {
+      ,"page10": {
           "title": "",
           "content": "Sitemap: {{ “sitemap.xml” | absolute_url }} | .",
           "url": "https://dtsivkovski.github.io/csa23/robots.txt",
