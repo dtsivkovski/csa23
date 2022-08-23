@@ -2,8 +2,8 @@
   
     
         "post0": {
-            "title": "Week 1 Notes - CB",
-            "content": "",
+            "title": "Week 1 TT Notes",
+            "content": "Weakly vs Strongly Type . Python is weakly, java is strongly . Variable Types . Python - type of variable is automatically defined | Java - type of variable needs to be manually defined | . Java vs JavaC . Python run - automatically runs, compiles it on the fly | Java run - javac compiles the code and changes into byte code and then runs | 1&#39;s and 0&#39;s so types have prefixes to enable interpreter to understand | . Primitive vs Wrapper . Primitives lowercase vs wrappers uppercase | Wrapper class has methods, built-in code that can do certain actions | Everything in Java is OOP except for primitives | . Running the code . DefinePrimitives class . Uses concatenation to combine name of different variables with their value | If left variable is a string, everything else becomes a string | Different types have different types of values. | All are primitive | . PrimitivesScanner class . Identifies the type of integer and asks for the right one | If wrong type is entered, it returns a statement that says the value entered is not that type | . PrimitiveDivision class . Shows how there are many ways to write outputs to create the same thing | . GradeCalculator class . Takes inputs for doubles to get certain number of grades | Averages those inputs | .",
             "url": "https://dtsivkovski.github.io/csa23/notes/2022/08/23/cbnotes_w1.html",
             "relUrl": "/notes/2022/08/23/cbnotes_w1.html",
             "date": " • Aug 23, 2022"
