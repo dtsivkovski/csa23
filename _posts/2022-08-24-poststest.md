@@ -10,4 +10,4 @@ image: /images/dnhs-image.jpg
 
 I'm testing how the posts system works. I included an image of DNHS in the metadata of the post so that it shows up in the main post view.
 
-![DNHSIMAGE](images/dnhs-image.jpg)
+![DNHSIMAGE](/images/dnhs-image.jpg)
