@@ -7,6 +7,9 @@ search_exclude: true
 
 > This page contains any ideas stored or notes taken throughout the year.
 
+### Week 2
+- [Week 2 TT](https://dtsivkovski.github.io/csa23/week2/javaobj)
+
 
 ### Week 1
 - [Week 1 Bash Notes](https://dtsivkovski.github.io/csa23/notes/2022/08/25/bash_w1.html)
