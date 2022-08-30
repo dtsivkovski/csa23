@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Using Java Objects | dtsivkovski’s blog</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Using Java Objects" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Learning how to use Java Objects" />
+<meta property="og:description" content="Learning how to use Java Objects" />
+<link rel="canonical" href="https://dtsivkovski.github.io/csa23/week2/javaobj" />
+<meta property="og:url" content="https://dtsivkovski.github.io/csa23/week2/javaobj" />
+<meta property="og:site_name" content="dtsivkovski’s blog" />
+<meta property="og:image" content="https://raw.githubusercontent.com/github/explore/5b3600551e122a3277c2c5368af2ad5725ffa9a1/topics/java/java.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-08-30T00:00:00-05:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://raw.githubusercontent.com/github/explore/5b3600551e122a3277c2c5368af2ad5725ffa9a1/topics/java/java.png" />
+<meta property="twitter:title" content="Using Java Objects" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-08-30T00:00:00-05:00","datePublished":"2022-08-30T00:00:00-05:00","description":"Learning how to use Java Objects","headline":"Using Java Objects","image":"https://raw.githubusercontent.com/github/explore/5b3600551e122a3277c2c5368af2ad5725ffa9a1/topics/java/java.png","mainEntityOfPage":{"@type":"WebPage","@id":"https://dtsivkovski.github.io/csa23/week2/javaobj"},"url":"https://dtsivkovski.github.io/csa23/week2/javaobj"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/csa23/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://dtsivkovski.github.io/csa23/feed.xml" title="dtsivkovski's blog" /><link rel="shortcut icon" type="image/x-icon" href="/csa23/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" /><script src="https://hypothes.is/embed.js" async></script>
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/csa23/">dtsivkovski&#39;s blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/csa23/about/">About Me</a><a class="page-link" href="/csa23/notes/">Ideas and Notes</a><a class="page-link" href="/csa23/search/">Search</a><a class="page-link" href="/csa23/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Using Java Objects</h1><p class="page-description">Learning how to use Java Objects</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2022-08-30T00:00:00-05:00" itemprop="datePublished">
+        Aug 30, 2022
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      3 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/csa23/categories/#Notes">Notes</a>
+        
+      
+      </p>
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-justify-center">
+          <div class="px-2">
+
+    <a href="https://github.com/dtsivkovski/csa23/tree/master/_notebooks/2022-08-30-javaobjects.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/csa23/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/dtsivkovski/csa23/master?filepath=_notebooks%2F2022-08-30-javaobjects.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/csa23/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/dtsivkovski/csa23/blob/master/_notebooks/2022-08-30-javaobjects.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/csa23/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+          <div class="px-2">
+  <a href="https://deepnote.com/launch?url=https%3A%2F%2Fgithub.com%2Fdtsivkovski%2Fcsa23%2Fblob%2Fmaster%2F_notebooks%2F2022-08-30-javaobjects.ipynb" target="_blank">
+      <img class="notebook-badge-image" src="/csa23/assets/badges/deepnote.svg" alt="Launch in Deepnote"/>
+  </a>
+</div>
+
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="#Console-Based-Menu">Console Based Menu </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#Objects-Used">Objects Used </a></li>
+<li class="toc-entry toc-h3"><a href="#Used-of-ANSI-Terminal-colors">Used of ANSI Terminal colors </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#Desktop-GUI">Desktop GUI </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#Giving-control-to-the-menu">Giving control to the menu </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h2"><a href="#Hacks">Hacks </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#Documentation">Documentation </a></li>
+<li class="toc-entry toc-h3"><a href="#Choice">Choice </a></li>
+</ul>
+</li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2022-08-30-javaobjects.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Console-Based-Menu">
+<a class="anchor" href="#Console-Based-Menu" aria-hidden="true"><span class="octicon octicon-link"></span></a>Console Based Menu<a class="anchor-link" href="#Console-Based-Menu"> </a>
+</h2>
+<h3 id="Objects-Used">
+<a class="anchor" href="#Objects-Used" aria-hidden="true"><span class="octicon octicon-link"></span></a>Objects Used<a class="anchor-link" href="#Objects-Used"> </a>
+</h3>
+<ul>
+<li>Java Util Scanner, Java Lang Math<ul>
+<li>Scanner to obtain inputs/menu</li>
+<li>Math to generate random</li>
+</ul>
+</li>
+<li>System class for output to console</li>
+</ul>
+<h3 id="Used-of-ANSI-Terminal-colors">
+<a class="anchor" href="#Used-of-ANSI-Terminal-colors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Used of ANSI Terminal colors<a class="anchor-link" href="#Used-of-ANSI-Terminal-colors"> </a>
+</h3>
+<ul>
+<li>2D Array storing it</li>
+</ul>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="c1">// imports allow you to use code already written by others.  It is good to explore and learn libraries.  The names around the dots often give you a hint to the originator of the code.</span>
+<span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="p">;</span> <span class="c1">//library for user input</span>
+<span class="kn">import</span> <span class="nn">java.lang.Math</span><span class="p">;</span> <span class="c1">//library for random numbers</span>
+
+<span class="c1">// CLASS IS DEFINED HERE</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Menu</span> <span class="p">{</span>
+
+    <span class="kd">public</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">DEFAULT</span> <span class="o">=</span> <span class="s">"\u001B[0m"</span><span class="p">;</span>  <span class="c1">// Default Terminal Color</span>
+    <span class="kd">public</span> <span class="kd">final</span> <span class="n">String</span><span class="o">[][]</span> <span class="n">COLORS</span> <span class="o">=</span> <span class="p">{</span> <span class="c1">// 2D Array of ANSI Terminal Colors</span>
+        <span class="p">{</span><span class="s">"Default"</span><span class="p">,</span><span class="n">DEFAULT</span><span class="p">},</span>
+        <span class="p">{</span><span class="s">"Red"</span><span class="p">,</span> <span class="s">"\u001B[31m"</span><span class="p">},</span> 
+        <span class="p">{</span><span class="s">"Green"</span><span class="p">,</span> <span class="s">"\u001B[32m"</span><span class="p">},</span> 
+        <span class="p">{</span><span class="s">"Yellow"</span><span class="p">,</span> <span class="s">"\u001B[33m"</span><span class="p">},</span> 
+        <span class="p">{</span><span class="s">"Blue"</span><span class="p">,</span> <span class="s">"\u001B[34m"</span><span class="p">},</span> 
+        <span class="p">{</span><span class="s">"Purple"</span><span class="p">,</span> <span class="s">"\u001B[35m"</span><span class="p">},</span> 
+        <span class="p">{</span><span class="s">"Cyan"</span><span class="p">,</span> <span class="s">"\u001B[36m"</span><span class="p">},</span> 
+        <span class="p">{</span><span class="s">"White"</span><span class="p">,</span> <span class="s">"\u001B[37m"</span><span class="p">},</span> 
+    <span class="p">};</span>
+    <span class="kd">public</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">NAME</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="kd">public</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">ANSI</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>  <span class="c1">// ANSI is the "standard" for terminal codes</span>
+
+    <span class="kd">public</span> <span class="nf">Menu</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">Scanner</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>  <span class="c1">// using Java Scanner Object</span>
+        
+        <span class="k">this</span><span class="p">.</span><span class="na">print</span><span class="p">();</span>  <span class="c1">// print Menu</span>
+        <span class="kt">boolean</span> <span class="n">quit</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">quit</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">try</span> <span class="p">{</span>  <span class="c1">// scan for Input</span>
+                <span class="kt">int</span> <span class="n">choice</span> <span class="o">=</span> <span class="n">sc</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>  <span class="c1">// using method from Java Scanner Object</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">""</span> <span class="o">+</span> <span class="n">choice</span> <span class="o">+</span> <span class="s">": "</span><span class="p">);</span>
+                <span class="c1">// OBJECT CALLS A METHOD</span>
+                <span class="n">quit</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="na">action</span><span class="p">(</span><span class="n">choice</span><span class="p">);</span>  
+            <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">sc</span><span class="p">.</span><span class="na">nextLine</span><span class="p">();</span> <span class="c1">// error: clear buffer</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">e</span> <span class="o">+</span> <span class="s">": Not a number, try again."</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        <span class="n">sc</span><span class="p">.</span><span class="na">close</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Print the menu options to Terminal</span>
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">print</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">//System.out.println commands below is used to present a Menu to the user. </span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"-------------------------\n"</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Choose from these choices"</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"-------------------------\n"</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"1 - Say Hello"</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"2 - Output colors"</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"3 - Loading in color"</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"4 - For Mr. M"</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"0 - Quit"</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"-------------------------\n"</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Private method to perform action and return true if action is to quit/exit</span>
+    <span class="kd">private</span> <span class="kt">boolean</span> <span class="nf">action</span><span class="p">(</span><span class="kt">int</span> <span class="n">selection</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">boolean</span> <span class="n">quit</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+
+        <span class="k">switch</span> <span class="p">(</span><span class="n">selection</span><span class="p">)</span> <span class="p">{</span>  <span class="c1">// Switch or Switch/Case is Control Flow statement and is used to evaluate the user selection</span>
+            <span class="k">case</span> <span class="mi">0</span><span class="p">:</span>  
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">"Goodbye, World!"</span><span class="p">);</span>
+                <span class="n">quit</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">"Hello, World!"</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">COLORS</span><span class="p">.</span><span class="na">length</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>  <span class="c1">// loop through COLORS array</span>
+                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="n">COLORS</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">ANSI</span><span class="o">]</span> <span class="o">+</span> <span class="n">COLORS</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">NAME</span><span class="o">]</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="mi">3</span><span class="p">:</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">"Loading..."</span><span class="p">);</span>
+                <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>  <span class="c1">// fixed length loading bar</span>
+                    <span class="kt">int</span> <span class="n">random</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="p">(</span><span class="n">Math</span><span class="p">.</span><span class="na">random</span><span class="p">()</span> <span class="o">*</span> <span class="n">COLORS</span><span class="p">.</span><span class="na">length</span><span class="p">);</span>  <span class="c1">// random logic</span>
+                    <span class="k">try</span> <span class="p">{</span>
+                        <span class="n">Thread</span><span class="p">.</span><span class="na">sleep</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span>  <span class="c1">// delay for loading</span>
+                    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+                    <span class="p">}</span>
+                    <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="n">COLORS</span><span class="o">[</span><span class="n">random</span><span class="o">][</span><span class="n">ANSI</span><span class="o">]</span> <span class="o">+</span> <span class="s">"#"</span><span class="p">);</span>
+                <span class="p">}</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="mi">4</span><span class="p">:</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="n">COLORS</span><span class="o">[</span><span class="mi">3</span><span class="o">][</span><span class="n">ANSI</span><span class="o">]</span> <span class="o">+</span> <span class="s">"Hello Mr. M!"</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>   
+            <span class="k">default</span><span class="p">:</span>
+                <span class="c1">//Prints error message from console</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">"Unexpected choice, try again."</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">DEFAULT</span><span class="p">);</span>  <span class="c1">// make sure to reset color and provide new line</span>
+        <span class="k">return</span> <span class="n">quit</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Static driver/tester method</span>
+    <span class="kd">static</span> <span class="kd">public</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span>  <span class="p">{</span>  
+        <span class="k">new</span> <span class="n">Menu</span><span class="p">();</span> <span class="c1">// starting Menu object</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+<span class="n">Menu</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>-------------------------
+
+Choose from these choices
+-------------------------
+
+1 - Say Hello
+2 - Output colors
+3 - Loading in color
+4 - For Mr. M
+0 - Quit
+-------------------------
+
+4: <span class="ansi-yellow-fg">Hello Mr. M!</span>
+0: Goodbye, World!
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Desktop-GUI">
+<a class="anchor" href="#Desktop-GUI" aria-hidden="true"><span class="octicon octicon-link"></span></a>Desktop GUI<a class="anchor-link" href="#Desktop-GUI"> </a>
+</h2>
+<ul>
+<li>Not currently working due to wsl issues</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Giving-control-to-the-menu">
+<a class="anchor" href="#Giving-control-to-the-menu" aria-hidden="true"><span class="octicon octicon-link"></span></a>Giving control to the menu<a class="anchor-link" href="#Giving-control-to-the-menu"> </a>
+</h3>
+<ul>
+<li>Execution inside menu</li>
+<li>Menu takes control, all actions done by it</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Hacks">
+<a class="anchor" href="#Hacks" aria-hidden="true"><span class="octicon octicon-link"></span></a>Hacks<a class="anchor-link" href="#Hacks"> </a>
+</h2>
+<h3 id="Documentation">
+<a class="anchor" href="#Documentation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Documentation<a class="anchor-link" href="#Documentation"> </a>
+</h3>
+<p>Class is defined:</p>
+<div class="highlight"><pre><span></span><span class="c1">// CLASS IS DEFINED HERE</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Menu</span> <span class="p">{</span>
+<span class="p">}</span>
+</pre></div>
+<p>Instance of a class is defined:</p>
+<div class="highlight"><pre><span></span><span class="n">Menu</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+<p>Object calling method:</p>
+<div class="highlight"><pre><span></span><span class="c1">// OBJECT CALLS A METHOD</span>
+<span class="n">quit</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="na">action</span><span class="p">(</span><span class="n">choice</span><span class="p">);</span>
+</pre></div>
+<p>Object mutating data:</p>
+<div class="highlight"><pre><span></span><span class="kt">boolean</span> <span class="n">quit</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+</pre></div>
+<p>Console vs Code.org differences:</p>
+<ul>
+<li>Code.org shows how to extend classes</li>
+<li>Both have objects (instantiated classes) and methods that are called by those objects</li>
+</ul>
+<h3 id="Choice">
+<a class="anchor" href="#Choice" aria-hidden="true"><span class="octicon octicon-link"></span></a>Choice<a class="anchor-link" href="#Choice"> </a>
+</h3>
+<ul>
+<li>I'm choosing to learn through code.org (option B)</li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><a class="u-url" href="/csa23/week2/javaobj" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/csa23/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/csa23/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/csa23/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Daniel Tsivkovski</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/fastai" target="_blank" title="fastai"><svg class="svg-icon grey"><use xlink:href="/csa23/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/fastdotai" target="_blank" title="fastdotai"><svg class="svg-icon grey"><use xlink:href="/csa23/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
