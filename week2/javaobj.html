@@ -81,7 +81,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      3 min read
+      5 min read
     
 </span></p>
 
@@ -140,7 +140,7 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h2"><a href="#Hacks">Hacks </a>
 <ul>
 <li class="toc-entry toc-h3"><a href="#Documentation">Documentation </a></li>
-<li class="toc-entry toc-h3"><a href="#Choice">Choice </a></li>
+<li class="toc-entry toc-h3"><a href="#Java-Menu-for-Physics">Java Menu for Physics </a></li>
 </ul>
 </li>
 </ul><!--
@@ -378,16 +378,168 @@ Choose from these choices
 <li>Code.org shows how to extend classes</li>
 <li>Both have objects (instantiated classes) and methods that are called by those objects</li>
 </ul>
-<h3 id="Choice">
-<a class="anchor" href="#Choice" aria-hidden="true"><span class="octicon octicon-link"></span></a>Choice<a class="anchor-link" href="#Choice"> </a>
+<h3 id="Java-Menu-for-Physics">
+<a class="anchor" href="#Java-Menu-for-Physics" aria-hidden="true"><span class="octicon octicon-link"></span></a>Java Menu for Physics<a class="anchor-link" href="#Java-Menu-for-Physics"> </a>
 </h3>
+<p>See below</p>
 <ul>
-<li>I'm choosing to learn through code.org (option B)</li>
+<li>Converts between different unit types</li>
+<li>Experiments with math.round() method for the BasetoMicro method.</li>
+<li>A known limitation is that Java only uses 32-bit integers and floats, so using abnormally large/small values for conversion may reduce precision</li>
 </ul>
 
 </div>
 </div>
 </div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.lang.Math</span><span class="p">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Menu</span> <span class="p">{</span>
+
+    <span class="kd">public</span> <span class="nf">Menu</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">Scanner</span> <span class="n">scan</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
+
+        <span class="k">this</span><span class="p">.</span><span class="na">printMenu</span><span class="p">();</span>
+        <span class="kt">boolean</span> <span class="n">quit</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">quit</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">try</span> <span class="p">{</span>
+                <span class="kt">int</span> <span class="n">choice</span> <span class="o">=</span> <span class="n">scan</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">""</span> <span class="o">+</span> <span class="n">choice</span> <span class="o">+</span> <span class="s">" - "</span><span class="p">);</span>
+                <span class="n">quit</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="na">action</span><span class="p">(</span><span class="n">choice</span><span class="p">);</span>  
+            <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">scan</span><span class="p">.</span><span class="na">nextLine</span><span class="p">();</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">e</span> <span class="o">+</span> <span class="s">": Not a number, try again."</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">};</span>
+    <span class="p">}</span>
+
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">printMenu</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"-------------------------"</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"-- Choose a conversion --"</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"-------------------------"</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"1 - Base to milli-"</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"2 - Base to micro-"</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"3 - Base to mega-"</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"4 - Base to kilo-"</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"0 - Quit"</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"-------------------------"</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kd">private</span> <span class="kt">boolean</span> <span class="nf">action</span><span class="p">(</span><span class="kt">int</span> <span class="n">selection</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">boolean</span> <span class="n">quit</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="n">Scanner</span> <span class="n">scan</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
+
+        <span class="k">switch</span> <span class="p">(</span><span class="n">selection</span><span class="p">)</span> <span class="p">{</span>  <span class="c1">// Switch or Switch/Case is Control Flow statement and is used to evaluate the user selection</span>
+            <span class="k">case</span> <span class="mi">0</span><span class="p">:</span>  
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Goodbye, World!"</span><span class="p">);</span>
+                <span class="n">quit</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="c1">// Base to Milli Converter</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Enter a base measurement: "</span><span class="p">);</span>
+                <span class="kt">float</span> <span class="n">basefloat</span> <span class="o">=</span> <span class="n">scan</span><span class="p">.</span><span class="na">nextFloat</span><span class="p">();</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Your base conversion in milli- is: "</span> <span class="o">+</span> <span class="n">BasetoMilli</span><span class="p">(</span><span class="n">basefloat</span><span class="p">));</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="mi">2</span><span class="p">:</span>
+                <span class="c1">// Base to Micro- converter</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Enter a base measurement: "</span><span class="p">);</span>
+                <span class="n">basefloat</span> <span class="o">=</span> <span class="n">scan</span><span class="p">.</span><span class="na">nextFloat</span><span class="p">();</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Your base conversion in micro- is: "</span> <span class="o">+</span> <span class="n">BasetoMicro</span><span class="p">(</span><span class="n">basefloat</span><span class="p">));</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="mi">3</span><span class="p">:</span>
+                <span class="c1">// Base to Mega- converter</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Enter a base measurement: "</span><span class="p">);</span>
+                <span class="kt">int</span> <span class="n">baseint</span> <span class="o">=</span> <span class="n">scan</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Your base conversion in mega- is: "</span> <span class="o">+</span> <span class="n">BasetoMega</span><span class="p">(</span><span class="n">baseint</span><span class="p">));</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">case</span> <span class="mi">4</span><span class="p">:</span>
+                <span class="c1">// Base to Kilo- converter</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Enter a base measurement: "</span><span class="p">);</span>
+                <span class="n">baseint</span> <span class="o">=</span> <span class="n">scan</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Your base conversion in kilo- is: "</span> <span class="o">+</span> <span class="n">BasetoKilo</span><span class="p">(</span><span class="n">baseint</span><span class="p">));</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="k">default</span><span class="p">:</span>
+                <span class="c1">// Error message</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">"Unexpected choice, try again."</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="c1">// System.out.println(DEFAULT);  // make sure to reset color and provide new line</span>
+        <span class="k">return</span> <span class="n">quit</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">static</span> <span class="kd">public</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span>  <span class="p">{</span>  
+        <span class="k">new</span> <span class="n">Menu</span><span class="p">();</span> 
+    <span class="p">}</span>
+
+    <span class="kd">private</span> <span class="kt">int</span> <span class="nf">BasetoMilli</span><span class="p">(</span><span class="kt">float</span> <span class="n">baseFloat</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">output</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="p">(</span><span class="n">baseFloat</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">output</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">private</span> <span class="kt">int</span> <span class="nf">BasetoMicro</span><span class="p">(</span><span class="kt">float</span> <span class="n">baseFloat</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// Experimenting with using Math.round method instead of casting</span>
+        <span class="kt">int</span> <span class="n">output</span> <span class="o">=</span> <span class="n">Math</span><span class="p">.</span><span class="na">round</span><span class="p">((</span><span class="n">baseFloat</span> <span class="o">*</span> <span class="mi">1000000</span><span class="p">));</span>
+        <span class="k">return</span> <span class="n">output</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">private</span> <span class="kt">float</span> <span class="nf">BasetoKilo</span><span class="p">(</span><span class="kt">int</span> <span class="n">baseInt</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">float</span> <span class="n">output</span> <span class="o">=</span> <span class="p">(</span><span class="kt">float</span><span class="p">)</span> <span class="p">(</span><span class="n">baseInt</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">output</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">private</span> <span class="kt">float</span> <span class="nf">BasetoMega</span><span class="p">(</span><span class="kt">int</span> <span class="n">baseInt</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">float</span> <span class="n">output</span> <span class="o">=</span> <span class="p">(</span><span class="kt">float</span><span class="p">)</span> <span class="p">(</span><span class="n">baseInt</span> <span class="o">/</span> <span class="mi">1000000</span><span class="p">);</span>
+        <span class="k">return</span> <span class="n">output</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">Menu</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>-------------------------
+-- Choose a conversion --
+-------------------------
+1 - Base to milli-
+2 - Base to micro-
+3 - Base to mega-
+4 - Base to kilo-
+0 - Quit
+-------------------------
+1 - Enter a base measurement: 
+Your base conversion in milli- is: 50000
+2 - Enter a base measurement: 
+Your base conversion in micro- is: 50000000
+3 - Enter a base measurement: 
+Your base conversion in mega- is: 5.0
+4 - Enter a base measurement: 
+Your base conversion in kilo- is: 5.0
+0 - Goodbye, World!
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
 </div>
 
 
