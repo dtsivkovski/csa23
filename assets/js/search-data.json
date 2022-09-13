@@ -3,7 +3,7 @@
     
         "post0": {
             "title": "AP FRQ",
-            "content": "2015 FRQ #1 . a) Write a static method arraySum that calculates and returns the sum of the entries in a specified one-dimensional array. The following example shows an array arr1 and the value returned by a call to arraySum. . public class ArrayAdd { public static int Add(int[] array) { int sum = 0; public static void main() { } for (int i = 0; i &lt; array.length(); i++) { } } } .",
+            "content": "2015 FRQ #1 . a) Write a static method arraySum that calculates and returns the sum of the entries in a specified one-dimensional array. The following example shows an array arr1 and the value returned by a call to arraySum. . public class ArrayAdd { public static int Add(int[] array) { int sum = 0; for (int i = 0; i &lt; array.length; i++) { sum += array[i]; } return sum; } public static void main() { int[] array = {3,2,1,8,10,2}; int sum = Add(array); System.out.println(&quot;The sum of all items in the array is &quot; + sum); } } ArrayAdd.main(); . The sum of all items in the array[I@475be4b is 26 .",
             "url": "https://dtsivkovski.github.io/csa23/week4/frq",
             "relUrl": "/week4/frq",
             "date": " • Sep 12, 2022"
