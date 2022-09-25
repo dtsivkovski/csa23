@@ -3,7 +3,7 @@ toc: true
 layout: post
 title: Javascript Practice
 description: Practicing using javascript
-image: https://files.slack.com/files-pri/TRDESSQ3T-F042XHS7YUF/image.png
+image: https://www.ikea.com/us/en/images/products/ingo-table-pine__0737092_pe740877_s5.jpg
 permalink: /week5/js-table
 ---
 
