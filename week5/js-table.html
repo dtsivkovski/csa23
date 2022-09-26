@@ -91,16 +91,21 @@ window.onload = wrap_img;
 
   <div class="post-content e-content" itemprop="articleBody">
     <ul id="toc" class="section-nav">
-<li class="toc-entry toc-h1"><a href="#javascript-practice">Javascript Practice</a>
+<li class="toc-entry toc-h2"><a href="#javascript-practice">Javascript Practice</a>
 <ul>
+<li class="toc-entry toc-h3"><a href="#table-output">Table Output</a></li>
 <li class="toc-entry toc-h3"><a href="#raw-json-output">Raw JSON Output</a></li>
 </ul>
 </li>
-</ul><h1 id="javascript-practice">
-<a class="anchor" href="#javascript-practice" aria-hidden="true"><span class="octicon octicon-link"></span></a>Javascript Practice</h1>
+<li class="toc-entry toc-h2"><a href="#code">Code</a></li>
+</ul><h2 id="javascript-practice">
+<a class="anchor" href="#javascript-practice" aria-hidden="true"><span class="octicon octicon-link"></span></a>Javascript Practice</h2>
 <ul>
   <li>Testing input of javascript and converting to table / JSON</li>
 </ul>
+
+<h3 id="table-output">
+<a class="anchor" href="#table-output" aria-hidden="true"><span class="octicon octicon-link"></span></a>Table Output</h3>
 
 <p><br></p>
 
@@ -188,6 +193,71 @@ window.onload = wrap_img;
 
 </script>
 
+<h2 id="code">
+<a class="anchor" href="#code" aria-hidden="true"><span class="octicon octicon-link"></span></a>Code</h2>
+<ul>
+  <li>Here is the raw code if you would like to take a look
+    <div class="language-javascript highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>
+  <span class="c1">// Get each box for the dictionary</span>
+  <span class="kd">var</span> <span class="nx">iBox</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">termvalue1</span><span class="dl">"</span><span class="p">);</span>
+  <span class="kd">var</span> <span class="nx">jBox</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">termvalue2</span><span class="dl">"</span><span class="p">);</span>
+  <span class="kd">var</span> <span class="nx">kBox</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">termvalue3</span><span class="dl">"</span><span class="p">);</span>
+  <span class="kd">var</span> <span class="nx">mainTable</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">mainTable</span><span class="dl">"</span><span class="p">);</span>
+  <span class="kd">var</span> <span class="nx">rawTable</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">rawJSON</span><span class="dl">"</span><span class="p">);</span>
+
+  <span class="c1">// Add enter key event listeners</span>
+  <span class="nx">iBox</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">keyup</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">keyCode</span> <span class="o">===</span> <span class="mi">13</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+          <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">enterterm</span><span class="dl">"</span><span class="p">).</span><span class="nx">click</span><span class="p">();</span>
+      <span class="p">}</span>
+  <span class="p">});</span>
+  <span class="nx">jBox</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">keyup</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">keyCode</span> <span class="o">===</span> <span class="mi">13</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+          <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">enterterm</span><span class="dl">"</span><span class="p">).</span><span class="nx">click</span><span class="p">();</span>
+      <span class="p">}</span>
+  <span class="p">});</span>
+  <span class="nx">kBox</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">keyup</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+
+      <span class="k">if</span> <span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">keyCode</span> <span class="o">===</span> <span class="mi">13</span><span class="p">)</span> <span class="p">{</span>
+          <span class="nx">event</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span>
+          <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">"</span><span class="s2">enterterm</span><span class="dl">"</span><span class="p">).</span><span class="nx">click</span><span class="p">();</span>
+      <span class="p">}</span>
+  <span class="p">});</span>
+
+
+  <span class="kd">var</span> <span class="nx">counter</span> <span class="o">=</span> <span class="mi">0</span>
+    
+  <span class="kd">var</span> <span class="nx">iBody</span> <span class="o">=</span> <span class="p">[]</span>
+
+  <span class="kd">var</span> <span class="nx">list</span> <span class="o">=</span> <span class="dl">""</span><span class="p">;</span>
+
+  <span class="kd">function</span> <span class="nx">enterterm</span><span class="p">()</span> <span class="p">{</span>
+          <span class="c1">// Set values the first time an input happens</span>
+          <span class="kd">var</span> <span class="nx">tempBody</span> <span class="o">=</span> <span class="p">{</span><span class="na">id</span><span class="p">:</span> <span class="nx">counter</span><span class="p">,</span> <span class="na">name</span><span class="p">:</span> <span class="nx">iBox</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span> <span class="na">age</span><span class="p">:</span> <span class="nx">jBox</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span> <span class="na">grade</span><span class="p">:</span> <span class="nx">kBox</span><span class="p">.</span><span class="nx">value</span><span class="p">};</span>
+          <span class="nx">counter</span><span class="o">++</span><span class="p">;</span>
+          <span class="nx">iBody</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">tempBody</span><span class="p">);</span>
+          <span class="nx">appendTable</span><span class="p">(</span><span class="nx">tempBody</span><span class="p">);</span>
+          <span class="nx">jsonval</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">iBody</span><span class="p">);</span>
+          <span class="nx">rawTable</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">jsonval</span><span class="p">;</span>
+      <span class="p">}</span>
+
+  <span class="kd">function</span> <span class="nx">appendTable</span><span class="p">(</span><span class="nx">row</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">trdiv</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">tr</span><span class="dl">"</span><span class="p">);</span>
+      <span class="kd">var</span> <span class="nx">td1</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">td</span><span class="dl">"</span><span class="p">);</span> <span class="nx">td1</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">row</span><span class="p">[</span><span class="dl">"</span><span class="s2">id</span><span class="dl">"</span><span class="p">];</span> <span class="nx">trdiv</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">td1</span><span class="p">);</span>
+      <span class="kd">var</span> <span class="nx">td2</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">td</span><span class="dl">"</span><span class="p">);</span> <span class="nx">td2</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">row</span><span class="p">[</span><span class="dl">"</span><span class="s2">name</span><span class="dl">"</span><span class="p">];</span> <span class="nx">trdiv</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">td2</span><span class="p">);</span>
+      <span class="kd">var</span> <span class="nx">td3</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">td</span><span class="dl">"</span><span class="p">);</span> <span class="nx">td3</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">row</span><span class="p">[</span><span class="dl">"</span><span class="s2">age</span><span class="dl">"</span><span class="p">];</span> <span class="nx">trdiv</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">td3</span><span class="p">);</span>
+      <span class="kd">var</span> <span class="nx">td4</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">td</span><span class="dl">"</span><span class="p">);</span> <span class="nx">td4</span><span class="p">.</span><span class="nx">innerHTML</span> <span class="o">=</span> <span class="nx">row</span><span class="p">[</span><span class="dl">"</span><span class="s2">grade</span><span class="dl">"</span><span class="p">];</span> <span class="nx">trdiv</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">td4</span><span class="p">);</span>
+
+      <span class="nx">mainTable</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">trdiv</span><span class="p">);</span>
+  <span class="p">}</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
 
   </div><a class="u-url" href="/csa23/week5/js-table" hidden></a>
 </article>
