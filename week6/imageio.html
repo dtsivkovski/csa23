@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Arrays and Images | dtsivkovski’s blog</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Arrays and Images" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Converting images using java" />
+<meta property="og:description" content="Converting images using java" />
+<link rel="canonical" href="https://dtsivkovski.github.io/csa23/week6/imageio" />
+<meta property="og:url" content="https://dtsivkovski.github.io/csa23/week6/imageio" />
+<meta property="og:site_name" content="dtsivkovski’s blog" />
+<meta property="og:image" content="https://static.fjcdn.com/pictures/Mona+lisa_98b584_5443594.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-09-27T00:00:00-05:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta property="twitter:image" content="https://static.fjcdn.com/pictures/Mona+lisa_98b584_5443594.jpg" />
+<meta property="twitter:title" content="Arrays and Images" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-09-27T00:00:00-05:00","datePublished":"2022-09-27T00:00:00-05:00","description":"Converting images using java","headline":"Arrays and Images","image":"https://static.fjcdn.com/pictures/Mona+lisa_98b584_5443594.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://dtsivkovski.github.io/csa23/week6/imageio"},"url":"https://dtsivkovski.github.io/csa23/week6/imageio"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/csa23/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://dtsivkovski.github.io/csa23/feed.xml" title="dtsivkovski's blog" /><link rel="shortcut icon" type="image/x-icon" href="/csa23/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" /><script src="https://hypothes.is/embed.js" async></script>
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/csa23/">dtsivkovski&#39;s blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/csa23/about/">About Me</a><a class="page-link" href="/csa23/notes/">Ideas and Notes</a><a class="page-link" href="/csa23/search/">Search</a><a class="page-link" href="/csa23/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Arrays and Images</h1><p class="page-description">Converting images using java</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2022-09-27T00:00:00-05:00" itemprop="datePublished">
+        Sep 27, 2022
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      7 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/csa23/categories/#Notes">Notes</a>
+        
+      
+      </p>
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-justify-center">
+          <div class="px-2">
+
+    <a href="https://github.com/dtsivkovski/csa23/tree/master/_notebooks/2022-09-27-images.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/csa23/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/dtsivkovski/csa23/master?filepath=_notebooks%2F2022-09-27-images.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/csa23/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/dtsivkovski/csa23/blob/master/_notebooks/2022-09-27-images.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/csa23/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+          <div class="px-2">
+  <a href="https://deepnote.com/launch?url=https%3A%2F%2Fgithub.com%2Fdtsivkovski%2Fcsa23%2Fblob%2Fmaster%2F_notebooks%2F2022-09-27-images.ipynb" target="_blank">
+      <img class="notebook-badge-image" src="/csa23/assets/badges/deepnote.svg" alt="Launch in Deepnote"/>
+  </a>
+</div>
+
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h2"><a href="#Goals">Goals </a></li>
+<li class="toc-entry toc-h2"><a href="#Results">Results </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#Different-colorations">Different colorations </a></li>
+<li class="toc-entry toc-h3"><a href="#ASCII">ASCII </a></li>
+</ul>
+</li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2022-09-27-images.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Goals">
+<a class="anchor" href="#Goals" aria-hidden="true"><span class="octicon octicon-link"></span></a>Goals<a class="anchor-link" href="#Goals"> </a>
+</h2>
+<ul>
+<li>[x] Fix issue of elongation with ASCII - <em>Fixed as best as possible, though some distortion still occurs.</em>
+</li>
+<li>[x] Try to convert images into Grey Scale, Red Scale, Blue Scale, and Green Scale.</li>
+</ul>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="kn">import</span> <span class="nn">java.awt.Color</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.image.BufferedImage</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.Image</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.awt.Graphics2D</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">java.io.File</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.io.FileWriter</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.io.IOException</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.io.PrintWriter</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.nio.file.Files</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.nio.file.Path</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.nio.file.Paths</span><span class="p">;</span>
+
+<span class="kn">import</span> <span class="nn">javax.imageio.stream.ImageOutputStream</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">javax.imageio.stream.ImageInputStream</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">javax.imageio.metadata.IIOMetadata</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">javax.imageio.IIOImage</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">javax.imageio.ImageIO</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">javax.imageio.ImageWriteParam</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">javax.imageio.ImageWriter</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">javax.imageio.ImageReader</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">javax.imageio.ImageTypeSpecifier</span><span class="p">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Pics</span> <span class="p">{</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">inDir</span> <span class="o">=</span> <span class="s">"images/"</span><span class="p">;</span> <span class="c1">// location of images</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">outDir</span> <span class="o">=</span> <span class="s">"images/tmp/"</span><span class="p">;</span>  <span class="c1">// location of created files</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">greyDir</span> <span class="o">=</span> <span class="s">"images/tmp/greyscale/"</span><span class="p">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">redDir</span> <span class="o">=</span> <span class="s">"images/tmp/red/"</span><span class="p">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">blueDir</span> <span class="o">=</span> <span class="s">"images/tmp/blue/"</span><span class="p">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">greenDir</span> <span class="o">=</span> <span class="s">"images/tmp/green/"</span><span class="p">;</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">inFile</span><span class="p">;</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">resizedFile</span><span class="p">;</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">redFile</span><span class="p">;</span> <span class="kd">private</span> <span class="n">String</span> <span class="n">greenFile</span><span class="p">;</span> <span class="kd">private</span> <span class="n">String</span> <span class="n">blueFile</span><span class="p">;</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">greyscaleFile</span><span class="p">;</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">asciiFile</span><span class="p">;</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">ext</span><span class="p">;</span>   <span class="c1">// extension of file</span>
+    <span class="kd">private</span> <span class="kt">long</span> <span class="n">bytes</span><span class="p">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">width</span><span class="p">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">height</span><span class="p">;</span>
+
+    <span class="c1">// Constructor obtains attributes of picture</span>
+    <span class="kd">public</span> <span class="nf">Pics</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">,</span> <span class="n">String</span> <span class="n">ext</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">ext</span> <span class="o">=</span> <span class="n">ext</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">inFile</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="na">inDir</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s">"."</span> <span class="o">+</span> <span class="n">ext</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">resizedFile</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="na">outDir</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s">"."</span> <span class="o">+</span> <span class="n">ext</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">greyscaleFile</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="na">greyDir</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s">"_grey"</span> <span class="o">+</span> <span class="s">"."</span> <span class="o">+</span> <span class="n">ext</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">redFile</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="na">redDir</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s">"_red"</span> <span class="o">+</span> <span class="s">"."</span> <span class="o">+</span> <span class="n">ext</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">blueFile</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="na">blueDir</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s">"_blue"</span> <span class="o">+</span> <span class="s">"."</span> <span class="o">+</span> <span class="n">ext</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">greenFile</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="na">greenDir</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s">"_green"</span> <span class="o">+</span> <span class="s">"."</span> <span class="o">+</span> <span class="n">ext</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">asciiFile</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="na">outDir</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s">".txt"</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">setStats</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    
+    <span class="c1">// An image contains metadata, namely size, width, and height</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setStats</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">BufferedImage</span> <span class="n">img</span><span class="p">;</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="n">Path</span> <span class="n">path</span> <span class="o">=</span> <span class="n">Paths</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">inFile</span><span class="p">);</span>
+            <span class="k">this</span><span class="p">.</span><span class="na">bytes</span> <span class="o">=</span> <span class="n">Files</span><span class="p">.</span><span class="na">size</span><span class="p">(</span><span class="n">path</span><span class="p">);</span>
+            <span class="n">img</span> <span class="o">=</span> <span class="n">ImageIO</span><span class="p">.</span><span class="na">read</span><span class="p">(</span><span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">inFile</span><span class="p">));</span>
+            <span class="k">this</span><span class="p">.</span><span class="na">width</span> <span class="o">=</span> <span class="n">img</span><span class="p">.</span><span class="na">getWidth</span><span class="p">();</span>
+            <span class="k">this</span><span class="p">.</span><span class="na">height</span> <span class="o">=</span> <span class="n">img</span><span class="p">.</span><span class="na">getHeight</span><span class="p">();</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">IOException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Console print of data</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">printStats</span><span class="p">(</span><span class="n">String</span> <span class="n">msg</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">msg</span> <span class="o">+</span> <span class="s">": "</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="na">bytes</span> <span class="o">+</span> <span class="s">" "</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="na">width</span> <span class="o">+</span> <span class="s">"x"</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="na">height</span> <span class="o">+</span> <span class="s">"  "</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="na">inFile</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Convert scaled image into buffered image</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">BufferedImage</span> <span class="nf">convertToBufferedImage</span><span class="p">(</span><span class="n">Image</span> <span class="n">img</span><span class="p">)</span> <span class="p">{</span>
+
+        <span class="c1">// Create a buffered image with transparency</span>
+        <span class="n">BufferedImage</span> <span class="n">bi</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BufferedImage</span><span class="p">(</span>
+                <span class="n">img</span><span class="p">.</span><span class="na">getWidth</span><span class="p">(</span><span class="kc">null</span><span class="p">),</span> <span class="n">img</span><span class="p">.</span><span class="na">getHeight</span><span class="p">(</span><span class="kc">null</span><span class="p">),</span>
+                <span class="n">BufferedImage</span><span class="p">.</span><span class="na">TYPE_INT_ARGB</span><span class="p">);</span>
+
+        <span class="c1">// magic?</span>
+        <span class="n">Graphics2D</span> <span class="n">graphics2D</span> <span class="o">=</span> <span class="n">bi</span><span class="p">.</span><span class="na">createGraphics</span><span class="p">();</span>
+        <span class="n">graphics2D</span><span class="p">.</span><span class="na">drawImage</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="kc">null</span><span class="p">);</span>
+        <span class="n">graphics2D</span><span class="p">.</span><span class="na">dispose</span><span class="p">();</span>
+
+        <span class="k">return</span> <span class="n">bi</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="c1">// Scale or reduce to "scale" percentage provided</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">resize</span><span class="p">(</span><span class="kt">int</span> <span class="n">scale</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">BufferedImage</span> <span class="n">img</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+        <span class="n">Image</span> <span class="n">resizedImg</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>  
+
+        <span class="kt">int</span> <span class="n">width</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">width</span> <span class="o">*</span> <span class="p">(</span><span class="n">scale</span><span class="o">/</span><span class="mf">100.0</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">);</span>
+        <span class="kt">int</span> <span class="n">height</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">height</span> <span class="o">*</span> <span class="p">(</span><span class="n">scale</span><span class="o">/</span><span class="mf">100.0</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">);</span>
+
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="c1">// read an image to BufferedImage for processing</span>
+            <span class="n">img</span> <span class="o">=</span> <span class="n">ImageIO</span><span class="p">.</span><span class="na">read</span><span class="p">(</span><span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">inFile</span><span class="p">));</span>  <span class="c1">// set buffer of image data</span>
+            <span class="c1">// create a new BufferedImage for drawing</span>
+            <span class="n">resizedImg</span> <span class="o">=</span> <span class="n">img</span><span class="p">.</span><span class="na">getScaledInstance</span><span class="p">(</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">Image</span><span class="p">.</span><span class="na">SCALE_SMOOTH</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">IOException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="n">ImageIO</span><span class="p">.</span><span class="na">write</span><span class="p">(</span><span class="n">convertToBufferedImage</span><span class="p">(</span><span class="n">resizedImg</span><span class="p">),</span> <span class="k">this</span><span class="p">.</span><span class="na">ext</span><span class="p">,</span> <span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="n">resizedFile</span><span class="p">));</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">IOException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="k">this</span><span class="p">.</span><span class="na">inFile</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="na">resizedFile</span><span class="p">;</span>  <span class="c1">// use scaled file vs original file in Class</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">setStats</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">greyscale</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">BufferedImage</span> <span class="n">img</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+        <span class="n">BufferedImage</span> <span class="n">greyImg</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>  
+
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="c1">// read an image to BufferedImage for processing</span>
+            <span class="n">img</span> <span class="o">=</span> <span class="n">ImageIO</span><span class="p">.</span><span class="na">read</span><span class="p">(</span><span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">inFile</span><span class="p">));</span>  <span class="c1">// set buffer of image data</span>
+            <span class="n">greyImg</span> <span class="o">=</span> <span class="n">img</span><span class="p">;</span>
+            <span class="c1">// create a new BufferedImage for drawing</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">img</span><span class="p">.</span><span class="na">getHeight</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">img</span><span class="p">.</span><span class="na">getWidth</span><span class="p">();</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="n">Color</span> <span class="n">co</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Color</span><span class="p">(</span><span class="n">img</span><span class="p">.</span><span class="na">getRGB</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">));</span>
+                    <span class="kt">int</span> <span class="n">red</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="p">(</span><span class="n">co</span><span class="p">.</span><span class="na">getRed</span><span class="p">()</span> <span class="o">*</span> <span class="mf">0.299</span><span class="p">);</span>
+                    <span class="kt">int</span> <span class="n">green</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="p">(</span><span class="n">co</span><span class="p">.</span><span class="na">getGreen</span><span class="p">()</span> <span class="o">*</span> <span class="mf">0.587</span><span class="p">);</span>
+                    <span class="kt">int</span> <span class="n">blue</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="p">(</span><span class="n">co</span><span class="p">.</span><span class="na">getBlue</span><span class="p">()</span> <span class="o">*</span> <span class="mf">0.114</span><span class="p">);</span>
+                    <span class="kt">int</span> <span class="n">total</span> <span class="o">=</span> <span class="n">red</span> <span class="o">+</span> <span class="n">green</span> <span class="o">+</span> <span class="n">blue</span><span class="p">;</span>
+                    <span class="n">Color</span> <span class="n">newColor</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Color</span><span class="p">(</span>
+                        <span class="n">total</span><span class="p">,</span> <span class="n">total</span><span class="p">,</span> <span class="n">total</span>
+                    <span class="p">);</span>
+                    <span class="n">greyImg</span><span class="p">.</span><span class="na">setRGB</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">newColor</span><span class="p">.</span><span class="na">getRGB</span><span class="p">());</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">IOException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="n">ImageIO</span><span class="p">.</span><span class="na">write</span><span class="p">(</span><span class="n">convertToBufferedImage</span><span class="p">(</span><span class="n">greyImg</span><span class="p">),</span> <span class="k">this</span><span class="p">.</span><span class="na">ext</span><span class="p">,</span> <span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="n">greyscaleFile</span><span class="p">));</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">IOException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="k">this</span><span class="p">.</span><span class="na">inFile</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="na">greyscaleFile</span><span class="p">;</span>  <span class="c1">// use scaled file vs original file in Class</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">setStats</span><span class="p">();</span>
+    <span class="p">}</span>
+    
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">redscale</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">BufferedImage</span> <span class="n">img</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+        <span class="n">BufferedImage</span> <span class="n">redImg</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>  
+
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="c1">// read an image to BufferedImage for processing</span>
+            <span class="n">img</span> <span class="o">=</span> <span class="n">ImageIO</span><span class="p">.</span><span class="na">read</span><span class="p">(</span><span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">inFile</span><span class="p">));</span>  <span class="c1">// set buffer of image data</span>
+            <span class="n">redImg</span> <span class="o">=</span> <span class="n">img</span><span class="p">;</span>
+            <span class="c1">// create a new BufferedImage for drawing</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">img</span><span class="p">.</span><span class="na">getHeight</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">img</span><span class="p">.</span><span class="na">getWidth</span><span class="p">();</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="n">Color</span> <span class="n">co</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Color</span><span class="p">(</span><span class="n">img</span><span class="p">.</span><span class="na">getRGB</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">));</span>
+                    <span class="kt">int</span> <span class="n">red</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">co</span><span class="p">.</span><span class="na">getRed</span><span class="p">();</span>
+                    <span class="kt">int</span> <span class="n">green</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+                    <span class="kt">int</span> <span class="n">blue</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+                    <span class="n">Color</span> <span class="n">newColor</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Color</span><span class="p">(</span>
+                            <span class="n">red</span><span class="p">,</span>
+                            <span class="n">green</span><span class="p">,</span>
+                            <span class="n">blue</span><span class="p">);</span>
+                    <span class="n">redImg</span><span class="p">.</span><span class="na">setRGB</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">newColor</span><span class="p">.</span><span class="na">getRGB</span><span class="p">());</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">IOException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="n">ImageIO</span><span class="p">.</span><span class="na">write</span><span class="p">(</span><span class="n">convertToBufferedImage</span><span class="p">(</span><span class="n">redImg</span><span class="p">),</span> <span class="k">this</span><span class="p">.</span><span class="na">ext</span><span class="p">,</span> <span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="n">redFile</span><span class="p">));</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">IOException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="k">this</span><span class="p">.</span><span class="na">inFile</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="na">redFile</span><span class="p">;</span>  <span class="c1">// use scaled file vs original file in Class</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">setStats</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">greenscale</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">BufferedImage</span> <span class="n">img</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+        <span class="n">BufferedImage</span> <span class="n">greenImg</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>  
+
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="c1">// read an image to BufferedImage for processing</span>
+            <span class="n">img</span> <span class="o">=</span> <span class="n">ImageIO</span><span class="p">.</span><span class="na">read</span><span class="p">(</span><span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">inFile</span><span class="p">));</span>  <span class="c1">// set buffer of image data</span>
+            <span class="n">greenImg</span> <span class="o">=</span> <span class="n">img</span><span class="p">;</span>
+            <span class="c1">// create a new BufferedImage for drawing</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">img</span><span class="p">.</span><span class="na">getHeight</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">img</span><span class="p">.</span><span class="na">getWidth</span><span class="p">();</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="n">Color</span> <span class="n">co</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Color</span><span class="p">(</span><span class="n">img</span><span class="p">.</span><span class="na">getRGB</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">));</span>
+                    <span class="kt">int</span> <span class="n">red</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+                    <span class="kt">int</span> <span class="n">green</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="n">co</span><span class="p">.</span><span class="na">getGreen</span><span class="p">();</span>
+                    <span class="kt">int</span> <span class="n">blue</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+                    <span class="n">Color</span> <span class="n">newColor</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Color</span><span class="p">(</span>
+                            <span class="n">red</span><span class="p">,</span>
+                            <span class="n">green</span><span class="p">,</span>
+                            <span class="n">blue</span><span class="p">);</span>
+                    <span class="n">greenImg</span><span class="p">.</span><span class="na">setRGB</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">newColor</span><span class="p">.</span><span class="na">getRGB</span><span class="p">());</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">IOException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="n">ImageIO</span><span class="p">.</span><span class="na">write</span><span class="p">(</span><span class="n">convertToBufferedImage</span><span class="p">(</span><span class="n">greenImg</span><span class="p">),</span> <span class="k">this</span><span class="p">.</span><span class="na">ext</span><span class="p">,</span> <span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="n">greenFile</span><span class="p">));</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">IOException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="k">this</span><span class="p">.</span><span class="na">inFile</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="na">greenFile</span><span class="p">;</span>  <span class="c1">// use scaled file vs original file in Class</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">setStats</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">bluescale</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">BufferedImage</span> <span class="n">img</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+        <span class="n">BufferedImage</span> <span class="n">blueImg</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>  
+
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="c1">// read an image to BufferedImage for processing</span>
+            <span class="n">img</span> <span class="o">=</span> <span class="n">ImageIO</span><span class="p">.</span><span class="na">read</span><span class="p">(</span><span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">inFile</span><span class="p">));</span>  <span class="c1">// set buffer of image data</span>
+            <span class="n">blueImg</span> <span class="o">=</span> <span class="n">img</span><span class="p">;</span>
+            <span class="c1">// create a new BufferedImage for drawing</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">img</span><span class="p">.</span><span class="na">getHeight</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">img</span><span class="p">.</span><span class="na">getWidth</span><span class="p">();</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="n">Color</span> <span class="n">co</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Color</span><span class="p">(</span><span class="n">img</span><span class="p">.</span><span class="na">getRGB</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">));</span>
+                    <span class="kt">int</span> <span class="n">red</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="p">(</span><span class="n">co</span><span class="p">.</span><span class="na">getRed</span><span class="p">()</span> <span class="o">*</span> <span class="mf">0.299</span><span class="p">);</span>
+                    <span class="kt">int</span> <span class="n">green</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="p">(</span><span class="n">co</span><span class="p">.</span><span class="na">getGreen</span><span class="p">()</span> <span class="o">*</span> <span class="mf">0.587</span><span class="p">);</span>
+                    <span class="kt">int</span> <span class="n">blue</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="p">(</span><span class="n">co</span><span class="p">.</span><span class="na">getBlue</span><span class="p">()</span> <span class="o">*</span> <span class="mf">0.114</span><span class="p">);</span>
+                    <span class="kt">int</span> <span class="n">total</span> <span class="o">=</span> <span class="n">red</span> <span class="o">+</span> <span class="n">green</span> <span class="o">+</span> <span class="n">blue</span><span class="p">;</span>
+                    <span class="n">Color</span> <span class="n">newColor</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Color</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">total</span><span class="p">);</span>
+                    <span class="n">blueImg</span><span class="p">.</span><span class="na">setRGB</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">newColor</span><span class="p">.</span><span class="na">getRGB</span><span class="p">());</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">IOException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="n">ImageIO</span><span class="p">.</span><span class="na">write</span><span class="p">(</span><span class="n">convertToBufferedImage</span><span class="p">(</span><span class="n">blueImg</span><span class="p">),</span> <span class="k">this</span><span class="p">.</span><span class="na">ext</span><span class="p">,</span> <span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="n">blueFile</span><span class="p">));</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">IOException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+        <span class="k">this</span><span class="p">.</span><span class="na">inFile</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="na">blueFile</span><span class="p">;</span>  <span class="c1">// use scaled file vs original file in Class</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">setStats</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="c1">// convert every pixel to an ascii character (ratio does not seem correct)</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">convertToAscii</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">BufferedImage</span> <span class="n">img</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+        <span class="n">PrintWriter</span> <span class="n">asciiPrt</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+        <span class="n">FileWriter</span> <span class="n">asciiWrt</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="n">File</span> <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">asciiFile</span><span class="p">);</span>
+            <span class="n">Files</span><span class="p">.</span><span class="na">deleteIfExists</span><span class="p">(</span><span class="n">file</span><span class="p">.</span><span class="na">toPath</span><span class="p">());</span> 
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">IOException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Delete File error: "</span> <span class="o">+</span> <span class="n">e</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="n">asciiPrt</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PrintWriter</span><span class="p">(</span><span class="n">asciiWrt</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FileWriter</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">asciiFile</span><span class="p">,</span> <span class="kc">true</span><span class="p">));</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">IOException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"ASCII out file create error: "</span> <span class="o">+</span> <span class="n">e</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="n">img</span> <span class="o">=</span> <span class="n">ImageIO</span><span class="p">.</span><span class="na">read</span><span class="p">(</span><span class="k">new</span> <span class="n">File</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">inFile</span><span class="p">));</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">IOException</span> <span class="n">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">}</span>
+
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">img</span><span class="p">.</span><span class="na">getHeight</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">img</span><span class="p">.</span><span class="na">getWidth</span><span class="p">();</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="n">Color</span> <span class="n">col</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Color</span><span class="p">(</span><span class="n">img</span><span class="p">.</span><span class="na">getRGB</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">));</span>
+                    <span class="kt">double</span> <span class="n">pixVal</span> <span class="o">=</span> <span class="p">(((</span><span class="n">col</span><span class="p">.</span><span class="na">getRed</span><span class="p">()</span> <span class="o">*</span> <span class="mf">0.30</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">col</span><span class="p">.</span><span class="na">getBlue</span><span class="p">()</span> <span class="o">*</span> <span class="mf">0.59</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">col</span>
+                            <span class="p">.</span><span class="na">getGreen</span><span class="p">()</span> <span class="o">*</span> <span class="mf">0.11</span><span class="p">)));</span>
+                    <span class="k">try</span> <span class="p">{</span>
+                        <span class="n">asciiPrt</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="n">asciiChar</span><span class="p">(</span><span class="n">pixVal</span><span class="p">));</span>
+                        <span class="n">asciiPrt</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="n">asciiChar</span><span class="p">(</span><span class="n">pixVal</span><span class="p">));</span>
+                        <span class="n">asciiPrt</span><span class="p">.</span><span class="na">flush</span><span class="p">();</span>
+                        <span class="n">asciiWrt</span><span class="p">.</span><span class="na">flush</span><span class="p">();</span>
+                    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">ex</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="p">}</span>
+                <span class="p">}</span>
+                <span class="k">try</span> <span class="p">{</span>
+                    <span class="n">asciiPrt</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">""</span><span class="p">);</span>
+                    <span class="n">asciiPrt</span><span class="p">.</span><span class="na">flush</span><span class="p">();</span>
+                    <span class="n">asciiWrt</span><span class="p">.</span><span class="na">flush</span><span class="p">();</span>
+                <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="n">Exception</span> <span class="n">ex</span><span class="p">)</span> <span class="p">{</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+        <span class="p">}</span>   
+    <span class="p">}</span>
+
+    <span class="c1">// conversion table, there may be better out there ie https://www.billmongan.com/Ursinus-CS173-Fall2020/Labs/ASCIIArt</span>
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">asciiChar</span><span class="p">(</span><span class="kt">double</span> <span class="n">g</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">" "</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">g</span> <span class="o">&gt;=</span> <span class="mi">240</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">str</span> <span class="o">=</span> <span class="s">" "</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">g</span> <span class="o">&gt;=</span> <span class="mi">210</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">str</span> <span class="o">=</span> <span class="s">"."</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">g</span> <span class="o">&gt;=</span> <span class="mi">190</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">str</span> <span class="o">=</span> <span class="s">"*"</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">g</span> <span class="o">&gt;=</span> <span class="mi">170</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">str</span> <span class="o">=</span> <span class="s">"+"</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">g</span> <span class="o">&gt;=</span> <span class="mi">120</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">str</span> <span class="o">=</span> <span class="s">"^"</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">g</span> <span class="o">&gt;=</span> <span class="mi">110</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">str</span> <span class="o">=</span> <span class="s">"&amp;"</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">g</span> <span class="o">&gt;=</span> <span class="mi">80</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">str</span> <span class="o">=</span> <span class="s">"8"</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">g</span> <span class="o">&gt;=</span> <span class="mi">60</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">str</span> <span class="o">=</span> <span class="s">"#"</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="n">str</span> <span class="o">=</span> <span class="s">"@"</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="n">str</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1">// tester/driver</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="p">{</span>
+        <span class="n">Pics</span> <span class="n">monaLisa</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Pics</span><span class="p">(</span><span class="s">"MonaLisa"</span><span class="p">,</span> <span class="s">"png"</span><span class="p">);</span>
+        <span class="c1">// monaLisa.greyscale();</span>
+        <span class="c1">//monaLisa.redscale();</span>
+        <span class="c1">//monaLisa.greenscale();</span>
+        <span class="n">monaLisa</span><span class="p">.</span><span class="na">bluescale</span><span class="p">();</span>
+        <span class="c1">// monaLisa.printStats("Original");</span>
+        <span class="c1">// monaLisa.resize(33);</span>
+        <span class="c1">// monaLisa.printStats("Scaled");</span>
+        <span class="c1">// monaLisa.convertToAscii();</span>
+
+        <span class="n">Pics</span> <span class="n">pumpkin</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Pics</span><span class="p">(</span><span class="s">"pumpkin"</span><span class="p">,</span> <span class="s">"png"</span><span class="p">);</span>
+        <span class="c1">// pumpkin.greyscale();</span>
+        <span class="c1">// pumpkin.redscale();</span>
+        <span class="c1">// pumpkin.greenscale();</span>
+        <span class="n">pumpkin</span><span class="p">.</span><span class="na">bluescale</span><span class="p">();</span>
+        <span class="c1">// pumpkin.printStats("Original");</span>
+        <span class="c1">// pumpkin.resize(33);</span>
+        <span class="c1">// pumpkin.printStats("Scaled");</span>
+        <span class="c1">// pumpkin.convertToAscii();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">Pics</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Results">
+<a class="anchor" href="#Results" aria-hidden="true"><span class="octicon octicon-link"></span></a>Results<a class="anchor-link" href="#Results"> </a>
+</h2>
+<h3 id="Different-colorations">
+<a class="anchor" href="#Different-colorations" aria-hidden="true"><span class="octicon octicon-link"></span></a>Different colorations<a class="anchor-link" href="#Different-colorations"> </a>
+</h3>
+<p><img src="/csa23/images/copied_from_nb/images/tmp/greyscale/MonaLisa_grey.png" alt="greyimage.png">
+<img src="/csa23/images/copied_from_nb/images/tmp/red/MonaLisa_red.png" alt="redimage.png">
+<img src="/csa23/images/copied_from_nb/images/tmp/blue/MonaLisa_blue.png" alt="blueimage.png">
+<img src="/csa23/images/copied_from_nb/images/tmp/green/MonaLisa_green.png" alt="greenimage.png"></p>
+<hr>
+<p><img src="/csa23/images/copied_from_nb/images/tmp/greyscale/pumpkin_grey.png" alt="greyimage.png">
+<img src="/csa23/images/copied_from_nb/images/tmp/red/pumpkin_red.png" alt="redimage.png">
+<img src="/csa23/images/copied_from_nb/images/tmp/blue/pumpkin_blue.png" alt="blueimage.png">
+<img src="/csa23/images/copied_from_nb/images/tmp/green/pumpkin_green.png" alt="greenimage.png"></p>
+<hr>
+<ul>
+<li>I do have to acknowledge a technical limitation, which is that the red, blue, and green commands cannot be run at the same time as they cancel each other out. I cannot currently find a fix for it. If I do find a fix, I will implement it ASAP.</li>
+</ul>
+<hr>
+<h3 id="ASCII">
+<a class="anchor" href="#ASCII" aria-hidden="true"><span class="octicon octicon-link"></span></a>ASCII<a class="anchor-link" href="#ASCII"> </a>
+</h3>
+<ul>
+<li>Mostly fixed issue of ascii stretching</li>
+</ul>
+<p><img src="/csa23/images/copied_from_nb/images/monalisaascii.png" alt="monalisaascii.png">
+<img src="/csa23/images/copied_from_nb/images/pumpkinascii.png" alt="pumpkinascii.png"></p>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><a class="u-url" href="/csa23/week6/imageio" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/csa23/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/csa23/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/csa23/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Daniel Tsivkovski</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/fastai" target="_blank" title="fastai"><svg class="svg-icon grey"><use xlink:href="/csa23/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/fastdotai" target="_blank" title="fastdotai"><svg class="svg-icon grey"><use xlink:href="/csa23/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
