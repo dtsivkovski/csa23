@@ -10,8 +10,8 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Working on array lists" />
 <meta property="og:description" content="Working on array lists" />
-<link rel="canonical" href="https://dtsivkovski.github.io/csa23/week6/arraylists" />
-<meta property="og:url" content="https://dtsivkovski.github.io/csa23/week6/arraylists" />
+<link rel="canonical" href="https://dtsivkovski.github.io/csa23/week7/arraylists" />
+<meta property="og:url" content="https://dtsivkovski.github.io/csa23/week7/arraylists" />
 <meta property="og:site_name" content="dtsivkovski’s blog" />
 <meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Pair_programming_1.jpg/220px-Pair_programming_1.jpg" />
 <meta property="og:type" content="article" />
@@ -20,7 +20,7 @@
 <meta property="twitter:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Pair_programming_1.jpg/220px-Pair_programming_1.jpg" />
 <meta property="twitter:title" content="Array Lists" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-10-09T00:00:00-05:00","datePublished":"2022-10-09T00:00:00-05:00","description":"Working on array lists","headline":"Array Lists","image":"https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Pair_programming_1.jpg/220px-Pair_programming_1.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://dtsivkovski.github.io/csa23/week6/arraylists"},"url":"https://dtsivkovski.github.io/csa23/week6/arraylists"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2022-10-09T00:00:00-05:00","datePublished":"2022-10-09T00:00:00-05:00","description":"Working on array lists","headline":"Array Lists","image":"https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Pair_programming_1.jpg/220px-Pair_programming_1.jpg","mainEntityOfPage":{"@type":"WebPage","@id":"https://dtsivkovski.github.io/csa23/week7/arraylists"},"url":"https://dtsivkovski.github.io/csa23/week7/arraylists"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="stylesheet" href="/csa23/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://dtsivkovski.github.io/csa23/feed.xml" title="dtsivkovski's blog" /><link rel="shortcut icon" type="image/x-icon" href="/csa23/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" /><script src="https://hypothes.is/embed.js" async></script>
@@ -142,10 +142,44 @@ window.onload = wrap_img;
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-java"><pre><span></span><span class="c1">// Daniel</span>
+<div class=" highlight hl-python"><pre><span></span><span class="o">//</span> <span class="n">Daniel</span>
+<span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="p">;</span>
+
+<span class="n">public</span> <span class="k">class</span> <span class="nc">SongList</span> <span class="p">{</span>
+    <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">songs</span> <span class="o">=</span> <span class="n">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">();</span>
+
+    <span class="n">public</span> <span class="n">static</span> <span class="n">void</span> <span class="n">main</span><span class="p">(</span><span class="n">String</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">songs</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"House of the Rising Sun"</span><span class="p">);</span>
+        <span class="n">songs</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Viva la Vida"</span><span class="p">);</span>
+        <span class="n">songs</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Forget You"</span><span class="p">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="n">songs</span><span class="p">);</span>
+    <span class="p">}</span>
+
+
+<span class="p">}</span>
+
+<span class="n">SongList</span><span class="o">.</span><span class="n">main</span><span class="p">(</span><span class="n">null</span><span class="p">);</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-intense-fg ansi-bold">Running cells with 'Python 3.9.13 64-bit (microsoft store)' requires ipykernel package.
+</span>
+<span class="ansi-red-intense-fg ansi-bold">Run the following command to install 'ipykernel' into the Python environment. 
+</span>
+<span class="ansi-red-intense-fg ansi-bold">Command: 'c:/Users/dtsiv/AppData/Local/Microsoft/WindowsApps/python3.9.exe -m pip install ipykernel -U --force-reinstall'</span></pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -159,10 +193,28 @@ window.onload = wrap_img;
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-java"><pre><span></span><span class="c1">// Everitt</span>
+<div class=" highlight hl-python"><pre><span></span><span class="o">//</span> <span class="n">Everitt</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_text output_error">
+<pre>
+<span class="ansi-red-intense-fg ansi-bold">Running cells with 'Python 3.9.13 64-bit (microsoft store)' requires ipykernel package.
+</span>
+<span class="ansi-red-intense-fg ansi-bold">Run the following command to install 'ipykernel' into the Python environment. 
+</span>
+<span class="ansi-red-intense-fg ansi-bold">Command: 'c:/Users/dtsiv/AppData/Local/Microsoft/WindowsApps/python3.9.exe -m pip install ipykernel -U --force-reinstall'</span></pre>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -173,7 +225,7 @@ window.onload = wrap_img;
 
 
 
-  </div><a class="u-url" href="/csa23/week6/arraylists" hidden></a>
+  </div><a class="u-url" href="/csa23/week7/arraylists" hidden></a>
 </article>
 
       </div>
