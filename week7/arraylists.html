@@ -142,23 +142,30 @@ window.onload = wrap_img;
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-python"><pre><span></span><span class="o">//</span> <span class="n">Daniel</span>
+<div class=" highlight hl-java"><pre><span></span><span class="c1">// Daniel</span>
 <span class="kn">import</span> <span class="nn">java.util.ArrayList</span><span class="p">;</span>
 
-<span class="n">public</span> <span class="k">class</span> <span class="nc">SongList</span> <span class="p">{</span>
-    <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">songs</span> <span class="o">=</span> <span class="n">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">();</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SongList</span> <span class="p">{</span>
 
-    <span class="n">public</span> <span class="n">static</span> <span class="n">void</span> <span class="n">main</span><span class="p">(</span><span class="n">String</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">songs</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"House of the Rising Sun"</span><span class="p">);</span>
-        <span class="n">songs</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Viva la Vida"</span><span class="p">);</span>
-        <span class="n">songs</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="s2">"Forget You"</span><span class="p">);</span>
-        <span class="n">System</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="n">songs</span><span class="p">);</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">testing</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">testing</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">songs</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">();</span>
+        <span class="c1">// ArrayList&lt;String&gt; inSongs = new ArrayList&lt;String&gt;(){"Fancy", "Party in the USA", "Lost in Paris"};</span>
+
+        <span class="n">songs</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"House of the Rising Sun"</span><span class="p">);</span>
+        <span class="n">songs</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"Viva la Vida"</span><span class="p">);</span>
+        <span class="n">songs</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"Forget You"</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">songs</span><span class="p">);</span>
+        <span class="c1">// songs.addAll(inSongs);</span>
     <span class="p">}</span>
 
 
 <span class="p">}</span>
 
-<span class="n">SongList</span><span class="o">.</span><span class="n">main</span><span class="p">(</span><span class="n">null</span><span class="p">);</span>
+<span class="n">SongList</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
 </pre></div>
 
     </div>
@@ -170,13 +177,9 @@ window.onload = wrap_img;
 
 <div class="output_area">
 
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-intense-fg ansi-bold">Running cells with 'Python 3.9.13 64-bit (microsoft store)' requires ipykernel package.
-</span>
-<span class="ansi-red-intense-fg ansi-bold">Run the following command to install 'ipykernel' into the Python environment. 
-</span>
-<span class="ansi-red-intense-fg ansi-bold">Command: 'c:/Users/dtsiv/AppData/Local/Microsoft/WindowsApps/python3.9.exe -m pip install ipykernel -U --force-reinstall'</span></pre>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[House of the Rising Sun, Viva la Vida, Forget You]
+</pre>
 </div>
 </div>
 
@@ -193,7 +196,7 @@ window.onload = wrap_img;
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-python"><pre><span></span><span class="o">//</span> <span class="n">Everitt</span>
+<div class=" highlight hl-java"><pre><span></span><span class="c1">// Everitt</span>
 </pre></div>
 
     </div>
