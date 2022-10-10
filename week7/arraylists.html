@@ -152,14 +152,40 @@ window.onload = wrap_img;
     <span class="p">}</span>
 
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">testing</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// defining songs as an empty arraylist, insongs is predefined</span>
         <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">songs</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">();</span>
-        <span class="c1">// ArrayList&lt;String&gt; inSongs = new ArrayList&lt;String&gt;(){"Fancy", "Party in the USA", "Lost in Paris"};</span>
+        <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">inSongs</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">(</span><span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span><span class="s">"Fancy"</span><span class="p">,</span> <span class="s">"Party in the USA"</span><span class="p">,</span> <span class="s">"Lost in Paris"</span><span class="p">));</span>
 
-        <span class="n">songs</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"House of the Rising Sun"</span><span class="p">);</span>
-        <span class="n">songs</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"Viva la Vida"</span><span class="p">);</span>
+        <span class="c1">// Add 3 songs to songs</span>
+        <span class="n">songs</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"House of the Rising Sun"</span><span class="p">);</span> 
+        <span class="n">songs</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"Viva la Vida"</span><span class="p">);</span> 
         <span class="n">songs</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"Forget You"</span><span class="p">);</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">songs</span><span class="p">);</span>
-        <span class="c1">// songs.addAll(inSongs);</span>
+        <span class="c1">// Printing result with size</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">""</span> <span class="o">+</span> <span class="n">songs</span> <span class="o">+</span> <span class="s">" - "</span> <span class="o">+</span> <span class="n">songs</span><span class="p">.</span><span class="na">size</span><span class="p">()</span> <span class="o">+</span> <span class="s">" items"</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"----------"</span><span class="p">);</span>
+
+        <span class="c1">// Adding insongs to songs</span>
+        <span class="n">songs</span><span class="p">.</span><span class="na">addAll</span><span class="p">(</span><span class="n">inSongs</span><span class="p">);</span>
+        <span class="c1">// Printing result</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">""</span> <span class="o">+</span> <span class="n">songs</span> <span class="o">+</span> <span class="s">" - "</span> <span class="o">+</span> <span class="n">songs</span><span class="p">.</span><span class="na">size</span><span class="p">()</span> <span class="o">+</span> <span class="s">" items"</span><span class="p">);</span>
+
+        <span class="c1">// Getting a specific variable and then removing it</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"----------"</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"This is the element at index 4: "</span> <span class="o">+</span> <span class="n">songs</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">+</span> <span class="s">". Let's remove it."</span><span class="p">);</span>
+        <span class="n">songs</span><span class="p">.</span><span class="na">remove</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">""</span> <span class="o">+</span> <span class="n">songs</span> <span class="o">+</span> <span class="s">" - "</span> <span class="o">+</span> <span class="n">songs</span><span class="p">.</span><span class="na">size</span><span class="p">()</span> <span class="o">+</span> <span class="s">" items"</span><span class="p">);</span>
+
+        <span class="c1">// Removing a specific element based on name</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"----------"</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Removing 'Viva la Vida'"</span><span class="p">);</span>
+        <span class="n">songs</span><span class="p">.</span><span class="na">remove</span><span class="p">(</span><span class="s">"Viva la Vida"</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">""</span> <span class="o">+</span> <span class="n">songs</span> <span class="o">+</span> <span class="s">" - "</span> <span class="o">+</span> <span class="n">songs</span><span class="p">.</span><span class="na">size</span><span class="p">()</span> <span class="o">+</span> <span class="s">" items"</span><span class="p">);</span>
+
+        <span class="c1">// Clearing the entire list</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"----------"</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Clearing the entire list using the clear() function."</span><span class="p">);</span>
+        <span class="n">songs</span><span class="p">.</span><span class="na">clear</span><span class="p">();</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">""</span> <span class="o">+</span> <span class="n">songs</span> <span class="o">+</span> <span class="s">" - "</span> <span class="o">+</span> <span class="n">songs</span><span class="p">.</span><span class="na">size</span><span class="p">()</span> <span class="o">+</span> <span class="s">" items"</span><span class="p">);</span>
     <span class="p">}</span>
 
 
@@ -178,7 +204,18 @@ window.onload = wrap_img;
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>[House of the Rising Sun, Viva la Vida, Forget You]
+<pre>[House of the Rising Sun, Viva la Vida, Forget You] - 3 items
+----------
+[House of the Rising Sun, Viva la Vida, Forget You, Fancy, Party in the USA, Lost in Paris] - 6 items
+----------
+This is the element at index 4: Party in the USA. Let's remove it.
+[House of the Rising Sun, Viva la Vida, Forget You, Fancy, Lost in Paris] - 5 items
+----------
+Removing 'Viva la Vida'
+[House of the Rising Sun, Forget You, Fancy, Lost in Paris] - 4 items
+----------
+Clearing the entire list using the clear() function.
+[] - 0 items
 </pre>
 </div>
 </div>
