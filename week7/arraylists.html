@@ -81,7 +81,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      1 min read
+      2 min read
     
 </span></p>
 
@@ -234,6 +234,70 @@ Clearing the entire list using the clear() function.
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-java"><pre><span></span><span class="c1">// Everitt</span>
+<span class="kn">import</span> <span class="nn">java.util.Comparator</span><span class="p">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SongList2</span> <span class="p">{</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">testing</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">testing</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">songs</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">();</span>
+
+        <span class="n">songs</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"House of the Rising Sun"</span><span class="p">);</span>
+        <span class="n">songs</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"Viva la Vida"</span><span class="p">);</span>
+        <span class="n">songs</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"Forget You"</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">songs</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"----------"</span><span class="p">);</span>
+
+
+        <span class="n">songs</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s">"Man"</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Replaced Viva La Vida with Man"</span> <span class="o">+</span> <span class="n">songs</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"----------"</span><span class="p">);</span>
+
+        
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Index of Man: "</span><span class="o">+</span> <span class="n">songs</span><span class="p">.</span><span class="na">indexOf</span><span class="p">(</span><span class="s">"Man"</span><span class="p">));</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"----------"</span><span class="p">);</span>
+
+        <span class="c1">// Should return -1</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"How many of this song are in the list: "</span> <span class="o">+</span> <span class="n">songs</span><span class="p">.</span><span class="na">lastIndexOf</span><span class="p">(</span><span class="s">"HeeHoo"</span><span class="p">));</span>
+        
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"----------"</span><span class="p">);</span>
+
+        <span class="c1">//Compares entire list</span>
+
+        <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">songs2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">();</span>
+
+        <span class="n">songs2</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"House of the Rising Sun"</span><span class="p">);</span>
+        <span class="n">songs2</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"Man"</span><span class="p">);</span>
+        <span class="n">songs2</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"Forget You"</span><span class="p">);</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">songs</span><span class="p">.</span><span class="na">equals</span><span class="p">(</span><span class="n">songs2</span><span class="p">));</span>
+
+        <span class="c1">// Hashcode of Songs</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">songs</span><span class="p">.</span><span class="na">hashCode</span><span class="p">());</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"----------"</span><span class="p">);</span>
+
+        <span class="c1">//Checks if the list is empty or not</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Is it empty? "</span> <span class="o">+</span> <span class="n">songs</span><span class="p">.</span><span class="na">isEmpty</span><span class="p">());</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"----------"</span><span class="p">);</span>
+
+        <span class="c1">//Check if the list contains this certain element or not</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Does it have Cheeseburger Joe's Country music in Songs? "</span> <span class="o">+</span> <span class="n">songs</span><span class="p">.</span><span class="na">contains</span><span class="p">(</span><span class="s">"Cheeseburger Joe's Country Music"</span><span class="p">));</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"----------"</span><span class="p">);</span>
+
+        <span class="c1">//Sorts by comparator variable</span>
+        <span class="n">songs</span><span class="p">.</span><span class="na">sort</span><span class="p">(</span><span class="n">Comparator</span><span class="p">.</span><span class="na">naturalOrder</span><span class="p">());</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Songs are sorted by Alphabet"</span> <span class="o">+</span> <span class="n">songs</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"----------"</span><span class="p">);</span>
+
+    <span class="p">}</span>
+
+
+<span class="p">}</span>
+<span class="n">SongList2</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
 </pre></div>
 
     </div>
@@ -245,13 +309,25 @@ Clearing the entire list using the clear() function.
 
 <div class="output_area">
 
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-red-intense-fg ansi-bold">Running cells with 'Python 3.9.13 64-bit (microsoft store)' requires ipykernel package.
-</span>
-<span class="ansi-red-intense-fg ansi-bold">Run the following command to install 'ipykernel' into the Python environment. 
-</span>
-<span class="ansi-red-intense-fg ansi-bold">Command: 'c:/Users/dtsiv/AppData/Local/Microsoft/WindowsApps/python3.9.exe -m pip install ipykernel -U --force-reinstall'</span></pre>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>[House of the Rising Sun, Viva la Vida, Forget You]
+----------
+Replaced Viva La Vida with Man[House of the Rising Sun, Man, Forget You]
+----------
+Index of Man: 1
+----------
+How many of this song are in the list: -1
+----------
+true
+2115076891
+----------
+Is it empty? false
+----------
+Does it have Cheeseburger Joe's Country music in Songs? false
+----------
+Songs are sorted by Alphabet[Forget You, House of the Rising Sun, Man]
+----------
+</pre>
 </div>
 </div>
 
