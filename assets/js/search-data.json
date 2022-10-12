@@ -3,7 +3,7 @@
     
         "post0": {
             "title": "Arrays Lesson",
-            "content": "Lesson Purpose and Objectives . Understand how arrays work and how to use them | Understand advantages and disadvantages in Java | . AP Classroom Requirements . - .",
+            "content": "Lesson Purpose and Objectives . Understand how arrays work and how to use them | Understand advantages and disadvantages in Java | . AP Classroom Requirements . 3.D - Write program code to create, traverse, and manipulate elements in 1D array or ArrayList objects. | 6.1 - Array Creation and Access | 6.2 - Traversing Arrays | 6.3 - Enhanced for Loop for Arrays | 6.4 - Developing Algorithms Using Arrays | .",
             "url": "https://dtsivkovski.github.io/csa23/week10/arraylesson",
             "relUrl": "/week10/arraylesson",
             "date": " • Oct 10, 2022"
