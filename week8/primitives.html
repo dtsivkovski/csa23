@@ -356,19 +356,27 @@ window.onload = wrap_img;
     <div class="input_area">
 <div class=" highlight hl-java"><pre><span></span><span class="c1">// 3A</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Customer</span> <span class="p">{</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="p">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">id</span><span class="p">;</span>
+    
     <span class="kd">public</span> <span class="nf">Customer</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">,</span> <span class="kt">int</span> <span class="n">idNum</span><span class="p">){</span>
-        <span class="c1">// name = this.name;</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">id</span> <span class="o">=</span> <span class="n">idNum</span><span class="p">;</span>
         <span class="c1">// idNum = this.idNum;</span>
-    <span class="p">}</span>
+    <span class="p">};</span>
+
     <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="p">(){</span>
-        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">name</span><span class="p">;</span>
     <span class="p">};</span>
+
     <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getID</span><span class="p">(){</span>
-        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="na">idNum</span><span class="p">;</span>
+        <span class="k">return</span> <span class="n">id</span><span class="p">;</span>
     <span class="p">};</span>
-    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">compareCustomer</span><span class="p">(</span><span class="n">Customer</span> <span class="n">x</span><span class="p">){</span>
-        <span class="k">return</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">idNum</span> <span class="o">-</span> <span class="n">x</span><span class="p">.</span><span class="na">idNum</span><span class="p">);</span>
-    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">compareCustomer</span><span class="p">(</span><span class="n">Customer</span> <span class="n">x</span><span class="p">){</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">id</span> <span class="o">-</span> <span class="n">x</span><span class="p">.</span><span class="na">id</span><span class="p">);</span>
+        <span class="c1">// return (id - x.id);</span>
+    <span class="p">};</span>
     
 <span class="p">}</span>
 
@@ -390,28 +398,11 @@ window.onload = wrap_img;
 
 <div class="output_area">
 
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-bold">// 3A</span>
-<span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-bold">public class Customer {</span>
-<span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-bold">    public Customer(String name, int idNum){</span>
-<span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-bold">        // name = this.name;</span>
-<span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-bold">        // idNum = this.idNum;</span>
-<span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-bold">    }</span>
-<span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-bold">    public String getName(){</span>
-<span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-bold">        return name;</span>
-<span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-bold">    };</span>
-<span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-bold">    public int getID(){</span>
-<span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-bold">        return idNum;</span>
-<span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-bold">    };</span>
-<span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-bold">    public int compareCustomer(Customer x){</span>
-<span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-bold">        return (idNum - x.idNum);</span>
-<span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-bold">    }</span>
-<span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-bold">    </span>
-<span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-bold">}</span>
-<span class="ansi-red-intense-fg ansi-bold">Unresolved dependencies:</span>
-<span class="ansi-red-intense-fg ansi-bold">   - variable name</span>
-<span class="ansi-red-intense-fg ansi-bold">   - variable idNum</span></pre>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>0
+-1
+-2
+</pre>
 </div>
 </div>
 
