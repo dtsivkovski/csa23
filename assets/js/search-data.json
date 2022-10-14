@@ -3,7 +3,7 @@
     
         "post0": {
             "title": "OOP Lesson Hacks",
-            "content": "2021 FRQ 1 and 2 .",
+            "content": "2021 FRQ 1 . // #1 public class WordMatch { String secret; public WordMatch(String secret) { this.secret = secret; } public void scoreGuess(String guess) { int counter = 0; // for loop for first substring index for (int i = 0; i &lt; this.secret.length(); i++){ // loop for second substring index for (int j = i + 1; j &lt; this.secret.length() + 1; j++) { // if statement if (guess.equals(this.secret.substring(i,j))) { counter++; } } } // Returning a point value int points = counter * guess.length() * guess.length(); System.out.println(&quot;&quot; + guess + &quot; = &quot; + points); // return points; } } WordMatch game = new WordMatch(&quot;mississippi&quot;); game.scoreGuess(&quot;i&quot;); game.scoreGuess(&quot;iss&quot;); game.scoreGuess(&quot;issipp&quot;); game.scoreGuess(&quot;mississippi&quot;); WordMatch game = new WordMatch(&quot;aaaabb&quot;); game.scoreGuess(&quot;a&quot;); game.scoreGuess(&quot;aa&quot;); game.scoreGuess(&quot;aaa&quot;); game.scoreGuess(&quot;aabb&quot;); game.scoreGuess(&quot;c&quot;); . i = 4 iss = 18 issipp = 36 mississippi = 121 a = 4 aa = 12 aaa = 18 aabb = 16 c = 0 .",
             "url": "https://dtsivkovski.github.io/csa23/week8/oop",
             "relUrl": "/week8/oop",
             "date": " • Oct 13, 2022"
