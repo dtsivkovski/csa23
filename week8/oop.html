@@ -81,7 +81,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      1 min read
+      2 min read
     
 </span></p>
 
@@ -126,6 +126,7 @@ window.onload = wrap_img;
 
   <div class="post-content e-content" itemprop="articleBody">
     <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h3"><a href="#Goblin-Fight-Hack">Goblin Fight Hack </a></li>
 <li class="toc-entry toc-h3"><a href="#2021-FRQ-1">2021 FRQ 1 </a></li>
 </ul><!--
 #################################################
@@ -136,6 +137,175 @@ window.onload = wrap_img;
 
 <div class="container" id="notebook-container">
         
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Goblin-Fight-Hack">
+<a class="anchor" href="#Goblin-Fight-Hack" aria-hidden="true"><span class="octicon octicon-link"></span></a>Goblin Fight Hack<a class="anchor-link" href="#Goblin-Fight-Hack"> </a>
+</h3>
+<ul>
+<li>Include a calculation to allow for hit chance</li>
+</ul>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.*</span><span class="p">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Goblin</span> <span class="p">{</span>
+    <span class="kd">private</span> <span class="n">String</span> <span class="n">name</span><span class="p">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">HP</span><span class="p">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">DMG</span><span class="p">;</span>
+    <span class="kd">private</span> <span class="kt">double</span> <span class="n">hitChance</span><span class="p">;</span>
+
+    <span class="kd">public</span> <span class="n">String</span> <span class="nf">getName</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">name</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getHP</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">HP</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getDMG</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">DMG</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">getHitChance</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="n">hitChance</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">isAlive</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">HP</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setName</span><span class="p">(</span><span class="n">String</span> <span class="n">newName</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">newName</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setHP</span><span class="p">(</span><span class="kt">int</span> <span class="n">newHP</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">HP</span> <span class="o">=</span> <span class="n">newHP</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">takeDMG</span><span class="p">(</span><span class="kt">int</span> <span class="n">takenDamage</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">HP</span> <span class="o">-=</span> <span class="n">takenDamage</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setDMG</span><span class="p">(</span><span class="kt">int</span> <span class="n">newDMG</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">DMG</span> <span class="o">=</span> <span class="n">newDMG</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setHitChance</span><span class="p">(</span><span class="kt">double</span> <span class="n">newHitChance</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">hitChance</span> <span class="o">=</span> <span class="n">newHitChance</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Duel</span> <span class="p">{</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">fight</span><span class="p">(</span><span class="n">Goblin</span> <span class="n">goblin1</span><span class="p">,</span> <span class="n">Goblin</span> <span class="n">goblin2</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">while</span> <span class="p">(</span><span class="n">goblin1</span><span class="p">.</span><span class="na">isAlive</span><span class="p">()</span> <span class="o">&amp;&amp;</span> <span class="n">goblin2</span><span class="p">.</span><span class="na">isAlive</span><span class="p">())</span> <span class="p">{</span>
+
+            <span class="c1">// goblin1 hit chance tester</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">Math</span><span class="p">.</span><span class="na">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">goblin2</span><span class="p">.</span><span class="na">getHitChance</span><span class="p">())</span> <span class="p">{</span>
+                <span class="n">goblin2</span><span class="p">.</span><span class="na">takeDMG</span><span class="p">(</span><span class="n">goblin2</span><span class="p">.</span><span class="na">getDMG</span><span class="p">());</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">goblin1</span><span class="p">.</span><span class="na">getName</span><span class="p">()</span> <span class="o">+</span> <span class="s">" takes "</span> <span class="o">+</span> <span class="n">goblin2</span><span class="p">.</span><span class="na">getDMG</span><span class="p">()</span> <span class="o">+</span> <span class="s">" damage"</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="k">else</span> <span class="p">{</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">goblin2</span><span class="p">.</span><span class="na">getName</span><span class="p">()</span> <span class="o">+</span> <span class="s">" missed!"</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="c1">// print hp of goblin1</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">goblin1</span><span class="p">.</span><span class="na">getName</span><span class="p">()</span> <span class="o">+</span> <span class="s">" HP: "</span> <span class="o">+</span> <span class="n">goblin1</span><span class="p">.</span><span class="na">getHP</span><span class="p">());</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">goblin1</span><span class="p">.</span><span class="na">isAlive</span><span class="p">())</span> <span class="p">{</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">goblin1</span><span class="p">.</span><span class="na">getName</span><span class="p">()</span> <span class="o">+</span> <span class="s">" has perished"</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="p">}</span>
+
+            <span class="c1">// if statement for goblin2 hit chance</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">Math</span><span class="p">.</span><span class="na">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">goblin1</span><span class="p">.</span><span class="na">getHitChance</span><span class="p">())</span> <span class="p">{</span>
+                <span class="n">goblin2</span><span class="p">.</span><span class="na">takeDMG</span><span class="p">(</span><span class="n">goblin1</span><span class="p">.</span><span class="na">getDMG</span><span class="p">());</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">goblin2</span><span class="p">.</span><span class="na">getName</span><span class="p">()</span> <span class="o">+</span> <span class="s">" takes "</span> <span class="o">+</span> <span class="n">goblin1</span><span class="p">.</span><span class="na">getDMG</span><span class="p">()</span> <span class="o">+</span> <span class="s">" damage"</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="k">else</span> <span class="p">{</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">goblin1</span><span class="p">.</span><span class="na">getName</span><span class="p">()</span> <span class="o">+</span> <span class="s">" missed!"</span><span class="p">);</span>
+            <span class="p">}</span>
+            <span class="c1">// print hp of goblin2</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">goblin2</span><span class="p">.</span><span class="na">getName</span><span class="p">()</span> <span class="o">+</span> <span class="s">" HP: "</span> <span class="o">+</span> <span class="n">goblin2</span><span class="p">.</span><span class="na">getHP</span><span class="p">());</span>
+
+            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">goblin2</span><span class="p">.</span><span class="na">isAlive</span><span class="p">())</span> <span class="p">{</span>
+                <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">goblin2</span><span class="p">.</span><span class="na">getName</span><span class="p">()</span> <span class="o">+</span> <span class="s">" has perished"</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">Goblin</span> <span class="n">goblin1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Goblin</span><span class="p">();</span>
+        <span class="n">goblin1</span><span class="p">.</span><span class="na">setName</span><span class="p">(</span><span class="s">"Thomas Jefferson"</span><span class="p">);</span>
+        <span class="n">goblin1</span><span class="p">.</span><span class="na">setHP</span><span class="p">(</span><span class="mi">12</span><span class="p">);</span>
+        <span class="n">goblin1</span><span class="p">.</span><span class="na">setDMG</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+        <span class="n">goblin1</span><span class="p">.</span><span class="na">setHitChance</span><span class="p">(</span><span class="mf">0.5</span><span class="p">);</span>
+
+        <span class="n">Goblin</span> <span class="n">goblin2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Goblin</span><span class="p">();</span>
+        <span class="n">goblin2</span><span class="p">.</span><span class="na">setName</span><span class="p">(</span><span class="s">"George Washington"</span><span class="p">);</span>
+        <span class="n">goblin2</span><span class="p">.</span><span class="na">setHP</span><span class="p">(</span><span class="mi">4</span><span class="p">);</span>
+        <span class="n">goblin2</span><span class="p">.</span><span class="na">setDMG</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+        <span class="n">goblin2</span><span class="p">.</span><span class="na">setHitChance</span><span class="p">(</span><span class="mf">0.75</span><span class="p">);</span>
+
+        <span class="n">fight</span><span class="p">(</span><span class="n">goblin1</span><span class="p">,</span> <span class="n">goblin2</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">Duel</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>George Washington missed!
+Thomas Jefferson HP: 12
+Thomas Jefferson missed!
+George Washington HP: 4
+Thomas Jefferson takes 1 damage
+Thomas Jefferson HP: 12
+Thomas Jefferson missed!
+George Washington HP: 3
+Thomas Jefferson takes 1 damage
+Thomas Jefferson HP: 12
+Thomas Jefferson missed!
+George Washington HP: 2
+Thomas Jefferson takes 1 damage
+Thomas Jefferson HP: 12
+George Washington takes 2 damage
+George Washington HP: -1
+George Washington has perished
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
