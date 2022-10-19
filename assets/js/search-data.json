@@ -3,7 +3,7 @@
     
         "post0": {
             "title": "Boolean expressions and ifs lesson",
-            "content": "Hacks . 2009 FRQ 3b | 2017 FRQ 1b | 2019 FRQ 3b | . public class BatteryCharger { public int getChargeStartTime(int chargeTime) { int starting = 0; for (int j = 1; j &lt; 24; j++) { if (this.getChargingCost(j, chargeTime) &lt; this.getChargingCost(starting, chargeTime)) starting = j; } return starting; } } BatteryCharger bat = new BatteryCharger(); bat.getChargeStartTime(6); .",
+            "content": "Hacks . 2009 FRQ 3b | 2017 FRQ 1b | 2019 FRQ 3b | . // 09 - 3b // We are assuming that getChargingCost() works well public class BatteryCharger { public int getChargeStartTime(int chargeTime) { int starting = 0; for (int j = 1; j &lt; 24; j++) { if (this.getChargingCost(j, chargeTime) &lt; this.getChargingCost(starting, chargeTime)) starting = j; } return starting; } } BatteryCharger bat = new BatteryCharger(); bat.getChargeStartTime(6); .",
             "url": "https://dtsivkovski.github.io/csa23/week9/booleans-ifs",
             "relUrl": "/week9/booleans-ifs",
             "date": " • Oct 18, 2022"
