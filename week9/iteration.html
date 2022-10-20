@@ -315,12 +315,12 @@ count is 5
     <span class="kd">private</span> <span class="kt">boolean</span> <span class="n">game</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
 
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">guess</span><span class="p">(){</span>
-        <span class="n">secret</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="p">(</span><span class="n">Math</span><span class="p">.</span><span class="na">random</span><span class="p">()</span> <span class="o">*</span> <span class="mi">1000</span><span class="p">);</span>
+        <span class="n">secret</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="p">(</span><span class="n">Math</span><span class="p">.</span><span class="na">random</span><span class="p">()</span> <span class="o">*</span> <span class="mi">500</span><span class="p">);</span>
         <span class="kt">int</span> <span class="n">num</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
         <span class="kt">int</span> <span class="n">guesscount</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 
         <span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">game</span><span class="p">){</span>
-            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Guess a number 1-1000: "</span><span class="p">);</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Guess a number 1-500: "</span><span class="p">);</span>
 
             <span class="c1">// Scanner for int</span>
             <span class="n">Scanner</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
