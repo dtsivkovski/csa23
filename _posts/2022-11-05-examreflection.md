@@ -32,3 +32,19 @@ Out of these interfaces, I believed that III would also work as I thought that k
 ### Question 30
 ![image](https://user-images.githubusercontent.com/89223402/200199691-59935a1b-3960-4269-9798-cacdf218d7c3.png)
 This returns only ``` ilercom ``` and not ``` ilercomp ```, as the final index of the second part is to up to howFar, which would only be ``` com ```.
+
+### Question 31
+![image](https://user-images.githubusercontent.com/89223402/200200146-ff6560d4-38cc-4783-b9ee-276821cafb5b.png)
+In this case, I believed that the same array would be printed because I thought that passing it into the function does not actually change its values. However, it seems like passing it into the function still does change the values of it and thus would give the result.
+
+### Question 33
+![image](https://user-images.githubusercontent.com/89223402/200200269-f3ccd27a-956e-4215-af7d-ac2c2256f03a.png)
+On this one, I believed that incrementing the sum would eventually close the loop. However, because of the OR gate, it would continue on infinitely because k never increments and it would satisfy the while loop condition.
+
+### Question 34
+![image](https://user-images.githubusercontent.com/89223402/200200387-53f285a8-dbfa-49f9-8a71-b6ca5185a148.png)
+Only II works in this one, as in choice III, x and y are private variables and thus cannot be accessed and modified in that way by the missing code.
+
+### Question 39
+![image](https://user-images.githubusercontent.com/89223402/200200420-5d10fdc2-f688-4276-8151-8db4fa98009d.png)
+I did not notice that it was ```return recur(recur(n/3));``` and not ```return recur(n/3);```. As a result, it would actually go from 27 to 9 to 18 to 6 to 12 to 4 to 8 to 16.
