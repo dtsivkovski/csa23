@@ -81,7 +81,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      1 min read
+      2 min read
     
 </span></p>
 
@@ -99,6 +99,10 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h3"><a href="#question-19">Question 19</a></li>
 <li class="toc-entry toc-h3"><a href="#question-25">Question 25</a></li>
 <li class="toc-entry toc-h3"><a href="#question-30">Question 30</a></li>
+<li class="toc-entry toc-h3"><a href="#question-31">Question 31</a></li>
+<li class="toc-entry toc-h3"><a href="#question-33">Question 33</a></li>
+<li class="toc-entry toc-h3"><a href="#question-34">Question 34</a></li>
+<li class="toc-entry toc-h3"><a href="#question-39">Question 39</a></li>
 </ul>
 </li>
 </ul><h2 id="final-exam-reflection">
@@ -136,6 +140,26 @@ Out of these interfaces, I believed that III would also work as I thought that k
 <a class="anchor" href="#question-30" aria-hidden="true"><span class="octicon octicon-link"></span></a>Question 30</h3>
 <p><img src="https://user-images.githubusercontent.com/89223402/200199691-59935a1b-3960-4269-9798-cacdf218d7c3.png" alt="image">
 This returns only <code class="language-plaintext highlighter-rouge">ilercom</code> and not <code class="language-plaintext highlighter-rouge">ilercomp</code>, as the final index of the second part is to up to howFar, which would only be <code class="language-plaintext highlighter-rouge">com</code>.</p>
+
+<h3 id="question-31">
+<a class="anchor" href="#question-31" aria-hidden="true"><span class="octicon octicon-link"></span></a>Question 31</h3>
+<p><img src="https://user-images.githubusercontent.com/89223402/200200146-ff6560d4-38cc-4783-b9ee-276821cafb5b.png" alt="image">
+In this case, I believed that the same array would be printed because I thought that passing it into the function does not actually change its values. However, it seems like passing it into the function still does change the values of it and thus would give the result.</p>
+
+<h3 id="question-33">
+<a class="anchor" href="#question-33" aria-hidden="true"><span class="octicon octicon-link"></span></a>Question 33</h3>
+<p><img src="https://user-images.githubusercontent.com/89223402/200200269-f3ccd27a-956e-4215-af7d-ac2c2256f03a.png" alt="image">
+On this one, I believed that incrementing the sum would eventually close the loop. However, because of the OR gate, it would continue on infinitely because k never increments and it would satisfy the while loop condition.</p>
+
+<h3 id="question-34">
+<a class="anchor" href="#question-34" aria-hidden="true"><span class="octicon octicon-link"></span></a>Question 34</h3>
+<p><img src="https://user-images.githubusercontent.com/89223402/200200387-53f285a8-dbfa-49f9-8a71-b6ca5185a148.png" alt="image">
+Only II works in this one, as in choice III, x and y are private variables and thus cannot be accessed and modified in that way by the missing code.</p>
+
+<h3 id="question-39">
+<a class="anchor" href="#question-39" aria-hidden="true"><span class="octicon octicon-link"></span></a>Question 39</h3>
+<p><img src="https://user-images.githubusercontent.com/89223402/200200420-5d10fdc2-f688-4276-8151-8db4fa98009d.png" alt="image">
+I did not notice that it was <code class="language-plaintext highlighter-rouge">return recur(recur(n/3));</code> and not <code class="language-plaintext highlighter-rouge">return recur(n/3);</code>. As a result, it would actually go from 27 to 9 to 18 to 6 to 12 to 4 to 8 to 16.</p>
 
   </div><a class="u-url" href="/csa23/2022/11/05/examreflection.html" hidden></a>
 </article>
