@@ -20,3 +20,15 @@ I did not realize that when iterating through an arraylist using the enhanced fo
 ### Question 15
 ![image](https://user-images.githubusercontent.com/89223402/200199464-1edb5341-35c9-4a96-9b14-d2008d40edfd.png)
 I chose I and II only, even though it was only I. It cannot be the second option because when it tries to check if data[k] > data[k + 1], it gets an out of bounds exception as data[k+1] on the last iteration is out of bounds.
+
+### Question 19
+![image](https://user-images.githubusercontent.com/89223402/200199622-7ad1ed0a-8d0f-4c84-9526-53326af70caa.png)
+The opposite of !(a != b) is only (a != b). Therefore, it would be applicable to use an OR operator with this opposite value here.
+
+### Question 25
+![image](https://user-images.githubusercontent.com/89223402/200199634-d6f763f7-4236-4643-9d14-0e16c7d96aa0.png)
+Out of these interfaces, I believed that III would also work as I thought that knowing both surface area and volume can be used in a formula to identify if the boxes could fit within each other. However, I neglected the fact that the 'smaller' box could just be really long and not fit in the larger box.
+
+### Question 30
+![image](https://user-images.githubusercontent.com/89223402/200199691-59935a1b-3960-4269-9798-cacdf218d7c3.png)
+This returns only ``` ilercom ``` and not ``` ilercomp ```, as the final index of the second part is to up to howFar, which would only be ``` com ```.
