@@ -6,6 +6,14 @@ description: AP CSA Tri 1 Practice MC Reflection
 image: https://sjhexpress.com/wp-content/uploads/2021/04/collegeboard-900x430.png
 ---
 
+# Finals Week Submission
+
+## Links to Units 1-5 Lessons
+| Week | Lesson | Lesson | Lesson |
+| ----- | ----- | ----- | ----- |
+| Week 1 | [Unit 1 - Primitives](https://dtsivkovski.github.io/csa23/week8/primitives) | [Unit 2 - Objects](https://dtsivkovski.github.io/csa23/week8/oop) | |
+| Week 2 | [Unit 3 - Booleans / Ifs](https://dtsivkovski.github.io/csa23/week9/booleans-ifs) | [Unit 4 - Iteration](https://dtsivkovski.github.io/csa23/week9/iteration) | [Unit 5 - Classes](https://dtsivkovski.github.io/csa23/week9/classes) |
+
 ## Final Exam Reflection
 - I got 30/40. I think I could definitely do better than that, however I think that part of it was me trying to stay on pace with the AP exam timing, and I did not want to spend too long on concepts that I was unsure about. I will plan to study these concepts further, such as arraylists and loops (as they are the most time-intensive questions), and will hopefully do better on the next one as a result.
 
