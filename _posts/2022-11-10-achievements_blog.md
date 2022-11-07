@@ -8,7 +8,7 @@ image: https://wiki.tino.org/wp-content/uploads/2021/07/word-image-1047.png
 
 # Introduction
 
-This is a blog I am writing to document my achievements in my CSP and CSA career, as well as what I plan for my future. I'll discuss the projects I have worked on, what I have learned, and what I still have yet to learn.
+This is a blog I am writing to document my achievements in my CSP and CSA career, as well as what I plan for my future. I'll discuss what I did before taking CS courses, the projects I have worked on, what I have learned, and what I still have yet to learn.
 
 ## Before CSP
 
