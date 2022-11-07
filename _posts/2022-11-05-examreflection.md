@@ -15,7 +15,7 @@ image: https://sjhexpress.com/wp-content/uploads/2021/04/collegeboard-900x430.pn
 | Week 2 | [Unit 3 - Booleans / Ifs](https://dtsivkovski.github.io/csa23/week9/booleans-ifs) | [Unit 4 - Iteration](https://dtsivkovski.github.io/csa23/week9/iteration) | [Unit 5 - Classes](https://dtsivkovski.github.io/csa23/week9/classes) |
 
 ## Final Exam Reflection
-- I got 30/40. I think I could definitely do better than that, however I think that part of it was me trying to stay on pace with the AP exam timing, and I did not want to spend too long on concepts that I was unsure about. I will plan to study these concepts further, such as arraylists and loops (as they are the most time-intensive questions), and will hopefully do better on the next one as a result.
+- I got 30/40. I think I could definitely do better than that, however I think that part of it was me trying to stay on pace with the AP exam timing, and I did not want to spend too long on concepts that I was unsure about. Additionally, there were a few problems that really tricked me, such as the one that returned the recursive function twice instead of just once. Overall, I think that though this is a decent score, I could definitely do more practice. I'll pay more careful attention to certain parts of the problem that I may have usually glanced over. I will plan to study these concepts further, such as arraylists and loops (as they are the most time-intensive questions), and will hopefully do better on the next one as a result.
 
 ### Question 4
 ![image](https://user-images.githubusercontent.com/89223402/200199321-294cff92-a476-444d-a13e-5bb30a7df3d7.png)
