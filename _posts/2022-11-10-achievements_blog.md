@@ -31,6 +31,7 @@ In trimester 2, I was much more familiar with how to design a website. <mark>The
 ### Tri 3 - [Link to github](https://github.com/LindaLiu1202/just_here_to_code)
 
 Trimester 3 was the project that I was most proud of.<mark> Being required to get ourselves a sponsor this trimester, I decided that I could take this opportunity to choose an extracurricular that I really enjoyed being a part of and combine it with computer science. So I asked Ms. Emily Stevenson from the Poway Career Technical Education program to allow us to design a website to advertise the CTE program.</mark> We advertised the program by showing what courses were offered and at which schools, we had a gallery of CTE events (that used a database with images). We also had an events calendar that pulled information from a database we made, and we had an admin login that allowed only the admin to modify the important database data for ease of updating the website. We also had many more information pages about the program. Overall, this was the most successful website, as it combined many technicals that we learned over the past year with new technicals from the trimester, and it ended up looking good as a website overall.
+![image](https://user-images.githubusercontent.com/89223402/201174275-3594f91a-89ce-4a4c-b438-848e2a152fc7.png)
 
 ## So far in CSA
 
@@ -48,3 +49,4 @@ For my near future, I want to make sure to focus more on learning the concepts t
     - Seeing if there are any Java packages or libraries that could be useful for my next PBL
 - **Deployment**
     - I think deployment is my weakest subject. Though I have played around with it on a raspberry pi and have set up servers for certain games through Oracle, I think that it would be best for me to better understand deployment by doing it for the project nex trimester.
+
