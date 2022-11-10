@@ -31,3 +31,20 @@ In trimester 2, I was much more familiar with how to design a website. <mark>The
 ### Tri 3 - [Link to github](https://github.com/LindaLiu1202/just_here_to_code)
 
 Trimester 3 was the project that I was most proud of.<mark> Being required to get ourselves a sponsor this trimester, I decided that I could take this opportunity to choose an extracurricular that I really enjoyed being a part of and combine it with computer science. So I asked Ms. Emily Stevenson from the Poway Career Technical Education program to allow us to design a website to advertise the CTE program.</mark> We advertised the program by showing what courses were offered and at which schools, we had a gallery of CTE events (that used a database with images). We also had an events calendar that pulled information from a database we made, and we had an admin login that allowed only the admin to modify the important database data for ease of updating the website. We also had many more information pages about the program. Overall, this was the most successful website, as it combined many technicals that we learned over the past year with new technicals from the trimester, and it ended up looking good as a website overall.
+
+## So far in CSA
+
+### Tri 1 - [Link to site](https://calrethonofmirkwood.github.io/kpop/)
+
+This trimester was really about coming back to the PBL style in a new programming language. <mark>I started out struggling in Java, as I was struggling to wrap my head around what all this 'public' and 'private' and 'void' all meant. As a result, my first month of coding featured me switching tabs between google and vscode, looking up how to write a simple class with a method in Java.</mark> However, I started to finally understand it and am now familiar enough to be able to write without needing google opened up all the time. I also saw the advantages of using Java as a language, as it being a strongly type language is something that actually becomes more convenient as you come to use it more. Our PBL was a K-Pop song website, which pulled data from our backend to display on the fastpages frontend. I liked this style more, as having our frontend be on fastpages meant less work for CSS styling (and less work to scale for mobile pages), which allowed me to focus more on the backend and setting up the API stuff there. <mark>A lot of my success in PBL this trimester was mainly due to my organization. I managed to keep my team organized and had issues for them to work on. However, I think I could have done more to learn more specifics of Java backend development as well as deployment.</mark>
+
+## Plans for the future
+
+### Near future
+
+For my near future, I want to make sure to focus more on learning the concepts that I am less familiar with and be more versatile in what I can do. The main areas I would like to focus on are:
+- **Java backend development**
+    - Understanding JPA better and what I can do with it
+    - Seeing if there are any Java packages or libraries that could be useful for my next PBL
+- **Deployment**
+    - I think deployment is my weakest subject. Though I have played around with it on a raspberry pi and have set up servers for certain games through Oracle, I think that it would be best for me to better understand deployment by doing it for the project nex trimester.
