@@ -48,7 +48,7 @@ For my near future, I want to make sure to focus more on <mark>learning the conc
     - Understanding JPA better and what I can do with it
     - Seeing if there are any Java packages or libraries that could be useful for my next PBL
 - **Deployment**
-    - I think deployment is my weakest subject. Though I have played around with it on a raspberry pi and have set up servers for certain games through Oracle, I think that it would be best for me to better understand deployment by doing it for the project nex trimester.
+    - I think deployment is my weakest subject. Though I have played around with it on a raspberry pi and have set up servers for certain games through Oracle, I think that it would be best for me to better understand deployment by doing it for the project this new trimester.
 - **Overall understanding of Java**
     - I think that there are still a few things in Java that I could understand better, such as using Arraylists as well as still adjusting to Java syntax and formatting.
 
