@@ -43,10 +43,15 @@ This trimester was really about coming back to the PBL style in a new programmin
 
 ### Near future
 
-For my near future, I want to make sure to focus more on learning the concepts that I am less familiar with and be more versatile in what I can do. The main areas I would like to focus on are:
+For my near future, I want to make sure to focus more on <mark>learning the concepts that I am less familiar with and be more versatile in what I can do.</mark> The main areas I would like to focus on are:
 - **Java backend development**
     - Understanding JPA better and what I can do with it
     - Seeing if there are any Java packages or libraries that could be useful for my next PBL
 - **Deployment**
     - I think deployment is my weakest subject. Though I have played around with it on a raspberry pi and have set up servers for certain games through Oracle, I think that it would be best for me to better understand deployment by doing it for the project nex trimester.
+- **Overall understanding of Java**
+    - I think that there are still a few things in Java that I could understand better, such as using Arraylists as well as still adjusting to Java syntax and formatting.
 
+### Further future
+
+For my further future, my goal is to get into a good university as a computer science major. My reach goals would be either the University of Washington CS program or the Berkeley EECS program, as both seem to be very prestigious compared to the programs at other universities. Apart from doing CS in college, I want to also get an internship in the CS field as early as possible, and I think that to best stand out in getting an internship I must first focus on the goals I have laid out for my near future. 
