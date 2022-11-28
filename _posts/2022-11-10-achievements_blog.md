@@ -54,4 +54,5 @@ For my near future, I want to make sure to focus more on <mark>learning the conc
 
 ### Further future
 
+
 For my further future, my goal is to get into a good university as a computer science major. My reach goals would be either the University of Washington CS program or the Berkeley EECS program, as both seem to be very prestigious compared to the programs at other universities. Apart from doing CS in college, I want to also get an internship in the CS field as early as possible, and I think that to best stand out in getting an internship I must first focus on the goals I have laid out for my near future. 
