@@ -14,7 +14,7 @@
     
         ,"post1": {
             "title": "Vocab Code Examples",
-            "content": "double x = 2.09; double y = 6.52; int z = (int) (y/x); int aa = (int) (x*y); System.out.println(z); System.out.println(aa) . 3 13 . Casting - Division - Seen above, casting can round the division for y/x so that it returns an integer, this is to allow for certain code beyond that that would only be able to take integer values for a specific reason. | Casting - Rounding/Truncating - Seen in both examples above, casting is great for rounding a value to an integer or for another reason in order to simplify code. | .",
+            "content": "double x = 2.09; double y = 6.52; int z = (int) (y/x); int aa = (int) (x*y); System.out.println(z); System.out.println(aa) . 3 13 . Casting - Division - Seen above, casting can round the division for y/x so that it returns an integer, this is to allow for certain code beyond that that would only be able to take integer values for a specific reason. | Casting - Rounding/Truncating - Seen in both examples above, casting is great for rounding a value to an integer or for another reason in order to simplify code. | Wrapper Classes - Classes that are able to make primitive types into objects to be used in things such as ArrayLists that would not allow primitives. See below for an example. | . // Wrapper classes example ArrayList&lt;Integer&gt; ton = new ArrayList&lt;Integer&gt;(); // ArrayList&lt;int&gt; would not work for this .",
             "url": "https://dtsivkovski.github.io/csa23/u1-u5-vocab",
             "relUrl": "/u1-u5-vocab",
             "date": " • Nov 30, 2022"
