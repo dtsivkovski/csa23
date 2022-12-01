@@ -197,9 +197,98 @@ window.onload = wrap_img;
 <div class=" highlight hl-java"><pre><span></span><span class="c1">// Wrapper classes example</span>
 <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">ton</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="p">();</span>
 <span class="c1">// ArrayList&lt;int&gt; would not work for this</span>
+
+<span class="c1">// Concatenation example</span>
+<span class="n">String</span> <span class="n">a</span> <span class="o">=</span> <span class="s">"Hello"</span><span class="p">;</span>
+<span class="n">String</span> <span class="n">b</span> <span class="o">=</span> <span class="s">"World"</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">25</span><span class="p">;</span>
+<span class="n">String</span> <span class="n">d</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="s">" "</span> <span class="o">+</span> <span class="n">b</span> <span class="o">+</span> <span class="s">" "</span> <span class="o">+</span> <span class="n">c</span><span class="p">;</span>
+
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">d</span><span class="p">);</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Hello World 25
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>
+<strong>Concatenation</strong> - Concatenation involves combining two or more strings together. This is done by using the + operator. Anything that's not a string is attempted to be converted to a string in order to be concatenated on the end, like the int in this example.</li>
+<li>
+<strong>Static/Class Variables</strong> - Static variables are variables that are shared across all instances of a class. This means that no matter how many objects you instantiate of the same class, modifying a static variable or method will update it for all instances. This is useful for things like a counter that you want to increment for every instance of a class.</li>
+</ul>
+<hr>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">StaticExample</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="n">x</span><span class="p">;</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Add 1. Result: "</span> <span class="o">+</span> <span class="n">x</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Extends static example and modifies x value</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ExtendsExample</span> <span class="kd">extends</span> <span class="n">StaticExample</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">x</span> <span class="o">+=</span> <span class="mi">5</span><span class="p">;</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Add 5. Result: "</span> <span class="o">+</span> <span class="n">x</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">StaticExample</span> <span class="n">se</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StaticExample</span><span class="p">();</span>
+<span class="n">ExtendsExample</span> <span class="n">ee</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ExtendsExample</span><span class="p">();</span>
+
+<span class="n">se</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+<span class="n">ee</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Add 1. Result: 1
+Add 5. Result: 6
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
