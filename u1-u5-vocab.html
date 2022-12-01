@@ -79,7 +79,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      1 min read
+      4 min read
     
 </span></p>
 
@@ -236,8 +236,9 @@ window.onload = wrap_img;
 <strong>Concatenation</strong> - Concatenation involves combining two or more strings together. This is done by using the + operator. Anything that's not a string is attempted to be converted to a string in order to be concatenated on the end, like the int in this example.</li>
 <li>
 <strong>Static/Class Variables</strong> - Static variables are variables that are shared across all instances of a class. This means that no matter how many objects you instantiate of the same class, modifying a static variable or method will update it for all instances. This is useful for things like a counter that you want to increment for every instance of a class.</li>
+<li>
+<strong>Inheritance/Extends</strong> - Using an extends method allows it to inherit attributes and methods from the class it is extending. This is useful when you want to modify or create a subclass of a class without having to rewrite all of the code for the class you are extending.</li>
 </ul>
-<hr>
 
 </div>
 </div>
@@ -250,20 +251,41 @@ window.onload = wrap_img;
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-java"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">StaticExample</span> <span class="p">{</span>
+
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="n">x</span><span class="p">;</span>
 
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
         <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Add 1. Result: "</span> <span class="o">+</span> <span class="n">x</span><span class="p">);</span>
     <span class="p">}</span>
+
 <span class="p">}</span>
 
 <span class="c1">// Extends static example and modifies x value</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">ExtendsExample</span> <span class="kd">extends</span> <span class="n">StaticExample</span> <span class="p">{</span>
+
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">x</span> <span class="o">+=</span> <span class="mi">5</span><span class="p">;</span>
         <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Add 5. Result: "</span> <span class="o">+</span> <span class="n">x</span><span class="p">);</span>
     <span class="p">}</span>
+
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">PolymorphismExample</span> <span class="p">{</span>
+
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testOutput</span><span class="p">(</span><span class="kt">int</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Integer: "</span> <span class="o">+</span> <span class="n">x</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testOutput</span><span class="p">(</span><span class="n">String</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"String: "</span> <span class="o">+</span> <span class="n">x</span><span class="p">);</span>
+    <span class="p">}</span>
+    
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testOutput</span><span class="p">(</span><span class="kt">double</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Double: "</span> <span class="o">+</span> <span class="n">x</span><span class="p">);</span>
+    <span class="p">}</span>
+
 <span class="p">}</span>
 
 <span class="n">StaticExample</span> <span class="n">se</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StaticExample</span><span class="p">();</span>
@@ -271,6 +293,12 @@ window.onload = wrap_img;
 
 <span class="n">se</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
 <span class="n">ee</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+
+<span class="n">PolymorphismExample</span> <span class="n">pe</span> <span class="o">=</span> <span class="k">new</span> <span class="n">PolymorphismExample</span><span class="p">();</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"\nPolymorphism Example:"</span><span class="p">);</span>
+<span class="n">pe</span><span class="p">.</span><span class="na">testOutput</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+<span class="n">pe</span><span class="p">.</span><span class="na">testOutput</span><span class="p">(</span><span class="s">"Hello"</span><span class="p">);</span>
+<span class="n">pe</span><span class="p">.</span><span class="na">testOutput</span><span class="p">(</span><span class="mf">5.5</span><span class="p">);</span>
 </pre></div>
 
     </div>
@@ -283,8 +311,13 @@ window.onload = wrap_img;
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Add 1. Result: 1
-Add 5. Result: 6
+<pre>Add 1. Result: 13
+Add 5. Result: 18
+
+Polymorphism Example:
+Integer: 5
+String: Hello
+Double: 5.5
 </pre>
 </div>
 </div>
@@ -295,6 +328,154 @@ Add 5. Result: 6
 </div>
     
 
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>
+<strong>Polymorphism</strong> - Polymorphism is the ability to have multiple methods with the same name but different parameters. This is useful when you want to have multiple methods that do the same thing but with different parameters. This is also useful when you want to have a method that can take multiple types of parameters.<ul>
+<li>
+<strong>Overloading</strong> is when you have multiple methods with the same name but different parameters.</li>
+<li>
+<strong>Overriding</strong> is when you have a method with the same name and parameters as a method in a superclass but you want to modify the method in the subclass.</li>
+<li>
+<strong>Late binding</strong> is when you have allow the compiler to determine which method to use at runtime instead of compile time.
+<strong>Abstract Class</strong> - Objects cannot be created from an abstract class, they can only be extended. This is useful when you want to create a class that can be extended but not instantiated.</li>
+</ul>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Car</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">distanceDriven</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Car has driven 100 miles"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">SUV</span> <span class="kd">extends</span> <span class="n">Car</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">distanceDriven</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"The SUV has driven 80 miles"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">Truck</span> <span class="kd">extends</span> <span class="n">Car</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">distanceDriven</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"The truck has driven 50 miles"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Instantiating the Car class would throw an error as it is abstract</span>
+<span class="n">SUV</span> <span class="n">suv</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SUV</span><span class="p">();</span>
+<span class="n">Truck</span> <span class="n">truck</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Truck</span><span class="p">();</span>
+<span class="n">suv</span><span class="p">.</span><span class="na">distanceDriven</span><span class="p">();</span>
+<span class="n">truck</span><span class="p">.</span><span class="na">distanceDriven</span><span class="p">();</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>The SUV has driven 80 miles
+The truck has driven 50 miles
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>
+<strong>Subclass Constructor / Super</strong> - Extending a class and then constructing the new extends class will call the constructor of the superclass. This is useful when you want to have a constructor that will call the constructor of the superclass.</li>
+<li>
+<strong>Referencing Superclass</strong> - Using the super keyword allows you to reference the superclass of the current class. This is useful when you want to reference the superclass of the current class.</li>
+</ul>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">AClass</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">aMethod</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"This is a method from AClass"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">BClass</span> <span class="kd">extends</span> <span class="n">AClass</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">bMethod</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">super</span><span class="p">.</span><span class="na">aMethod</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// Constructing a BClass object will call the constructor of the AClass object</span>
+<span class="n">BClass</span> <span class="n">bc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BClass</span><span class="p">();</span>
+<span class="n">bc</span><span class="p">.</span><span class="na">bMethod</span><span class="p">();</span>
+
+<span class="c1">// Referencing superclass method</span>
+<span class="n">AClass</span> <span class="n">ac</span> <span class="o">=</span> <span class="k">new</span> <span class="n">BClass</span><span class="p">();</span>
+<span class="n">ac</span><span class="p">.</span><span class="na">aMethod</span><span class="p">();</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>This is a method from AClass
+This is a method from AClass
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>
+<strong>Standard Methods</strong> - ToString is a standard method that is used to convert an object into a string. Equals is useful for comparing two objects to see if they are equal. HashCode is useful for getting a unique hash code for an object. </li>
+</ul>
+
+</div>
+</div>
+</div>
 </div>
 
 
