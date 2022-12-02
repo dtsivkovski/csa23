@@ -144,6 +144,7 @@ window.onload = wrap_img;
 <span class="kn">import</span> <span class="nn">java.util.HashMap</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nn">java.util.Map</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nn">java.util.Stack</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.lang.Math</span><span class="p">;</span>
 
 <span class="cm">/* In mathematics,</span>
 <span class="cm">    an expression or mathematical expression is a finite combination of symbols that is well-formed</span>
@@ -164,6 +165,7 @@ window.onload = wrap_img;
     <span class="kd">private</span> <span class="kd">final</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">OPERATORS</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;</span><span class="p">();</span>
     <span class="p">{</span>
         <span class="c1">// Map&lt;"token", precedence&gt;</span>
+        <span class="n">OPERATORS</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">"^"</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
         <span class="n">OPERATORS</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">"*"</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
         <span class="n">OPERATORS</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">"/"</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
         <span class="n">OPERATORS</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">"%"</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
@@ -272,6 +274,7 @@ window.onload = wrap_img;
                 <span class="k">case</span> <span class="s">"*"</span><span class="p">:</span>
                 <span class="k">case</span> <span class="s">"/"</span><span class="p">:</span>
                 <span class="k">case</span> <span class="s">"%"</span><span class="p">:</span>
+                <span class="k">case</span> <span class="s">"^"</span><span class="p">:</span>
                     <span class="c1">// While stack</span>
                     <span class="c1">// not empty AND stack top element</span>
                     <span class="c1">// and is an operator</span>
@@ -331,6 +334,11 @@ window.onload = wrap_img;
                         <span class="k">break</span><span class="p">;</span>
                     <span class="k">case</span> <span class="s">"%"</span><span class="p">:</span>
                         <span class="n">result</span> <span class="o">=</span> <span class="n">b</span> <span class="o">%</span> <span class="n">a</span><span class="p">;</span>
+                        <span class="k">break</span><span class="p">;</span>
+                    <span class="k">case</span> <span class="s">"^"</span><span class="p">:</span>
+                        <span class="c1">// Using Math.pow() function because it supports doubles</span>
+                        <span class="n">result</span> <span class="o">=</span> <span class="n">Math</span><span class="p">.</span><span class="na">pow</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">a</span><span class="p">);</span>
+                        <span class="k">break</span><span class="p">;</span>
                     <span class="k">default</span><span class="p">:</span>
                         <span class="k">break</span><span class="p">;</span>
                 <span class="p">}</span>
@@ -382,6 +390,10 @@ window.onload = wrap_img;
 <span class="c1">// Should print 14</span>
 <span class="n">Calculator</span> <span class="n">dd</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Calculator</span><span class="p">(</span><span class="s">"10 % 4 * 7"</span><span class="p">);</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">dd</span><span class="p">.</span><span class="na">calcToString</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+
+<span class="c1">// USING EXPONENTS - Should print 28</span>
+<span class="n">Calculator</span> <span class="n">ee</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Calculator</span><span class="p">(</span><span class="s">"3 + 5 ^ 2"</span><span class="p">);</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">ee</span><span class="p">.</span><span class="na">calcToString</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
 </pre></div>
 
     </div>
@@ -402,6 +414,8 @@ Expression: ( 2 + 4 ) / 3
 Result: 2.0
 Expression: 10 % 4 * 7
 Result: 14.0
+Expression: 3 + 5 ^ 2
+Result: 28.0
 </pre>
 </div>
 </div>
