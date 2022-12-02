@@ -79,7 +79,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      4 min read
+      5 min read
     
 </span></p>
 
@@ -316,22 +316,22 @@ window.onload = wrap_img;
 
                 <span class="c1">// Calculate intermediate results</span>
                 <span class="k">switch</span> <span class="p">(</span><span class="n">token</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="c1">// b goes first, as it is popped second and would be on the left</span>
                     <span class="k">case</span> <span class="s">"+"</span><span class="p">:</span>
-                        <span class="n">result</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">;</span>
+                        <span class="n">result</span> <span class="o">=</span> <span class="n">b</span> <span class="o">+</span> <span class="n">a</span><span class="p">;</span>
                         <span class="k">break</span><span class="p">;</span>
                     <span class="k">case</span> <span class="s">"-"</span><span class="p">:</span>
-                        <span class="n">result</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">;</span>
+                        <span class="n">result</span> <span class="o">=</span> <span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">;</span>
                         <span class="k">break</span><span class="p">;</span>
                     <span class="k">case</span> <span class="s">"*"</span><span class="p">:</span>
-                        <span class="n">result</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">b</span><span class="p">;</span>
+                        <span class="n">result</span> <span class="o">=</span> <span class="n">b</span> <span class="o">*</span> <span class="n">a</span><span class="p">;</span>
                         <span class="k">break</span><span class="p">;</span> 
                     <span class="k">case</span> <span class="s">"/"</span><span class="p">:</span>
-                        <span class="n">result</span> <span class="o">=</span> <span class="n">a</span> <span class="o">/</span> <span class="n">b</span><span class="p">;</span>
+                        <span class="n">result</span> <span class="o">=</span> <span class="n">b</span> <span class="o">/</span> <span class="n">a</span><span class="p">;</span>
                         <span class="k">break</span><span class="p">;</span>
                     <span class="k">case</span> <span class="s">"%"</span><span class="p">:</span>
-                        <span class="n">result</span> <span class="o">=</span> <span class="n">a</span> <span class="o">%</span> <span class="n">b</span><span class="p">;</span>
+                        <span class="n">result</span> <span class="o">=</span> <span class="n">b</span> <span class="o">%</span> <span class="n">a</span><span class="p">;</span>
                     <span class="k">default</span><span class="p">:</span>
-                        <span class="n">result</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
                         <span class="k">break</span><span class="p">;</span>
                 <span class="p">}</span>
 
@@ -363,11 +363,25 @@ window.onload = wrap_img;
     
 <span class="p">}</span>
 
-<span class="n">Calculator</span> <span class="n">aa</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Calculator</span><span class="p">(</span><span class="s">"2 * 2 + 4"</span><span class="p">);</span>
-<span class="n">aa</span><span class="p">.</span><span class="na">calcToString</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
 
-<span class="n">Calculator</span> <span class="n">bb</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Calculator</span><span class="p">(</span><span class="s">"8 + 12 / 10"</span><span class="p">);</span>
-<span class="n">bb</span><span class="p">.</span><span class="na">calcToString</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="c1">// Testing different outputs</span>
+<span class="n">String</span> <span class="n">result</span> <span class="o">=</span> <span class="s">" "</span><span class="p">;</span>
+
+<span class="c1">// Should print 8</span>
+<span class="n">Calculator</span> <span class="n">aa</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Calculator</span><span class="p">(</span><span class="s">"2 * 2 + 4"</span><span class="p">);</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">aa</span><span class="p">.</span><span class="na">calcToString</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+
+<span class="c1">// Should print 12</span>
+<span class="n">Calculator</span> <span class="n">bb</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Calculator</span><span class="p">(</span><span class="s">"2 * ( 2 + 4 )"</span><span class="p">);</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">bb</span><span class="p">.</span><span class="na">calcToString</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+
+<span class="c1">// Should print 2.</span>
+<span class="n">Calculator</span> <span class="n">cc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Calculator</span><span class="p">(</span><span class="s">"( 2 + 4 ) / 3"</span><span class="p">);</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">cc</span><span class="p">.</span><span class="na">calcToString</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+
+<span class="c1">// Should print 14</span>
+<span class="n">Calculator</span> <span class="n">dd</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Calculator</span><span class="p">(</span><span class="s">"10 % 4 * 7"</span><span class="p">);</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">dd</span><span class="p">.</span><span class="na">calcToString</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
 </pre></div>
 
     </div>
@@ -382,20 +396,14 @@ window.onload = wrap_img;
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Expression: 2 * 2 + 4
 Result: 8.0
-Expression: 8 + 12 / 10
-Result: 8.833333333333334
+Expression: 2 * ( 2 + 4 )
+Result: 12.0
+Expression: ( 2 + 4 ) / 3
+Result: 2.0
+Expression: 10 % 4 * 7
+Result: 14.0
 </pre>
 </div>
-</div>
-
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>8 + 12 / 10 = 8.833333333333334</pre>
-</div>
-
 </div>
 
 </div>
