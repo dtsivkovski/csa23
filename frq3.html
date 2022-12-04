@@ -79,7 +79,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      7 min read
+      8 min read
     
 </span></p>
 
@@ -156,251 +156,260 @@ window.onload = wrap_img;
 <span class="cm">    to handle computer math we often convert strings into reverse polish notation</span>
 <span class="cm">    to handle errors we perform try / catch or set default conditions to trap errors</span>
 <span class="cm">     */</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Calculator</span> <span class="p">{</span>
-    <span class="c1">// Key instance variables</span>
-    <span class="kd">private</span> <span class="n">String</span> <span class="n">expression</span><span class="p">;</span>
-    <span class="kd">private</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">tokens</span><span class="p">;</span>
-    <span class="kd">private</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">reverse_polish</span><span class="p">;</span>
-    <span class="kd">private</span> <span class="n">Double</span> <span class="n">result</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
-
-    <span class="c1">// Helper definition for supported operators</span>
-    <span class="kd">private</span> <span class="kd">final</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">OPERATORS</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;</span><span class="p">();</span>
-    <span class="p">{</span>
-        <span class="c1">// Map&lt;"token", precedence&gt;</span>
-        <span class="n">OPERATORS</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">"RT"</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
-        <span class="n">OPERATORS</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">"^"</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
-        <span class="n">OPERATORS</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">"*"</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
-        <span class="n">OPERATORS</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">"/"</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
-        <span class="n">OPERATORS</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">"%"</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
-        <span class="n">OPERATORS</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">"+"</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
-        <span class="n">OPERATORS</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">"-"</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
-    <span class="p">}</span>
-
-    <span class="c1">// Helper definition for supported operators</span>
-    <span class="kd">private</span> <span class="kd">final</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">SEPARATORS</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;</span><span class="p">();</span>
-    <span class="p">{</span>
-        <span class="c1">// Map&lt;"separator", not_used&gt;</span>
-        <span class="n">SEPARATORS</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">" "</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-        <span class="n">SEPARATORS</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">"("</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-        <span class="n">SEPARATORS</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">")"</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
-    <span class="p">}</span>
-
-    <span class="c1">// Create a 1 argument constructor expecting a mathematical expression</span>
-    <span class="kd">public</span> <span class="nf">Calculator</span><span class="p">(</span><span class="n">String</span> <span class="n">expression</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// original input</span>
-        <span class="k">this</span><span class="p">.</span><span class="na">expression</span> <span class="o">=</span> <span class="n">expression</span><span class="p">;</span>
-
-        <span class="c1">// parse expression into terms</span>
-        <span class="k">this</span><span class="p">.</span><span class="na">termTokenizer</span><span class="p">();</span>
-
-        <span class="c1">// place terms into reverse polish notation</span>
-        <span class="k">this</span><span class="p">.</span><span class="na">tokensToReversePolishNotation</span><span class="p">();</span>
-
-        <span class="c1">// calculate reverse polish notation</span>
-        <span class="k">this</span><span class="p">.</span><span class="na">rpnToResult</span><span class="p">();</span>
-    <span class="p">}</span>
-
-    <span class="c1">// Test if token is an operator</span>
-    <span class="kd">private</span> <span class="kt">boolean</span> <span class="nf">isOperator</span><span class="p">(</span><span class="n">String</span> <span class="n">token</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// find the token in the hash map</span>
-        <span class="k">return</span> <span class="n">OPERATORS</span><span class="p">.</span><span class="na">containsKey</span><span class="p">(</span><span class="n">token</span><span class="p">);</span>
-    <span class="p">}</span>
-
-    <span class="c1">// Test if token is an separator</span>
-    <span class="kd">private</span> <span class="kt">boolean</span> <span class="nf">isSeparator</span><span class="p">(</span><span class="n">String</span> <span class="n">token</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// find the token in the hash map</span>
-        <span class="k">return</span> <span class="n">SEPARATORS</span><span class="p">.</span><span class="na">containsKey</span><span class="p">(</span><span class="n">token</span><span class="p">);</span>
-    <span class="p">}</span>
-
-    <span class="c1">// Compare precedence of operators.</span>
-    <span class="kd">private</span> <span class="n">Boolean</span> <span class="nf">isPrecedent</span><span class="p">(</span><span class="n">String</span> <span class="n">token1</span><span class="p">,</span> <span class="n">String</span> <span class="n">token2</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// token 1 is precedent if it is greater than token 2</span>
-        <span class="k">return</span> <span class="p">(</span><span class="n">OPERATORS</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">token1</span><span class="p">)</span> <span class="o">-</span> <span class="n">OPERATORS</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">token2</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="c1">// Term Tokenizer takes original expression and converts it to ArrayList of tokens</span>
-    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">termTokenizer</span><span class="p">()</span> <span class="p">{</span>
-        <span class="c1">// contains final list of tokens</span>
-        <span class="k">this</span><span class="p">.</span><span class="na">tokens</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
-
-        <span class="kt">int</span> <span class="n">start</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>  <span class="c1">// term split starting index</span>
-        <span class="n">StringBuilder</span> <span class="n">multiCharTerm</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="p">();</span>    <span class="c1">// term holder</span>
-        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="k">this</span><span class="p">.</span><span class="na">expression</span><span class="p">.</span><span class="na">length</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">Character</span> <span class="n">c</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="na">expression</span><span class="p">.</span><span class="na">charAt</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
-            <span class="k">if</span> <span class="p">(</span> <span class="n">isOperator</span><span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="na">toString</span><span class="p">()</span> <span class="p">)</span> <span class="o">||</span> <span class="n">isSeparator</span><span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="na">toString</span><span class="p">())</span>  <span class="p">)</span> <span class="p">{</span>
-                <span class="c1">// 1st check for working term and add if it exists</span>
-                <span class="k">if</span> <span class="p">(</span><span class="n">multiCharTerm</span><span class="p">.</span><span class="na">length</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="n">tokens</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">expression</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">i</span><span class="p">));</span>
-                <span class="p">}</span>
-                <span class="c1">// Add operator or parenthesis term to list</span>
-                <span class="k">if</span> <span class="p">(</span><span class="n">c</span> <span class="o">!=</span> <span class="sc">' '</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="n">tokens</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="na">toString</span><span class="p">());</span>
-                <span class="p">}</span>
-                <span class="c1">// Get ready for next term</span>
-                <span class="n">start</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
-                <span class="n">multiCharTerm</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="p">();</span>
-            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                <span class="c1">// multi character terms: numbers, functions, perhaps non-supported elements</span>
-                <span class="c1">// Add next character to working term</span>
-                <span class="n">multiCharTerm</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>
-            <span class="p">}</span>
-
-        <span class="p">}</span>
-        <span class="c1">// Add last term</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">multiCharTerm</span><span class="p">.</span><span class="na">length</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">tokens</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">expression</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="n">start</span><span class="p">));</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-
-    <span class="c1">// Takes tokens and converts to Reverse Polish Notation (RPN), this is one where the operator follows its operands.</span>
-    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">tokensToReversePolishNotation</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="c1">// contains final list of tokens in RPN</span>
-        <span class="k">this</span><span class="p">.</span><span class="na">reverse_polish</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
-
-        <span class="c1">// stack is used to reorder for appropriate grouping and precedence</span>
-        <span class="n">Stack</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">tokenStack</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Stack</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">();</span>
-        <span class="k">for</span> <span class="p">(</span><span class="n">String</span> <span class="n">token</span> <span class="p">:</span> <span class="n">tokens</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">switch</span> <span class="p">(</span><span class="n">token</span><span class="p">)</span> <span class="p">{</span>
-                <span class="c1">// If left bracket push token on to stack</span>
-                <span class="k">case</span> <span class="s">"("</span><span class="p">:</span>
-                    <span class="n">tokenStack</span><span class="p">.</span><span class="na">push</span><span class="p">(</span><span class="n">token</span><span class="p">);</span>
-                    <span class="k">break</span><span class="p">;</span>
-                <span class="k">case</span> <span class="s">")"</span><span class="p">:</span>
-                    <span class="k">while</span> <span class="p">(</span><span class="n">tokenStack</span><span class="p">.</span><span class="na">peek</span><span class="p">()</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">tokenStack</span><span class="p">.</span><span class="na">peek</span><span class="p">().</span><span class="na">equals</span><span class="p">(</span><span class="s">"("</span><span class="p">))</span>
-                    <span class="p">{</span>
-                        <span class="n">reverse_polish</span><span class="p">.</span><span class="na">add</span><span class="p">(</span> <span class="n">tokenStack</span><span class="p">.</span><span class="na">pop</span><span class="p">()</span> <span class="p">);</span>
-                    <span class="p">}</span>
-                    <span class="n">tokenStack</span><span class="p">.</span><span class="na">pop</span><span class="p">();</span>
-                    <span class="k">break</span><span class="p">;</span>
-                <span class="k">case</span> <span class="s">"RT"</span><span class="p">:</span>
-                <span class="k">case</span> <span class="s">"+"</span><span class="p">:</span>
-                <span class="k">case</span> <span class="s">"-"</span><span class="p">:</span>
-                <span class="k">case</span> <span class="s">"*"</span><span class="p">:</span>
-                <span class="k">case</span> <span class="s">"/"</span><span class="p">:</span>
-                <span class="k">case</span> <span class="s">"%"</span><span class="p">:</span>
-                <span class="k">case</span> <span class="s">"^"</span><span class="p">:</span>
-                    <span class="c1">// While stack</span>
-                    <span class="c1">// not empty AND stack top element</span>
-                    <span class="c1">// and is an operator</span>
-                    <span class="k">while</span> <span class="p">(</span><span class="n">tokenStack</span><span class="p">.</span><span class="na">size</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">isOperator</span><span class="p">(</span><span class="n">tokenStack</span><span class="p">.</span><span class="na">peek</span><span class="p">()))</span>
-                    <span class="p">{</span>
-                        <span class="k">if</span> <span class="p">(</span> <span class="n">isPrecedent</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="n">tokenStack</span><span class="p">.</span><span class="na">peek</span><span class="p">()</span> <span class="p">))</span> <span class="p">{</span>
-                            <span class="n">reverse_polish</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">tokenStack</span><span class="p">.</span><span class="na">pop</span><span class="p">());</span>
-                            <span class="k">continue</span><span class="p">;</span>
-                        <span class="p">}</span>
-                        <span class="k">break</span><span class="p">;</span>
-                    <span class="p">}</span>
-                    <span class="c1">// Push the new operator on the stack</span>
-                    <span class="n">tokenStack</span><span class="p">.</span><span class="na">push</span><span class="p">(</span><span class="n">token</span><span class="p">);</span>
-                    <span class="k">break</span><span class="p">;</span>
-                <span class="k">case</span> <span class="s">"pi"</span><span class="p">:</span>
-                <span class="k">case</span> <span class="s">"PI"</span><span class="p">:</span>
-                <span class="k">case</span> <span class="s">"Pi"</span><span class="p">:</span>
-                    <span class="c1">// recognize pi variable and replace that token with it</span>
-                    <span class="k">this</span><span class="p">.</span><span class="na">reverse_polish</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"3.141592653589793238"</span><span class="p">);</span>
-                    <span class="k">break</span><span class="p">;</span>
-                <span class="k">case</span> <span class="s">"g"</span><span class="p">:</span>
-                <span class="k">case</span> <span class="s">"G"</span><span class="p">:</span>
-                    <span class="c1">// Added a g value to represent earth's gravitational force</span>
-                    <span class="k">this</span><span class="p">.</span><span class="na">reverse_polish</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"9.8"</span><span class="p">);</span>
-                    <span class="k">break</span><span class="p">;</span>
-                <span class="k">default</span><span class="p">:</span>    <span class="c1">// Default should be a number, there could be test here</span>
-                    <span class="k">try</span>
-                    <span class="p">{</span>
-                        <span class="n">Double</span><span class="p">.</span><span class="na">parseDouble</span><span class="p">(</span><span class="n">token</span><span class="p">);</span>
-                    <span class="p">}</span>
-                    <span class="k">catch</span><span class="p">(</span><span class="n">NumberFormatException</span> <span class="n">e</span><span class="p">)</span>
-                    <span class="p">{</span>
-                        <span class="c1">// Resolve variable to 0 in order for the rest of the function to successfully run.</span>
-                        <span class="k">this</span><span class="p">.</span><span class="na">reverse_polish</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"0"</span><span class="p">);</span>
-                        <span class="k">this</span><span class="p">.</span><span class="na">expression</span> <span class="o">=</span> <span class="s">"Error with parsing your expression \'"</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="na">expression</span> <span class="o">+</span> <span class="s">"\'. Please enter valid numbers, operators, or variables and try again."</span><span class="p">;</span>
-                        <span class="k">break</span><span class="p">;</span>
-                    <span class="p">}</span>
-                    <span class="k">this</span><span class="p">.</span><span class="na">reverse_polish</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">token</span><span class="p">);</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-        <span class="c1">// Empty remaining tokens</span>
-        <span class="k">while</span> <span class="p">(</span><span class="n">tokenStack</span><span class="p">.</span><span class="na">size</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">reverse_polish</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">tokenStack</span><span class="p">.</span><span class="na">pop</span><span class="p">());</span>
-        <span class="p">}</span>
-
-    <span class="p">}</span>
-
-    <span class="c1">// Takes RPN and produces a final result</span>
-    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">rpnToResult</span><span class="p">()</span>
-    <span class="p">{</span>
-        <span class="c1">// stack is used to hold operands and each calculation</span>
-        <span class="n">Stack</span><span class="o">&lt;</span><span class="n">Double</span><span class="o">&gt;</span> <span class="n">calcStack</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Stack</span><span class="o">&lt;</span><span class="n">Double</span><span class="o">&gt;</span><span class="p">();</span>
-
-        <span class="c1">// RPN is processed, ultimately calcStack has final result</span>
-        <span class="k">for</span> <span class="p">(</span><span class="n">String</span> <span class="n">token</span> <span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="na">reverse_polish</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="c1">// If the token is an operator, calculate</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">isOperator</span><span class="p">(</span><span class="n">token</span><span class="p">))</span>
-            <span class="p">{</span>
-                              
-                <span class="c1">// Pop the top two entries</span>
-                <span class="kt">double</span> <span class="n">a</span> <span class="o">=</span> <span class="n">calcStack</span><span class="p">.</span><span class="na">pop</span><span class="p">();</span>
-                <span class="kt">double</span> <span class="n">b</span> <span class="o">=</span> <span class="n">calcStack</span><span class="p">.</span><span class="na">pop</span><span class="p">();</span>
-
-                <span class="c1">// Calculate intermediate results</span>
-                <span class="k">switch</span> <span class="p">(</span><span class="n">token</span><span class="p">)</span> <span class="p">{</span>
-                    <span class="c1">// b goes first, as it is popped second and must be on the left to make the equation work</span>
-                    <span class="k">case</span> <span class="s">"RT"</span><span class="p">:</span>
-                        <span class="c1">// rt is the only exception as the first value is the value of the root being done to the second value</span>
-                        <span class="n">result</span> <span class="o">=</span> <span class="n">Math</span><span class="p">.</span><span class="na">pow</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">b</span><span class="p">));</span>
-                        <span class="k">break</span><span class="p">;</span>
-                    <span class="k">case</span> <span class="s">"+"</span><span class="p">:</span>
-                        <span class="n">result</span> <span class="o">=</span> <span class="n">b</span> <span class="o">+</span> <span class="n">a</span><span class="p">;</span>
-                        <span class="k">break</span><span class="p">;</span>
-                    <span class="k">case</span> <span class="s">"-"</span><span class="p">:</span>
-                        <span class="n">result</span> <span class="o">=</span> <span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">;</span>
-                        <span class="k">break</span><span class="p">;</span>
-                    <span class="k">case</span> <span class="s">"*"</span><span class="p">:</span>
-                        <span class="n">result</span> <span class="o">=</span> <span class="n">b</span> <span class="o">*</span> <span class="n">a</span><span class="p">;</span>
-                        <span class="k">break</span><span class="p">;</span> 
-                    <span class="k">case</span> <span class="s">"/"</span><span class="p">:</span>
-                        <span class="n">result</span> <span class="o">=</span> <span class="n">b</span> <span class="o">/</span> <span class="n">a</span><span class="p">;</span>
-                        <span class="k">break</span><span class="p">;</span>
-                    <span class="k">case</span> <span class="s">"%"</span><span class="p">:</span>
-                        <span class="n">result</span> <span class="o">=</span> <span class="n">b</span> <span class="o">%</span> <span class="n">a</span><span class="p">;</span>
-                        <span class="k">break</span><span class="p">;</span>
-                    <span class="k">case</span> <span class="s">"^"</span><span class="p">:</span>
-                        <span class="c1">// Using Math.pow() function because it supports doubles</span>
-                        <span class="n">result</span> <span class="o">=</span> <span class="n">Math</span><span class="p">.</span><span class="na">pow</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">a</span><span class="p">);</span>
-                        <span class="k">break</span><span class="p">;</span>
-                    <span class="k">default</span><span class="p">:</span>
-                        <span class="k">break</span><span class="p">;</span>
-                <span class="p">}</span>
-
-                <span class="c1">// Pop the two top entries</span>
-
-
-                <span class="c1">// Push intermediate result back onto the stack</span>
-                <span class="n">calcStack</span><span class="p">.</span><span class="na">push</span><span class="p">(</span> <span class="n">result</span> <span class="p">);</span>
-            <span class="p">}</span>
-            <span class="c1">// else the token is a number push it onto the stack</span>
-            <span class="k">else</span>
-            <span class="p">{</span>
-                <span class="n">calcStack</span><span class="p">.</span><span class="na">push</span><span class="p">(</span><span class="n">Double</span><span class="p">.</span><span class="na">valueOf</span><span class="p">(</span><span class="n">token</span><span class="p">));</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-        <span class="c1">// Pop final result and set as final result for expression</span>
-        <span class="k">this</span><span class="p">.</span><span class="na">result</span> <span class="o">=</span> <span class="n">calcStack</span><span class="p">.</span><span class="na">pop</span><span class="p">();</span>
-    <span class="p">}</span>
-
-    <span class="kd">public</span> <span class="n">String</span> <span class="nf">calcToString</span><span class="p">(</span><span class="kt">boolean</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"--------"</span><span class="p">);</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Result: "</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="na">expression</span> <span class="o">+</span> <span class="s">" = "</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="na">result</span><span class="p">);</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Tokens: "</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="na">tokens</span> <span class="o">+</span> <span class="s">" , RPN: "</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="na">reverse_polish</span><span class="p">);</span>
-        <span class="p">}</span>
-
-        <span class="n">String</span> <span class="n">output</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="na">expression</span> <span class="o">+</span> <span class="s">" = "</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="na">result</span><span class="p">;</span>
-        <span class="k">return</span> <span class="n">output</span><span class="p">;</span>
-    <span class="p">}</span>
+    <span class="kd">public</span> <span class="kd">class</span> <span class="nc">Calculator</span> <span class="p">{</span>
+        <span class="c1">// Key instance variables</span>
+        <span class="kd">private</span> <span class="n">String</span> <span class="n">expression</span><span class="p">;</span>
+        <span class="kd">private</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">tokens</span><span class="p">;</span>
+        <span class="kd">private</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">reverse_polish</span><span class="p">;</span>
+        <span class="kd">private</span> <span class="n">Double</span> <span class="n">result</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>
     
-<span class="p">}</span>
+        <span class="c1">// Helper definition for supported operators</span>
+        <span class="kd">private</span> <span class="kd">final</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">OPERATORS</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+        <span class="p">{</span>
+            <span class="c1">// Map&lt;"token", precedence&gt;</span>
+            <span class="n">OPERATORS</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">"RT"</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+            <span class="n">OPERATORS</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">"POW"</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+            <span class="n">OPERATORS</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">"^"</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+            <span class="n">OPERATORS</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">"*"</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+            <span class="n">OPERATORS</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">"/"</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+            <span class="n">OPERATORS</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">"%"</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+            <span class="n">OPERATORS</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">"+"</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+            <span class="n">OPERATORS</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">"-"</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
+        <span class="p">}</span>
+    
+        <span class="c1">// Helper definition for supported operators</span>
+        <span class="kd">private</span> <span class="kd">final</span> <span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">SEPARATORS</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+        <span class="p">{</span>
+            <span class="c1">// Map&lt;"separator", not_used&gt;</span>
+            <span class="n">SEPARATORS</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">" "</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+            <span class="n">SEPARATORS</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">"("</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+            <span class="n">SEPARATORS</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="s">")"</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+        <span class="p">}</span>
+    
+        <span class="c1">// Create a 1 argument constructor expecting a mathematical expression</span>
+        <span class="kd">public</span> <span class="nf">Calculator</span><span class="p">(</span><span class="n">String</span> <span class="n">expression</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// original input</span>
+            <span class="k">this</span><span class="p">.</span><span class="na">expression</span> <span class="o">=</span> <span class="n">expression</span><span class="p">;</span>
+    
+            <span class="c1">// parse expression into terms</span>
+            <span class="k">this</span><span class="p">.</span><span class="na">termTokenizer</span><span class="p">();</span>
+    
+            <span class="c1">// place terms into reverse polish notation</span>
+            <span class="k">this</span><span class="p">.</span><span class="na">tokensToReversePolishNotation</span><span class="p">();</span>
+    
+            <span class="c1">// calculate reverse polish notation</span>
+            <span class="k">this</span><span class="p">.</span><span class="na">rpnToResult</span><span class="p">();</span>
+        <span class="p">}</span>
+    
+        <span class="c1">// Test if token is an operator</span>
+        <span class="kd">private</span> <span class="kt">boolean</span> <span class="nf">isOperator</span><span class="p">(</span><span class="n">String</span> <span class="n">token</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// find the token in the hash map</span>
+            <span class="k">return</span> <span class="n">OPERATORS</span><span class="p">.</span><span class="na">containsKey</span><span class="p">(</span><span class="n">token</span><span class="p">);</span>
+        <span class="p">}</span>
+    
+        <span class="c1">// Test if token is an separator</span>
+        <span class="kd">private</span> <span class="kt">boolean</span> <span class="nf">isSeparator</span><span class="p">(</span><span class="n">String</span> <span class="n">token</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// find the token in the hash map</span>
+            <span class="k">return</span> <span class="n">SEPARATORS</span><span class="p">.</span><span class="na">containsKey</span><span class="p">(</span><span class="n">token</span><span class="p">);</span>
+        <span class="p">}</span>
+    
+        <span class="c1">// Compare precedence of operators.</span>
+        <span class="kd">private</span> <span class="n">Boolean</span> <span class="nf">isPrecedent</span><span class="p">(</span><span class="n">String</span> <span class="n">token1</span><span class="p">,</span> <span class="n">String</span> <span class="n">token2</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// token 1 is precedent if it is greater than token 2</span>
+            <span class="k">return</span> <span class="p">(</span><span class="n">OPERATORS</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">token1</span><span class="p">)</span> <span class="o">-</span> <span class="n">OPERATORS</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">token2</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">;</span>
+        <span class="p">}</span>
+    
+        <span class="c1">// Term Tokenizer takes original expression and converts it to ArrayList of tokens</span>
+        <span class="kd">private</span> <span class="kt">void</span> <span class="nf">termTokenizer</span><span class="p">()</span> <span class="p">{</span>
+            <span class="c1">// contains final list of tokens</span>
+            <span class="k">this</span><span class="p">.</span><span class="na">tokens</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+    
+            <span class="kt">int</span> <span class="n">start</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>  <span class="c1">// term split starting index</span>
+            <span class="n">StringBuilder</span> <span class="n">multiCharTerm</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="p">();</span>    <span class="c1">// term holder</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="k">this</span><span class="p">.</span><span class="na">expression</span><span class="p">.</span><span class="na">length</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">Character</span> <span class="n">c</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="na">expression</span><span class="p">.</span><span class="na">charAt</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+                <span class="k">if</span> <span class="p">(</span> <span class="n">isOperator</span><span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="na">toString</span><span class="p">()</span> <span class="p">)</span> <span class="o">||</span> <span class="n">isSeparator</span><span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="na">toString</span><span class="p">())</span>  <span class="p">)</span> <span class="p">{</span>
+                    <span class="c1">// 1st check for working term and add if it exists</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="n">multiCharTerm</span><span class="p">.</span><span class="na">length</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="n">tokens</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">expression</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">i</span><span class="p">));</span>
+                    <span class="p">}</span>
+                    <span class="c1">// Add operator or parenthesis term to list</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="n">c</span> <span class="o">!=</span> <span class="sc">' '</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="n">tokens</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="na">toString</span><span class="p">());</span>
+                    <span class="p">}</span>
+                    <span class="c1">// Get ready for next term</span>
+                    <span class="n">start</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
+                    <span class="n">multiCharTerm</span> <span class="o">=</span> <span class="k">new</span> <span class="n">StringBuilder</span><span class="p">();</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                    <span class="c1">// multi character terms: numbers, functions, perhaps non-supported elements</span>
+                    <span class="c1">// Add next character to working term</span>
+                    <span class="n">multiCharTerm</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>
+                <span class="p">}</span>
+    
+            <span class="p">}</span>
+            <span class="c1">// Add last term</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">multiCharTerm</span><span class="p">.</span><span class="na">length</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">tokens</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">expression</span><span class="p">.</span><span class="na">substring</span><span class="p">(</span><span class="n">start</span><span class="p">));</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    
+        <span class="c1">// Takes tokens and converts to Reverse Polish Notation (RPN), this is one where the operator follows its operands.</span>
+        <span class="kd">private</span> <span class="kt">void</span> <span class="nf">tokensToReversePolishNotation</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="c1">// contains final list of tokens in RPN</span>
+            <span class="k">this</span><span class="p">.</span><span class="na">reverse_polish</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+    
+            <span class="c1">// stack is used to reorder for appropriate grouping and precedence</span>
+            <span class="n">Stack</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">tokenStack</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Stack</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">();</span>
+            <span class="k">for</span> <span class="p">(</span><span class="n">String</span> <span class="n">token</span> <span class="p">:</span> <span class="n">tokens</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">switch</span> <span class="p">(</span><span class="n">token</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="c1">// If left bracket push token on to stack</span>
+                    <span class="k">case</span> <span class="s">"("</span><span class="p">:</span>
+                        <span class="n">tokenStack</span><span class="p">.</span><span class="na">push</span><span class="p">(</span><span class="n">token</span><span class="p">);</span>
+                        <span class="k">break</span><span class="p">;</span>
+                    <span class="k">case</span> <span class="s">")"</span><span class="p">:</span>
+                        <span class="k">while</span> <span class="p">(</span><span class="n">tokenStack</span><span class="p">.</span><span class="na">peek</span><span class="p">()</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="n">tokenStack</span><span class="p">.</span><span class="na">peek</span><span class="p">().</span><span class="na">equals</span><span class="p">(</span><span class="s">"("</span><span class="p">))</span>
+                        <span class="p">{</span>
+                            <span class="n">reverse_polish</span><span class="p">.</span><span class="na">add</span><span class="p">(</span> <span class="n">tokenStack</span><span class="p">.</span><span class="na">pop</span><span class="p">()</span> <span class="p">);</span>
+                        <span class="p">}</span>
+                        <span class="n">tokenStack</span><span class="p">.</span><span class="na">pop</span><span class="p">();</span>
+                        <span class="k">break</span><span class="p">;</span>
+                    <span class="k">case</span> <span class="s">"RT"</span><span class="p">:</span>
+                    <span class="k">case</span> <span class="s">"+"</span><span class="p">:</span>
+                    <span class="k">case</span> <span class="s">"-"</span><span class="p">:</span>
+                    <span class="k">case</span> <span class="s">"*"</span><span class="p">:</span>
+                    <span class="k">case</span> <span class="s">"/"</span><span class="p">:</span>
+                    <span class="k">case</span> <span class="s">"%"</span><span class="p">:</span>
+                    <span class="k">case</span> <span class="s">"^"</span><span class="p">:</span>
+                    <span class="k">case</span> <span class="s">"POW"</span><span class="p">:</span>
+                        <span class="c1">// While stack</span>
+                        <span class="c1">// not empty AND stack top element</span>
+                        <span class="c1">// and is an operator</span>
+                        <span class="k">while</span> <span class="p">(</span><span class="n">tokenStack</span><span class="p">.</span><span class="na">size</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="n">isOperator</span><span class="p">(</span><span class="n">tokenStack</span><span class="p">.</span><span class="na">peek</span><span class="p">()))</span>
+                        <span class="p">{</span>
+                            <span class="k">if</span> <span class="p">(</span> <span class="n">isPrecedent</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="n">tokenStack</span><span class="p">.</span><span class="na">peek</span><span class="p">()</span> <span class="p">))</span> <span class="p">{</span>
+                                <span class="n">reverse_polish</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">tokenStack</span><span class="p">.</span><span class="na">pop</span><span class="p">());</span>
+                                <span class="k">continue</span><span class="p">;</span>
+                            <span class="p">}</span>
+                            <span class="k">break</span><span class="p">;</span>
+                        <span class="p">}</span>
+                        <span class="c1">// Push the new operator on the stack</span>
+                        <span class="n">tokenStack</span><span class="p">.</span><span class="na">push</span><span class="p">(</span><span class="n">token</span><span class="p">);</span>
+                        <span class="k">break</span><span class="p">;</span>
+                    <span class="k">case</span> <span class="s">"pi"</span><span class="p">:</span>
+                    <span class="k">case</span> <span class="s">"PI"</span><span class="p">:</span>
+                    <span class="k">case</span> <span class="s">"Pi"</span><span class="p">:</span>
+                        <span class="c1">// recognize pi variable and replace that token with it</span>
+                        <span class="k">this</span><span class="p">.</span><span class="na">reverse_polish</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"3.141592653589793238"</span><span class="p">);</span>
+                        <span class="k">break</span><span class="p">;</span>
+                    <span class="k">case</span> <span class="s">"g"</span><span class="p">:</span>
+                    <span class="k">case</span> <span class="s">"G"</span><span class="p">:</span>
+                        <span class="c1">// Added a g value to represent earth's gravitational force</span>
+                        <span class="k">this</span><span class="p">.</span><span class="na">reverse_polish</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"9.8"</span><span class="p">);</span>
+                        <span class="k">break</span><span class="p">;</span>
+                    <span class="k">default</span><span class="p">:</span> 
+                        <span class="k">try</span>
+                        <span class="p">{</span>
+                            <span class="n">Double</span><span class="p">.</span><span class="na">parseDouble</span><span class="p">(</span><span class="n">token</span><span class="p">);</span>
+                        <span class="p">}</span>
+                        <span class="k">catch</span><span class="p">(</span><span class="n">NumberFormatException</span> <span class="n">e</span><span class="p">)</span>
+                        <span class="p">{</span>
+                            <span class="c1">// Resolve variable to 0 in order for the rest of the function to successfully run.</span>
+                            <span class="k">this</span><span class="p">.</span><span class="na">reverse_polish</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"0"</span><span class="p">);</span>
+                            <span class="k">this</span><span class="p">.</span><span class="na">expression</span> <span class="o">=</span> <span class="s">"Error with parsing your expression \'"</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="na">expression</span> <span class="o">+</span> <span class="s">"\'. Please enter valid numbers, operators, or variables and try again."</span><span class="p">;</span>
+                            <span class="k">break</span><span class="p">;</span>
+                        <span class="p">}</span>
+                        <span class="k">this</span><span class="p">.</span><span class="na">reverse_polish</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">token</span><span class="p">);</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+            <span class="c1">// Empty remaining tokens</span>
+            <span class="k">while</span> <span class="p">(</span><span class="n">tokenStack</span><span class="p">.</span><span class="na">size</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">reverse_polish</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">tokenStack</span><span class="p">.</span><span class="na">pop</span><span class="p">());</span>
+            <span class="p">}</span>
+    
+        <span class="p">}</span>
+    
+        <span class="c1">// Takes RPN and produces a final result</span>
+        <span class="kd">private</span> <span class="kt">void</span> <span class="nf">rpnToResult</span><span class="p">()</span>
+        <span class="p">{</span>
+            <span class="c1">// stack is used to hold operands and each calculation</span>
+            <span class="n">Stack</span><span class="o">&lt;</span><span class="n">Double</span><span class="o">&gt;</span> <span class="n">calcStack</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Stack</span><span class="o">&lt;</span><span class="n">Double</span><span class="o">&gt;</span><span class="p">();</span>
+    
+            <span class="c1">// RPN is processed, ultimately calcStack has final result</span>
+            <span class="k">for</span> <span class="p">(</span><span class="n">String</span> <span class="n">token</span> <span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="na">reverse_polish</span><span class="p">)</span>
+            <span class="p">{</span>
+                <span class="c1">// If the token is an operator, calculate</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">isOperator</span><span class="p">(</span><span class="n">token</span><span class="p">))</span>
+                <span class="p">{</span>
+                                  
+                    <span class="c1">// Pop the top two entries</span>
+                    <span class="kt">double</span> <span class="n">a</span> <span class="o">=</span> <span class="n">calcStack</span><span class="p">.</span><span class="na">pop</span><span class="p">();</span>
+                    <span class="kt">double</span> <span class="n">b</span> <span class="o">=</span> <span class="n">calcStack</span><span class="p">.</span><span class="na">pop</span><span class="p">();</span>
+    
+                    <span class="c1">// Calculate intermediate results</span>
+                    <span class="k">switch</span> <span class="p">(</span><span class="n">token</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="c1">// b goes first, as it is popped second and must be on the left to make the equation work</span>
+                        <span class="k">case</span> <span class="s">"RT"</span><span class="p">:</span>
+                            <span class="c1">// rt is the only exception as the first value is the value of the root being done to the second value</span>
+                            <span class="n">result</span> <span class="o">=</span> <span class="n">Math</span><span class="p">.</span><span class="na">pow</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">b</span><span class="p">));</span>
+                            <span class="k">break</span><span class="p">;</span>
+                        <span class="k">case</span> <span class="s">"+"</span><span class="p">:</span>
+                            <span class="n">result</span> <span class="o">=</span> <span class="n">b</span> <span class="o">+</span> <span class="n">a</span><span class="p">;</span>
+                            <span class="k">break</span><span class="p">;</span>
+                        <span class="k">case</span> <span class="s">"-"</span><span class="p">:</span>
+                            <span class="n">result</span> <span class="o">=</span> <span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">;</span>
+                            <span class="k">break</span><span class="p">;</span>
+                        <span class="k">case</span> <span class="s">"*"</span><span class="p">:</span>
+                            <span class="n">result</span> <span class="o">=</span> <span class="n">b</span> <span class="o">*</span> <span class="n">a</span><span class="p">;</span>
+                            <span class="k">break</span><span class="p">;</span> 
+                        <span class="k">case</span> <span class="s">"/"</span><span class="p">:</span>
+                            <span class="n">result</span> <span class="o">=</span> <span class="n">b</span> <span class="o">/</span> <span class="n">a</span><span class="p">;</span>
+                            <span class="k">break</span><span class="p">;</span>
+                        <span class="k">case</span> <span class="s">"%"</span><span class="p">:</span>
+                            <span class="n">result</span> <span class="o">=</span> <span class="n">b</span> <span class="o">%</span> <span class="n">a</span><span class="p">;</span>
+                            <span class="k">break</span><span class="p">;</span>
+                        <span class="k">case</span> <span class="s">"^"</span><span class="p">:</span>
+                        <span class="c1">// had to implement POW because the ^ threw an error (likely due to something within the api method)</span>
+                        <span class="k">case</span> <span class="s">"POW"</span><span class="p">:</span>
+                            <span class="c1">// Using Math.pow() function because it supports doubles</span>
+                            <span class="n">result</span> <span class="o">=</span> <span class="n">Math</span><span class="p">.</span><span class="na">pow</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="n">a</span><span class="p">);</span>
+                            <span class="k">break</span><span class="p">;</span>
+                        <span class="k">default</span><span class="p">:</span>
+                            <span class="k">break</span><span class="p">;</span>
+                    <span class="p">}</span>
+    
+                    <span class="c1">// Pop the two top entries</span>
+    
+    
+                    <span class="c1">// Push intermediate result back onto the stack</span>
+                    <span class="n">calcStack</span><span class="p">.</span><span class="na">push</span><span class="p">(</span> <span class="n">result</span> <span class="p">);</span>
+                <span class="p">}</span>
+                <span class="c1">// else the token is a number push it onto the stack</span>
+                <span class="k">else</span>
+                <span class="p">{</span>
+                    <span class="n">calcStack</span><span class="p">.</span><span class="na">push</span><span class="p">(</span><span class="n">Double</span><span class="p">.</span><span class="na">valueOf</span><span class="p">(</span><span class="n">token</span><span class="p">));</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+            <span class="c1">// Pop final result and set as final result for expression</span>
+            <span class="k">this</span><span class="p">.</span><span class="na">result</span> <span class="o">=</span> <span class="n">calcStack</span><span class="p">.</span><span class="na">pop</span><span class="p">();</span>
+        <span class="p">}</span>
+    
+        <span class="kd">public</span> <span class="n">String</span> <span class="nf">calcToString</span><span class="p">(</span><span class="kt">boolean</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"--------"</span><span class="p">);</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Result: "</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="na">expression</span> <span class="o">+</span> <span class="s">" = "</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="na">result</span><span class="p">);</span>
+            <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Tokens: "</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="na">tokens</span> <span class="o">+</span> <span class="s">" , RPN: "</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="na">reverse_polish</span><span class="p">);</span>
+            <span class="p">}</span>
+    
+            <span class="n">String</span> <span class="n">output</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="na">expression</span> <span class="o">+</span> <span class="s">" = "</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="na">result</span><span class="p">;</span>
+            <span class="k">return</span> <span class="n">output</span><span class="p">;</span>
+        <span class="p">}</span>
+    
+        <span class="kd">public</span> <span class="n">String</span> <span class="nf">jsonify</span><span class="p">()</span> <span class="p">{</span>
+            <span class="n">String</span> <span class="n">json</span> <span class="o">=</span> <span class="s">"{ \"Expression\": \""</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="na">expression</span> <span class="o">+</span> <span class="s">"\", \"Tokens\": \""</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="na">tokens</span> <span class="o">+</span> <span class="s">"\", \"RPN\": \""</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="na">reverse_polish</span> <span class="o">+</span> <span class="s">"\", \"Result\": "</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="na">result</span> <span class="o">+</span> <span class="s">" }"</span><span class="p">;</span>
+            <span class="k">return</span> <span class="n">json</span><span class="p">;</span>
+        <span class="p">}</span>
+        
+    <span class="p">}</span>
 
 
 <span class="c1">// Testing different outputs</span>
@@ -410,9 +419,9 @@ window.onload = wrap_img;
 <span class="n">Calculator</span> <span class="n">aa</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Calculator</span><span class="p">(</span><span class="s">"2 * 2 + 4"</span><span class="p">);</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">aa</span><span class="p">.</span><span class="na">calcToString</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
 
-<span class="c1">// Should print 12</span>
-<span class="n">Calculator</span> <span class="n">bb</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Calculator</span><span class="p">(</span><span class="s">"2 * ( 2 + 4 )"</span><span class="p">);</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">bb</span><span class="p">.</span><span class="na">calcToString</span><span class="p">(</span><span class="kc">true</span><span class="p">);</span>
+<span class="c1">// Commented out to allow ipynb to print everything necessary</span>
+<span class="c1">// Calculator bb = new Calculator("2 * ( 2 + 4 )");</span>
+<span class="c1">// result = bb.calcToString(true);</span>
 
 <span class="c1">// Should print 2.</span>
 <span class="n">Calculator</span> <span class="n">cc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Calculator</span><span class="p">(</span><span class="s">"( 2 + 4 ) / 3"</span><span class="p">);</span>
@@ -459,9 +468,6 @@ window.onload = wrap_img;
 <pre>--------
 Result: 2 * 2 + 4 = 8.0
 Tokens: [2, *, 2, +, 4] , RPN: [2, 2, *, 4, +]
---------
-Result: 2 * ( 2 + 4 ) = 12.0
-Tokens: [2, *, (, 2, +, 4, )] , RPN: [2, 2, 4, +, *]
 --------
 Result: ( 2 + 4 ) / 3 = 2.0
 Tokens: [(, 2, +, 4, ), /, 3] , RPN: [2, 4, +, 3, /]
