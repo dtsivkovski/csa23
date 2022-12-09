@@ -79,7 +79,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      1 min read
+      2 min read
     
 </span></p>
 
@@ -152,8 +152,7 @@ window.onload = wrap_img;
     <div class="input_area">
 <div class=" highlight hl-java"><pre><span></span><span class="kn">import</span> <span class="nn">java.lang.Math</span><span class="p">;</span>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">LightBoard</span> 
-<span class="p">{</span> 
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">LightBoard</span> <span class="p">{</span> 
     <span class="cm">/** The lights on the board, where true represents on and false represents off. </span>
 <span class="cm">     */</span> 
     <span class="kd">private</span> <span class="kt">boolean</span><span class="o">[][]</span> <span class="n">lights</span><span class="p">;</span> 
@@ -163,6 +162,8 @@ window.onload = wrap_img;
 <span class="cm">     */</span> 
     <span class="kd">public</span> <span class="nf">LightBoard</span><span class="p">(</span><span class="kt">int</span> <span class="n">numRows</span><span class="p">,</span> <span class="kt">int</span> <span class="n">numCols</span><span class="p">){</span>
          <span class="cm">/* to be implemented in part (a) */</span>
+        <span class="c1">// initialize the 2D array</span>
+        <span class="n">lights</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">boolean</span><span class="o">[</span><span class="n">numRows</span><span class="o">][</span><span class="n">numCols</span><span class="o">]</span><span class="p">;</span>
 
         <span class="c1">// Using two enhanced for loops to iterate through the 2D array</span>
         <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">lights</span><span class="p">.</span><span class="na">length</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
@@ -184,13 +185,73 @@ window.onload = wrap_img;
 <span class="cm">     */</span>
     <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">evaluateLight</span><span class="p">(</span><span class="kt">int</span> <span class="n">row</span><span class="p">,</span> <span class="kt">int</span> <span class="n">col</span><span class="p">)</span>
     <span class="p">{</span> <span class="cm">/* to be implemented in part (b) */</span> 
-        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+
+        <span class="c1">// CHECK IF LIGHT IS ON</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">lights</span><span class="o">[</span><span class="n">row</span><span class="o">][</span><span class="n">col</span><span class="o">]</span> <span class="o">==</span> <span class="kc">true</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// return false if the number of lights in its column are even</span>
+            <span class="kt">int</span> <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+            <span class="c1">// iterate through every row and check for value of the column, if true increment counter</span>
+           <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">lights</span><span class="p">.</span><span class="na">length</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+               <span class="k">if</span> <span class="p">(</span><span class="n">lights</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">col</span><span class="o">]</span> <span class="o">==</span> <span class="kc">true</span><span class="p">){</span>
+                   <span class="n">counter</span><span class="o">++</span><span class="p">;</span>
+               <span class="p">}</span>
+           <span class="p">}</span>
+
+           <span class="c1">// check if counter is even or odd</span>
+           <span class="k">if</span> <span class="p">(</span><span class="n">counter</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
+               <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+           <span class="p">}</span>
+           <span class="k">else</span><span class="p">{</span>
+               <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+           <span class="p">}</span>
+
+        <span class="p">}</span>
+        <span class="c1">// If light is off</span>
+        <span class="k">else</span> <span class="p">{</span>
+            <span class="kt">int</span> <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+            <span class="c1">// Count number of lights in the column</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">lights</span><span class="p">.</span><span class="na">length</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+                <span class="k">if</span> <span class="p">(</span><span class="n">lights</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">col</span><span class="o">]</span> <span class="o">==</span> <span class="kc">true</span><span class="p">){</span>
+                    <span class="n">counter</span><span class="o">++</span><span class="p">;</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+
+            <span class="c1">// return true if the number of lights in the column is divisible by 3</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">counter</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">else</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
     <span class="p">}</span>
     <span class="c1">// There may be additional instance variables, constructors, and methods not shown. </span>
 <span class="p">}</span>
+
+<span class="n">LightBoard</span> <span class="n">a</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LightBoard</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">);</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="na">evaluateLight</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">));</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="na">evaluateLight</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">));</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="na">evaluateLight</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">));</span>
 </pre></div>
 
     </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>false
+true
+false
+</pre>
+</div>
+</div>
+
 </div>
 </div>
 
