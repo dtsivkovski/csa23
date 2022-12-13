@@ -126,7 +126,14 @@ window.onload = wrap_img;
 
   <div class="post-content e-content" itemprop="articleBody">
     <ul id="toc" class="section-nav">
-<li class="toc-entry toc-h2"><a href="#Recursion">Recursion </a></li>
+<li class="toc-entry toc-h2"><a href="#Recursion">Recursion </a>
+<ul>
+<li class="toc-entry toc-h3"><a href="#Example">Example </a></li>
+<li class="toc-entry toc-h3"><a href="#Binary-Search-using-Recursion">Binary Search using Recursion </a></li>
+<li class="toc-entry toc-h3"><a href="#Merge-Sort">Merge Sort </a></li>
+<li class="toc-entry toc-h3"><a href="#Recursion-Tree">Recursion Tree </a></li>
+</ul>
+</li>
 <li class="toc-entry toc-h2"><a href="#Homework">Homework </a></li>
 </ul><!--
 #################################################
@@ -148,6 +155,42 @@ window.onload = wrap_img;
 <li>Base case: when the method stops calling itself</li>
 <li>Recursive case: when the method calls itself</li>
 <li>Has its own local variables, parameter values take progress of recursion</li>
+<li>Can be used to traverse an array, arraylist, etc.</li>
+</ul>
+<h3 id="Example">
+<a class="anchor" href="#Example" aria-hidden="true"><span class="octicon octicon-link"></span></a>Example<a class="anchor-link" href="#Example"> </a>
+</h3>
+<div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">example</span><span class="p">(</span><span class="kt">int</span> <span class="n">n</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">example</span> <span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+<h3 id="Binary-Search-using-Recursion">
+<a class="anchor" href="#Binary-Search-using-Recursion" aria-hidden="true"><span class="octicon octicon-link"></span></a>Binary Search using Recursion<a class="anchor-link" href="#Binary-Search-using-Recursion"> </a>
+</h3>
+<ul>
+<li>More efficient than linear search. </li>
+<li>Search for a target by seeing if it's higher or lower than the middle value<ul>
+<li>If it's higher, search the right half of the array</li>
+<li>If it's lower, search the left half of the array</li>
+<li>Can use recursion to do this for each iteration of the search</li>
+</ul>
+</li>
+</ul>
+<h3 id="Merge-Sort">
+<a class="anchor" href="#Merge-Sort" aria-hidden="true"><span class="octicon octicon-link"></span></a>Merge Sort<a class="anchor-link" href="#Merge-Sort"> </a>
+</h3>
+<ul>
+<li>Divides an array into halves, sorts each half, and then merges the two halves.<ul>
+<li>Can require taking half of a half to sort that part of the array.</li>
+</ul>
+</li>
+</ul>
+<h3 id="Recursion-Tree">
+<a class="anchor" href="#Recursion-Tree" aria-hidden="true"><span class="octicon octicon-link"></span></a>Recursion Tree<a class="anchor-link" href="#Recursion-Tree"> </a>
+</h3>
+<ul>
+<li>Visualize recursive function calls, all possibilties</li>
 </ul>
 
 </div>
