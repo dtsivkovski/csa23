@@ -79,7 +79,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      4 min read
+      5 min read
     
 </span></p>
 
@@ -283,13 +283,62 @@ window.onload = wrap_img;
     <span class="p">}</span>
 <span class="p">}</span>
 
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Morocco</span> <span class="kd">extends</span> <span class="n">Team</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="nf">Morocco</span><span class="p">(</span><span class="kt">int</span> <span class="n">score</span><span class="p">,</span> <span class="kt">int</span> <span class="n">wins</span><span class="p">,</span> <span class="kt">int</span> <span class="n">all_goals</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">super</span><span class="p">(</span><span class="n">score</span><span class="p">,</span> <span class="n">wins</span><span class="p">,</span> <span class="n">all_goals</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">score</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">score</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">bestplayer</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Best player: Youssef En-Nesyri"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Netherlands</span> <span class="kd">extends</span> <span class="n">Team</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="nf">Netherlands</span><span class="p">(</span><span class="kt">int</span> <span class="n">score</span><span class="p">,</span> <span class="kt">int</span> <span class="n">wins</span><span class="p">,</span> <span class="kt">int</span> <span class="n">all_goals</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">super</span><span class="p">(</span><span class="n">score</span><span class="p">,</span> <span class="n">wins</span><span class="p">,</span> <span class="n">all_goals</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">score</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">score</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">bestplayer</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Best player: Memphis Depay"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Croatia</span> <span class="kd">extends</span> <span class="n">Team</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="nf">Croatia</span><span class="p">(</span><span class="kt">int</span> <span class="n">score</span><span class="p">,</span> <span class="kt">int</span> <span class="n">wins</span><span class="p">,</span> <span class="kt">int</span> <span class="n">all_goals</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">super</span><span class="p">(</span><span class="n">score</span><span class="p">,</span> <span class="n">wins</span><span class="p">,</span> <span class="n">all_goals</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">score</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">score</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">bestplayer</span><span class="p">()</span> <span class="p">{</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Best player: Luka Modric"</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+
 <span class="n">Team</span> <span class="n">team</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Team</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">27</span><span class="p">);</span>
 <span class="n">Team</span> <span class="n">portugal</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Portugal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">55</span><span class="p">);</span>
 <span class="n">Team</span> <span class="n">france</span> <span class="o">=</span> <span class="k">new</span> <span class="n">France</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">129</span><span class="p">);</span>
+<span class="n">Team</span> <span class="n">morocco</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Morocco</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">18</span><span class="p">);</span>
+<span class="n">Team</span> <span class="n">netherlands</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Netherlands</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">94</span><span class="p">);</span>
+<span class="n">Team</span> <span class="n">croatia</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Croatia</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">40</span><span class="p">);</span>
 
 <span class="n">team</span><span class="p">.</span><span class="na">out</span><span class="p">();</span>
 <span class="n">portugal</span><span class="p">.</span><span class="na">out</span><span class="p">();</span>
 <span class="n">france</span><span class="p">.</span><span class="na">out</span><span class="p">();</span>
+<span class="n">morocco</span><span class="p">.</span><span class="na">out</span><span class="p">();</span>
+<span class="n">netherlands</span><span class="p">.</span><span class="na">out</span><span class="p">();</span>
+<span class="n">croatia</span><span class="p">.</span><span class="na">out</span><span class="p">();</span>
 </pre></div>
 
     </div>
@@ -314,6 +363,18 @@ Team score: 0
 Team wins: 2
 Team all goals: 129
 Best player: Kylian Mbappe
+Team score: 0
+Team wins: 1
+Team all goals: 18
+Best player: Youssef En-Nesyri
+Team score: 0
+Team wins: 1
+Team all goals: 94
+Best player: Memphis Depay
+Team score: 0
+Team wins: 1
+Team all goals: 40
+Best player: Luka Modric
 </pre>
 </div>
 </div>
