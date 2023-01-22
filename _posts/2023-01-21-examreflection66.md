@@ -25,6 +25,18 @@ I originally thought that the condition in the if statement should be changed to
 
 I thought that Line 5 should be changed to arr.length instead of arr[0].length, however that would not make a difference because the array is the same length each time. What did need to be changed was to fix it to be int[] row : array because otherwise it would iterate within the column which wouldn't make sense.
 
+### Q18 Equivalent dog cat expressions
+
+On this one, I almost got this one right but I accidentally made a mistake in the fact that I decided that a > b was the opposite of a < b instead of it being a >= b as the opposite of a < b.
+
+### Q43 partialSum method comparing two implementations
+
+I thought that both implementations worked as intended with the first one being faster. However, it turns out that implementation 1 doesn't actually work because it would cause an out of bounds exception (sum[j-1] in the first iteration would be sum[-1] which is not right)
+
+### Q54 recursive String method
+
+I thought that the recusive method was comparing strings in alphabetical ascending order in the recursion. However, it was actually comparing them in reverse alphabetical order and therefore my answer was incorrect.
+
 ### Q58 selectSort with int array parameter
 
 I originally thought that Line 4 should be changed to if(numbers[k] > numbers[pos]), however that is not the case because changing Line 2 to int post = j makes sense because you do not want the position to be reset to the 0th index every time when you are doing this sorting method.
