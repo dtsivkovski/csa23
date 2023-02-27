@@ -1,5 +1,5 @@
 ---
-toc: true
+toc: false
 layout: post
 title: Tri 2 Final Review Guide
 description: Guide for proof of work and my contributions to the project.
