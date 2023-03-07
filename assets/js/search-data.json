@@ -3,7 +3,7 @@
     
         "post0": {
             "title": "Data Types Tech Talk",
-            "content": "import java.lang.Integer; public class BinaryAddition { public int binaryAdd(int a, int b) { } } BinaryAddition a = new BinaryAddition(); a.binaryAdd(1, 0); a.binaryAdd(1, 1); a.binaryAdd(0, 0); . 1 10 0 . 0 .",
+            "content": "import java.lang.*; public class BinaryAddition { public int binaryAdd(int a, int b) { String aBin = Integer.toBinaryString(a); String bBin = Integer.toBinaryString(b); for (int i = 0; i &lt; ) } } BinaryAddition a = new BinaryAddition(); a.binaryAdd(1, 0); a.binaryAdd(1, 1); a.binaryAdd(0, 0); . 1 10 0 . 0 . Notes . Reference: Pointers to memory locations (addresses of primitive data) | Auto boxing: Wraps the integer in a box, and the box is a reference to the integer | . Hacks . Start with some small code excercises Write a Jupyter notebook code example on the following primitive types with a code example (4 to 5 lines), preference would be using array and methods like substring and random as applicable: int, double, boolean, char. | Now convert each of the examples to corresponding Wrapper classes, using arrays. | Expression of these in Class or PBL forms is an option. But the review must be easy for me to see work. | . | .",
             "url": "https://dtsivkovski.github.io/csa23/datatypes/",
             "relUrl": "/datatypes/",
             "date": " • Mar 6, 2023"
