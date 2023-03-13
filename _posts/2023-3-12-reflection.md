@@ -6,6 +6,8 @@ description: AP CSA Tri 3 Practice MC Reflection No1
 image: https://sjhexpress.com/wp-content/uploads/2021/04/collegeboard-900x430.png
 ---
 
+## Score: 35/39
+
 # Reflection
 
 I think I did much better on this AP MC exam than on the previous ones. I felt like I at least understood how to do every question, even if some may have taken me a bit longer. I did keep a good pace too, so that was good.
