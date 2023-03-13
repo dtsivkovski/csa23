@@ -13,3 +13,7 @@ I think I did much better on this AP MC exam than on the previous ones. I felt l
 ## Difficult Questions
 
 I think one of the weirdest questions were regarding methods that were the mystery() ones where you just weren't even sure what they were supposed to do. It's one thing to try and understand a method that makes logical sense but another to understand a method that doesn't seem to really serve any logical purpose.
+
+## Other Mistakes
+
+The rest of my mistakes were on small things like counting incorrectly or finding the incorrect index. For example, one of my answers was taking into account that it was array[k] when it was actually something along the lines of array[k+1] and other similar mistakes.
