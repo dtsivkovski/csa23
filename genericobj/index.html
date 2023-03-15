@@ -156,6 +156,8 @@ window.onload = wrap_img;
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">queueTesting</span><span class="p">()</span> <span class="p">{</span>
         <span class="n">Queue</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">q</span> <span class="o">=</span> <span class="k">new</span> <span class="n">LinkedList</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span><span class="p">();</span>
 
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Adding to Queue"</span><span class="p">);</span>
+
         <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
             <span class="n">q</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
             <span class="n">printQueue</span><span class="p">(</span><span class="n">q</span><span class="p">);</span>
@@ -176,11 +178,14 @@ window.onload = wrap_img;
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">queueToStack</span><span class="p">(</span><span class="n">Queue</span><span class="o">&lt;?&gt;</span> <span class="n">q</span><span class="p">)</span> <span class="p">{</span>
         <span class="c1">// create new stack with type T</span>
         <span class="n">Stack</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;</span> <span class="n">tempStack</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Stack</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">""</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Queue to Stack"</span><span class="p">);</span>
+
         <span class="k">while</span> <span class="p">(</span> <span class="o">!</span><span class="n">q</span><span class="p">.</span><span class="na">isEmpty</span><span class="p">()</span> <span class="p">)</span> <span class="p">{</span>
             <span class="c1">// push queue element to stack and remove from queue</span>
             <span class="n">tempStack</span><span class="p">.</span><span class="na">push</span><span class="p">(</span><span class="n">q</span><span class="p">.</span><span class="na">remove</span><span class="p">());</span>
             <span class="n">printStack</span><span class="p">(</span><span class="n">tempStack</span><span class="p">);</span>
-            <span class="n">printQueue</span><span class="p">(</span><span class="n">q</span><span class="p">);</span>
             <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
         <span class="p">}</span>
     <span class="p">}</span>
@@ -211,15 +216,18 @@ window.onload = wrap_img;
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>1
+<pre>Adding to Queue
+1
 13
 135
 1357
 13579
-13579
-13579
-13579
-13579
+
+Queue to Stack
+1
+13
+135
+1357
 13579
 </pre>
 </div>
