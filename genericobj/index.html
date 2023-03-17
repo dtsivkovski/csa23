@@ -79,7 +79,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      8 min read
+      7 min read
     
 </span></p>
 
@@ -507,6 +507,13 @@ Queue to Stack
             <span class="p">}</span>
     <span class="p">}</span>
 
+    <span class="c1">// add single object to queue</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">add</span><span class="p">(</span><span class="n">T</span> <span class="n">data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">queue</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
+        <span class="k">this</span><span class="p">.</span><span class="na">count</span><span class="o">++</span><span class="p">;</span>
+        <span class="n">printQueue</span><span class="p">();</span>
+    <span class="p">}</span>
+
     <span class="c1">// delete objects from queue</span>
     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">deleteList</span><span class="p">(</span><span class="kt">int</span> <span class="n">count</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">count</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
@@ -603,7 +610,7 @@ Queue data:
 <div class=" highlight hl-java"><pre><span></span><span class="kd">class</span> <span class="nc">QueueMerger</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="p">{</span>
     
     <span class="kd">public</span> <span class="n">QueueManager</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="nf">mergeQueues</span><span class="p">(</span><span class="n">Queue</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">a</span><span class="p">,</span> <span class="n">Queue</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">QueueManager</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">c</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Queue</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+        <span class="n">QueueManager</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">c</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QueueManager</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="s">"Merged"</span><span class="p">);</span>
         <span class="c1">// gets heads of each queue if both are not empty</span>
         <span class="k">while</span> <span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="na">getHead</span><span class="p">()</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">b</span><span class="p">.</span><span class="na">getHead</span><span class="p">()</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
             <span class="c1">// compares values of heads, then appends to queue c</span>
@@ -630,6 +637,8 @@ Queue data:
             <span class="n">a</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="na">getHead</span><span class="p">().</span><span class="na">getData</span><span class="p">());</span>
             <span class="n">c</span><span class="p">.</span><span class="na">delete</span><span class="p">();</span>
         <span class="p">}</span>
+
+        <span class="k">return</span> <span class="n">c</span><span class="p">;</span>
     <span class="p">}</span>
     
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
@@ -667,26 +676,6 @@ Queue data:
 
 <div class="output_subarea output_text output_error">
 <pre>
-<span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-bold">        QueueManager&lt;T&gt; c = new </span><span class="ansi-black-intense-fg ansi-red-bg ansi-bold">Queue&lt;&gt;</span><span class="ansi-black-intense-fg ansi-bold">();</span>
-<span class="ansi-red-intense-fg ansi-bold">incompatible types: cannot infer type arguments for Queue&lt;&gt;</span>
-<span class="ansi-red-intense-fg ansi-bold">    reason: no instance(s) of type variable(s) T exist so that Queue&lt;T&gt; conforms to QueueManager&lt;T&gt;</span>
-
-<span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-bold">                </span><span class="ansi-black-intense-fg ansi-red-bg ansi-bold">c.add</span><span class="ansi-black-intense-fg ansi-bold">(a.getHead().getData());</span>
-<span class="ansi-red-intense-fg ansi-bold">cannot find symbol</span>
-<span class="ansi-red-intense-fg ansi-bold">  symbol:   method add(T)</span>
-
-<span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-bold">                </span><span class="ansi-black-intense-fg ansi-red-bg ansi-bold">c.add</span><span class="ansi-black-intense-fg ansi-bold">(b.getHead().getData());</span>
-<span class="ansi-red-intense-fg ansi-bold">cannot find symbol</span>
-<span class="ansi-red-intense-fg ansi-bold">  symbol:   method add(T)</span>
-
-<span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-bold">            </span><span class="ansi-black-intense-fg ansi-red-bg ansi-bold">c.add</span><span class="ansi-black-intense-fg ansi-bold">(a.getHead().getData());</span>
-<span class="ansi-red-intense-fg ansi-bold">cannot find symbol</span>
-<span class="ansi-red-intense-fg ansi-bold">  symbol:   method add(T)</span>
-
-<span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-bold">            </span><span class="ansi-black-intense-fg ansi-red-bg ansi-bold">c.add</span><span class="ansi-black-intense-fg ansi-bold">(b.getHead().getData());</span>
-<span class="ansi-red-intense-fg ansi-bold">cannot find symbol</span>
-<span class="ansi-red-intense-fg ansi-bold">  symbol:   method add(T)</span>
-
 <span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-bold">        while (</span><span class="ansi-black-intense-fg ansi-red-bg ansi-bold">c.getHead</span><span class="ansi-black-intense-fg ansi-bold">() != null) {</span>
 <span class="ansi-red-intense-fg ansi-bold">cannot find symbol</span>
 <span class="ansi-red-intense-fg ansi-bold">  symbol:   method getHead()</span>
@@ -705,37 +694,6 @@ Queue data:
 <span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-bold">        </span><span class="ansi-black-intense-fg ansi-red-bg ansi-bold">qmm.printQueue</span><span class="ansi-black-intense-fg ansi-bold">();</span>
 <span class="ansi-red-intense-fg ansi-bold">cannot find symbol</span>
 <span class="ansi-red-intense-fg ansi-bold">  symbol:   method printQueue()</span>
-
-<span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-bold">    public QueueManager&lt;T&gt; mergeQueues(Queue&lt;T&gt; a, Queue&lt;T&gt; b) </span><span class="ansi-black-intense-fg ansi-red-bg ansi-bold">{</span>
-<span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-red-bg ansi-bold">        QueueManager&lt;T&gt; c = new Queue&lt;&gt;();</span>
-<span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-red-bg ansi-bold">        // gets heads of each queue if both are not empty</span>
-<span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-red-bg ansi-bold">        while (a.getHead() != null &amp;&amp; b.getHead() != null) {</span>
-<span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-red-bg ansi-bold">            // compares values of heads, then appends to queue c</span>
-<span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-red-bg ansi-bold">            if (a.getHead().getData().hashCode() &lt; b.getHead().getData().hashCode()) {</span>
-<span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-red-bg ansi-bold">                c.add(a.getHead().getData());</span>
-<span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-red-bg ansi-bold">                a.delete();</span>
-<span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-red-bg ansi-bold">            } else {</span>
-<span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-red-bg ansi-bold">                c.add(b.getHead().getData());</span>
-<span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-red-bg ansi-bold">                b.delete();</span>
-<span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-red-bg ansi-bold">            }</span>
-<span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-red-bg ansi-bold">        }</span>
-<span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-red-bg ansi-bold">        // if b is empty but a is not</span>
-<span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-red-bg ansi-bold">        while (a.getHead() != null) {</span>
-<span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-red-bg ansi-bold">            c.add(a.getHead().getData());</span>
-<span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-red-bg ansi-bold">            a.delete();</span>
-<span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-red-bg ansi-bold">        }</span>
-<span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-red-bg ansi-bold">        // if a is empty but b is not</span>
-<span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-red-bg ansi-bold">        while (b.getHead() != null) {</span>
-<span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-red-bg ansi-bold">            c.add(b.getHead().getData());</span>
-<span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-red-bg ansi-bold">            b.delete();</span>
-<span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-red-bg ansi-bold">        }</span>
-<span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-red-bg ansi-bold">        // appends queue c to queue a</span>
-<span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-red-bg ansi-bold">        while (c.getHead() != null) {</span>
-<span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-red-bg ansi-bold">            a.add(c.getHead().getData());</span>
-<span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-red-bg ansi-bold">            c.delete();</span>
-<span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-red-bg ansi-bold">        }</span>
-<span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-red-bg ansi-bold">    }</span>
-<span class="ansi-red-intense-fg ansi-bold">missing return statement</span>
 </pre>
 </div>
 </div>
