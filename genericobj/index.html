@@ -79,7 +79,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      7 min read
+      6 min read
     
 </span></p>
 
@@ -127,7 +127,6 @@ window.onload = wrap_img;
 <li class="toc-entry toc-h3"><a href="#Code-Hacks">Code Hacks </a>
 <ul>
 <li class="toc-entry toc-h4"><a href="#Challenge-#1,-Add-and-Delete-elements-from-Queue.-Working-with-the-code-that-is-given,-you-will-need-to-adjust-Add-and-write-Delete,-to-output-from-the-Queue-as-follows.">Challenge #1, Add and Delete elements from Queue. Working with the code that is given, you will need to adjust Add and write Delete, to output from the Queue as follows. </a></li>
-<li class="toc-entry toc-h4"><a href="#Challenge-2:-Merge-Two-Ordered-Queues">Challenge 2: Merge Two Ordered Queues </a></li>
 </ul>
 </li>
 </ul><!--
@@ -472,7 +471,7 @@ Queue to Stack
     <span class="p">}</span>
 <span class="p">}</span>
 
-<span class="kd">class</span> <span class="nc">QueueManager</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="p">{</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">QueueManager</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="p">{</span>
     <span class="c1">// queue data</span>
     <span class="kd">private</span> <span class="kd">final</span> <span class="n">String</span> <span class="n">name</span><span class="p">;</span> <span class="c1">// name of queue</span>
     <span class="kd">private</span> <span class="kt">int</span> <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// number of objects in queue</span>
@@ -581,119 +580,6 @@ Queue count: 1
 Queue data: 5 
 Queue count: 0
 Queue data: 
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-    
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Challenge-2:-Merge-Two-Ordered-Queues">
-<a class="anchor" href="#Challenge-2:-Merge-Two-Ordered-Queues" aria-hidden="true"><span class="octicon octicon-link"></span></a>Challenge 2: Merge Two Ordered Queues<a class="anchor-link" href="#Challenge-2:-Merge-Two-Ordered-Queues"> </a>
-</h4>
-</div>
-</div>
-</div>
-    
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-java"><pre><span></span><span class="kd">class</span> <span class="nc">QueueMerger</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="p">{</span>
-    
-    <span class="kd">public</span> <span class="n">QueueManager</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="nf">mergeQueues</span><span class="p">(</span><span class="n">Queue</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">a</span><span class="p">,</span> <span class="n">Queue</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">b</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">QueueManager</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span> <span class="n">c</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QueueManager</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="p">(</span><span class="s">"Merged"</span><span class="p">);</span>
-        <span class="c1">// gets heads of each queue if both are not empty</span>
-        <span class="k">while</span> <span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="na">getHead</span><span class="p">()</span> <span class="o">!=</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="n">b</span><span class="p">.</span><span class="na">getHead</span><span class="p">()</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
-            <span class="c1">// compares values of heads, then appends to queue c</span>
-            <span class="k">if</span> <span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="na">getHead</span><span class="p">().</span><span class="na">getData</span><span class="p">().</span><span class="na">hashCode</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">b</span><span class="p">.</span><span class="na">getHead</span><span class="p">().</span><span class="na">getData</span><span class="p">().</span><span class="na">hashCode</span><span class="p">())</span> <span class="p">{</span>
-                <span class="n">c</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="na">getHead</span><span class="p">().</span><span class="na">getData</span><span class="p">());</span>
-                <span class="n">a</span><span class="p">.</span><span class="na">delete</span><span class="p">();</span>
-            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                <span class="n">c</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">b</span><span class="p">.</span><span class="na">getHead</span><span class="p">().</span><span class="na">getData</span><span class="p">());</span>
-                <span class="n">b</span><span class="p">.</span><span class="na">delete</span><span class="p">();</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-        <span class="c1">// if b is empty but a is not</span>
-        <span class="k">while</span> <span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="na">getHead</span><span class="p">()</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">c</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">a</span><span class="p">.</span><span class="na">getHead</span><span class="p">().</span><span class="na">getData</span><span class="p">());</span>
-            <span class="n">a</span><span class="p">.</span><span class="na">delete</span><span class="p">();</span>
-        <span class="p">}</span>
-        <span class="c1">// if a is empty but b is not</span>
-        <span class="k">while</span> <span class="p">(</span><span class="n">b</span><span class="p">.</span><span class="na">getHead</span><span class="p">()</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">c</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">b</span><span class="p">.</span><span class="na">getHead</span><span class="p">().</span><span class="na">getData</span><span class="p">());</span>
-            <span class="n">b</span><span class="p">.</span><span class="na">delete</span><span class="p">();</span>
-        <span class="p">}</span>
-        <span class="c1">// appends queue c to queue a</span>
-        <span class="k">while</span> <span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="na">getHead</span><span class="p">()</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">a</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">c</span><span class="p">.</span><span class="na">getHead</span><span class="p">().</span><span class="na">getData</span><span class="p">());</span>
-            <span class="n">c</span><span class="p">.</span><span class="na">delete</span><span class="p">();</span>
-        <span class="p">}</span>
-
-        <span class="k">return</span> <span class="n">c</span><span class="p">;</span>
-    <span class="p">}</span>
-    
-    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// create queue manager 1 and 2</span>
-        <span class="n">QueueManager</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">qm1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QueueManager</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="s">"Queue"</span><span class="p">);</span>
-        <span class="n">QueueManager</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">qm2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QueueManager</span><span class="o">&lt;&gt;</span><span class="p">(</span><span class="s">"Queue2"</span><span class="p">);</span>
-
-        <span class="c1">// add objects to queue and print both</span>
-        <span class="n">qm1</span><span class="p">.</span><span class="na">addList</span><span class="p">(</span><span class="k">new</span> <span class="n">Integer</span><span class="o">[]</span><span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">15</span><span class="p">});</span>
-        <span class="n">qm2</span><span class="p">.</span><span class="na">addList</span><span class="p">(</span><span class="k">new</span> <span class="n">Integer</span><span class="o">[]</span><span class="p">{</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">17</span><span class="p">});</span>
-        <span class="n">qm1</span><span class="p">.</span><span class="na">printQueue</span><span class="p">();</span>
-        <span class="n">qm2</span><span class="p">.</span><span class="na">printQueue</span><span class="p">();</span>
-
-
-        <span class="c1">// merge queues</span>
-        <span class="n">QueueMerger</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">qm</span> <span class="o">=</span> <span class="k">new</span> <span class="n">QueueMerger</span><span class="o">&lt;&gt;</span><span class="p">();</span>
-        <span class="n">Queue</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">qmm</span> <span class="o">=</span> <span class="n">qm</span><span class="p">.</span><span class="na">mergeQueues</span><span class="p">(</span><span class="n">qm1</span><span class="p">.</span><span class="na">queue</span><span class="p">,</span> <span class="n">qm2</span><span class="p">.</span><span class="na">queue</span><span class="p">);</span>
-
-        <span class="c1">// print merged queue</span>
-        <span class="n">qmm</span><span class="p">.</span><span class="na">printQueue</span><span class="p">();</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-
-<span class="n">QueueMerger</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_text output_error">
-<pre>
-<span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-bold">        while (</span><span class="ansi-black-intense-fg ansi-red-bg ansi-bold">c.getHead</span><span class="ansi-black-intense-fg ansi-bold">() != null) {</span>
-<span class="ansi-red-intense-fg ansi-bold">cannot find symbol</span>
-<span class="ansi-red-intense-fg ansi-bold">  symbol:   method getHead()</span>
-
-<span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-bold">            a.add(</span><span class="ansi-black-intense-fg ansi-red-bg ansi-bold">c.getHead</span><span class="ansi-black-intense-fg ansi-bold">().getData());</span>
-<span class="ansi-red-intense-fg ansi-bold">cannot find symbol</span>
-<span class="ansi-red-intense-fg ansi-bold">  symbol:   method getHead()</span>
-
-<span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-bold">            </span><span class="ansi-black-intense-fg ansi-red-bg ansi-bold">c.delete</span><span class="ansi-black-intense-fg ansi-bold">();</span>
-<span class="ansi-red-intense-fg ansi-bold">cannot find symbol</span>
-<span class="ansi-red-intense-fg ansi-bold">  symbol:   method delete()</span>
-
-<span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-bold">        Queue&lt;Integer&gt; qmm = </span><span class="ansi-black-intense-fg ansi-red-bg ansi-bold">qm.mergeQueues(qm1.queue, qm2.queue)</span><span class="ansi-black-intense-fg ansi-bold">;</span>
-<span class="ansi-red-intense-fg ansi-bold">incompatible types: QueueManager&lt;java.lang.Integer&gt; cannot be converted to Queue&lt;java.lang.Integer&gt;</span>
-
-<span class="ansi-black-intense-fg ansi-bold">|   </span><span class="ansi-black-intense-fg ansi-bold">        </span><span class="ansi-black-intense-fg ansi-red-bg ansi-bold">qmm.printQueue</span><span class="ansi-black-intense-fg ansi-bold">();</span>
-<span class="ansi-red-intense-fg ansi-bold">cannot find symbol</span>
-<span class="ansi-red-intense-fg ansi-bold">  symbol:   method printQueue()</span>
 </pre>
 </div>
 </div>
