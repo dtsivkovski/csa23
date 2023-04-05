@@ -79,7 +79,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      6 min read
+      7 min read
     
 </span></p>
 
@@ -165,6 +165,7 @@ window.onload = wrap_img;
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-java"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">SortAnalysis</span> <span class="p">{</span>
+    <span class="c1">// generate array of 5000 integers</span>
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">generateArray</span><span class="p">()</span> <span class="p">{</span>
         <span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">5000</span><span class="o">]</span><span class="p">;</span>
         <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="p">.</span><span class="na">length</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
@@ -234,6 +235,7 @@ window.onload = wrap_img;
         <span class="p">}</span>
     <span class="p">}</span>
 
+    <span class="c1">// instertionsort from before</span>
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">insertionSort</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="p">.</span><span class="na">length</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
             <span class="kt">int</span> <span class="n">current</span> <span class="o">=</span> <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">;</span>
@@ -246,6 +248,7 @@ window.onload = wrap_img;
         <span class="p">}</span>
     <span class="p">}</span>
 
+    <span class="c1">// selectionsort from before</span>
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">selectionSort</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">arr</span><span class="p">.</span><span class="na">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
             <span class="kt">int</span> <span class="n">minIndex</span> <span class="o">=</span> <span class="n">i</span><span class="p">;</span>
@@ -260,6 +263,7 @@ window.onload = wrap_img;
         <span class="p">}</span>
     <span class="p">}</span>
 
+    <span class="c1">// mergesort from previous lesson</span>
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">mergeSort</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">arr</span><span class="p">.</span><span class="na">length</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="p">{</span>
             <span class="kt">int</span><span class="o">[]</span> <span class="n">left</span> <span class="o">=</span> <span class="n">leftHalf</span><span class="p">(</span><span class="n">arr</span><span class="p">);</span>
@@ -272,6 +276,7 @@ window.onload = wrap_img;
         <span class="p">}</span>
     <span class="p">}</span>
 
+    <span class="c1">// lefthalf function for mergesort</span>
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">leftHalf</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="p">)</span> <span class="p">{</span>
         <span class="kt">int</span> <span class="n">size1</span> <span class="o">=</span> <span class="n">arr</span><span class="p">.</span><span class="na">length</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
         <span class="kt">int</span><span class="o">[]</span> <span class="n">left</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">size1</span><span class="o">]</span><span class="p">;</span>
@@ -281,6 +286,7 @@ window.onload = wrap_img;
         <span class="k">return</span> <span class="n">left</span><span class="p">;</span>
     <span class="p">}</span>
 
+    <span class="c1">// righthalf function for mergesotr</span>
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">rightHalf</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="p">)</span> <span class="p">{</span>
         <span class="kt">int</span> <span class="n">size1</span> <span class="o">=</span> <span class="n">arr</span><span class="p">.</span><span class="na">length</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
         <span class="kt">int</span> <span class="n">size2</span> <span class="o">=</span> <span class="n">arr</span><span class="p">.</span><span class="na">length</span> <span class="o">-</span> <span class="n">size1</span><span class="p">;</span>
@@ -341,31 +347,31 @@ window.onload = wrap_img;
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Bubble | Merge | Selection | Insertion
 -------------------------------
-31ms | 1ms | 11ms | 1ms
+39ms | 2ms | 22ms | 6ms
 -------------------------------
-26ms | 0ms | 10ms | 1ms
+38ms | 0ms | 20ms | 4ms
 -------------------------------
-24ms | 0ms | 9ms | 1ms
+44ms | 0ms | 7ms | 1ms
 -------------------------------
-28ms | 0ms | 6ms | 1ms
+33ms | 9ms | 7ms | 1ms
 -------------------------------
-26ms | 0ms | 8ms | 0ms
+33ms | 0ms | 7ms | 1ms
 -------------------------------
-23ms | 1ms | 5ms | 1ms
+31ms | 1ms | 7ms | 0ms
 -------------------------------
-25ms | 0ms | 7ms | 0ms
+33ms | 0ms | 7ms | 1ms
 -------------------------------
-24ms | 0ms | 6ms | 1ms
+32ms | 0ms | 7ms | 0ms
 -------------------------------
-21ms | 0ms | 6ms | 1ms
+33ms | 0ms | 7ms | 0ms
 -------------------------------
-22ms | 1ms | 5ms | 1ms
+20ms | 0ms | 7ms | 1ms
 -------------------------------
-23ms | 0ms | 6ms | 0ms
+21ms | 0ms | 7ms | 0ms
 -------------------------------
-29ms | 1ms | 10ms | 1ms
+20ms | 0ms | 7ms | 0ms
 -------------------------------
-Average: 25.0ms | 0.0ms | 7.0ms | 0.0ms
+Average: 31.0ms | 1.0ms | 9.0ms | 1.0ms
 </pre>
 </div>
 </div>
@@ -399,40 +405,55 @@ Average: 25.0ms | 0.0ms | 7.0ms | 0.0ms
     <div class="input_area">
 <div class=" highlight hl-java"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.HashMap</span><span class="p">;</span>
 <span class="kn">import</span> <span class="nn">java.lang.Integer</span><span class="p">;</span>
+<span class="kn">import</span> <span class="nn">java.util.Scanner</span><span class="p">;</span>
 
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">HashTester</span> <span class="p">{</span>
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
 
         <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">Integer</span><span class="p">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">Integer</span><span class="p">,</span> <span class="n">Integer</span><span class="o">&gt;</span><span class="p">();</span>
-        <span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">5000</span><span class="o">]</span><span class="p">;</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">500000</span><span class="o">]</span><span class="p">;</span>
 
-        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5000</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">Integer</span> <span class="n">value</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="p">(</span><span class="n">Math</span><span class="p">.</span><span class="na">random</span><span class="p">()</span> <span class="o">*</span> <span class="mi">10000</span><span class="p">);</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">500000</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">Integer</span> <span class="n">value</span> <span class="o">=</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span> <span class="p">(</span><span class="n">Math</span><span class="p">.</span><span class="na">random</span><span class="p">()</span> <span class="o">*</span> <span class="mi">500000</span><span class="p">);</span>
             <span class="n">map</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">value</span><span class="p">);</span>
             <span class="n">arr</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">value</span><span class="p">;</span>
         <span class="p">}</span>
 
         <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"LookUp | BinarySearch"</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"-------------------------------"</span><span class="p">);</span>
+
+        <span class="kt">double</span> <span class="n">total_lut</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+        <span class="kt">double</span> <span class="n">total_bst</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+        <span class="c1">// get num to search for from scanner</span>
+        <span class="n">Scanner</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Enter a number to search for: "</span><span class="p">);</span>
 
         <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">12</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-            <span class="kt">int</span><span class="o">[]</span> <span class="n">arra</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">5000</span><span class="o">]</span><span class="p">;</span>
-            <span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">""</span><span class="p">;</span>
-            <span class="kt">long</span> <span class="n">lut</span> <span class="o">=</span> <span class="p">(</span><span class="n">lookUp</span><span class="p">(</span><span class="n">map</span><span class="p">,</span> <span class="n">i</span><span class="p">));</span>
-            <span class="n">str</span> <span class="o">+=</span> <span class="p">(</span><span class="n">lut</span> <span class="o">+</span> <span class="s">"ms | "</span><span class="p">);</span>
             
+            <span class="c1">// check look up time for hash map</span>
+            <span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">"|      "</span><span class="p">;</span>
+            <span class="kt">long</span> <span class="n">lut</span> <span class="o">=</span> <span class="p">(</span><span class="n">lookUp</span><span class="p">(</span><span class="n">map</span><span class="p">,</span> <span class="n">num</span><span class="p">));</span>
+            <span class="n">total_lut</span> <span class="o">+=</span> <span class="n">lut</span><span class="p">;</span>
+            <span class="n">str</span> <span class="o">+=</span> <span class="p">(</span><span class="n">lut</span> <span class="o">+</span> <span class="s">"ms       |       "</span><span class="p">);</span>
+            
+            <span class="c1">// copy array, check binary search time</span>
+            <span class="kt">int</span><span class="o">[]</span> <span class="n">arra</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">500000</span><span class="o">]</span><span class="p">;</span>
             <span class="n">System</span><span class="p">.</span><span class="na">arraycopy</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">arra</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">arr</span><span class="p">.</span><span class="na">length</span><span class="p">);</span>
-            <span class="kt">long</span> <span class="n">bst</span> <span class="o">=</span> <span class="p">(</span><span class="n">binarySearchTime</span><span class="p">(</span><span class="n">arra</span><span class="p">,</span> <span class="n">i</span><span class="p">));</span>
-            <span class="n">str</span> <span class="o">+=</span> <span class="p">(</span><span class="n">bst</span> <span class="o">+</span> <span class="s">"ms | "</span><span class="p">);</span>
+            <span class="kt">long</span> <span class="n">bst</span> <span class="o">=</span> <span class="p">(</span><span class="n">binarySearchTime</span><span class="p">(</span><span class="n">arra</span><span class="p">,</span> <span class="n">num</span><span class="p">));</span>
+            <span class="n">total_bst</span> <span class="o">+=</span> <span class="n">bst</span><span class="p">;</span>
+            <span class="n">str</span> <span class="o">+=</span> <span class="p">(</span><span class="n">bst</span> <span class="o">+</span> <span class="s">"ms      | "</span><span class="p">);</span>
 
             <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">str</span><span class="p">);</span>
         <span class="p">}</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"-------------------------------"</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Average: "</span> <span class="o">+</span> <span class="p">(</span><span class="n">total_lut</span> <span class="o">/</span> <span class="mi">12</span><span class="p">)</span> <span class="o">+</span> <span class="s">"ms | "</span> <span class="o">+</span> <span class="p">(</span><span class="n">total_bst</span> <span class="o">/</span> <span class="mi">12</span><span class="p">)</span> <span class="o">+</span> <span class="s">"ms"</span><span class="p">);</span>
     <span class="p">}</span>
 
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">long</span> <span class="nf">lookUp</span><span class="p">(</span><span class="n">HashMap</span><span class="o">&lt;</span><span class="n">Integer</span><span class="p">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">map</span><span class="p">,</span> <span class="n">Integer</span> <span class="n">value</span><span class="p">)</span> <span class="p">{</span>
         <span class="kt">long</span> <span class="n">start</span> <span class="o">=</span> <span class="n">System</span><span class="p">.</span><span class="na">currentTimeMillis</span><span class="p">();</span>
-        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5000</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-            <span class="n">map</span><span class="p">.</span><span class="na">containsKey</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
-        <span class="p">}</span>
+        <span class="n">map</span><span class="p">.</span><span class="na">containsKey</span><span class="p">(</span><span class="n">value</span><span class="p">);</span>
         <span class="kt">long</span> <span class="n">end</span> <span class="o">=</span> <span class="n">System</span><span class="p">.</span><span class="na">currentTimeMillis</span><span class="p">();</span>
         <span class="k">return</span> <span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">);</span>
     <span class="p">}</span>
@@ -471,18 +492,23 @@ Average: 25.0ms | 0.0ms | 7.0ms | 0.0ms
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>5ms | 0ms | 
-6ms | 0ms | 
-16ms | 0ms | 
-4ms | 0ms | 
-1ms | 0ms | 
-1ms | 0ms | 
-1ms | 0ms | 
-1ms | 0ms | 
-1ms | 0ms | 
-1ms | 0ms | 
-1ms | 0ms | 
-1ms | 0ms | 
+<pre>LookUp | BinarySearch
+-------------------------------
+Enter a number to search for: 
+|      0ms       |       0ms      | 
+|      0ms       |       0ms      | 
+|      0ms       |       0ms      | 
+|      0ms       |       0ms      | 
+|      0ms       |       0ms      | 
+|      0ms       |       0ms      | 
+|      0ms       |       0ms      | 
+|      0ms       |       0ms      | 
+|      0ms       |       0ms      | 
+|      0ms       |       0ms      | 
+|      0ms       |       0ms      | 
+|      0ms       |       0ms      | 
+-------------------------------
+Average: 0.0ms | 0.0ms
 </pre>
 </div>
 </div>
