@@ -194,32 +194,32 @@ window.onload = wrap_img;
         <span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">""</span><span class="p">;</span>
 
         <span class="c1">// sort the array</span>
-        <span class="kt">long</span> <span class="n">start</span> <span class="o">=</span> <span class="n">System</span><span class="p">.</span><span class="na">currentTimeMillis</span><span class="p">();</span>
+        <span class="kt">long</span> <span class="n">start</span> <span class="o">=</span> <span class="n">System</span><span class="p">.</span><span class="na">nanoTime</span><span class="p">();</span>
         <span class="n">bubbleSort</span><span class="p">(</span><span class="n">arr1</span><span class="p">);</span>
-        <span class="kt">long</span> <span class="n">end</span> <span class="o">=</span> <span class="n">System</span><span class="p">.</span><span class="na">currentTimeMillis</span><span class="p">();</span>
+        <span class="kt">long</span> <span class="n">end</span> <span class="o">=</span> <span class="n">System</span><span class="p">.</span><span class="na">nanoTime</span><span class="p">();</span>
         <span class="c1">// print the time it took</span>
-        <span class="n">str</span> <span class="o">+=</span> <span class="p">((</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">)</span> <span class="o">+</span> <span class="s">"ms | "</span><span class="p">);</span>
+        <span class="n">str</span> <span class="o">+=</span> <span class="p">((</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">)</span> <span class="o">+</span> <span class="s">"ns | "</span><span class="p">);</span>
         <span class="n">times</span> <span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">);</span>
 
-        <span class="n">start</span> <span class="o">=</span> <span class="n">System</span><span class="p">.</span><span class="na">currentTimeMillis</span><span class="p">();</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">System</span><span class="p">.</span><span class="na">nanoTime</span><span class="p">();</span>
         <span class="n">mergeSort</span><span class="p">(</span><span class="n">arr2</span><span class="p">);</span>
-        <span class="n">end</span> <span class="o">=</span> <span class="n">System</span><span class="p">.</span><span class="na">currentTimeMillis</span><span class="p">();</span>
+        <span class="n">end</span> <span class="o">=</span> <span class="n">System</span><span class="p">.</span><span class="na">nanoTime</span><span class="p">();</span>
         <span class="c1">// print the time it took</span>
-        <span class="n">str</span> <span class="o">+=</span> <span class="p">((</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">)</span> <span class="o">+</span> <span class="s">"ms | "</span><span class="p">);</span>
+        <span class="n">str</span> <span class="o">+=</span> <span class="p">((</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">)</span> <span class="o">+</span> <span class="s">"ns | "</span><span class="p">);</span>
         <span class="n">times</span> <span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">);</span>
 
-        <span class="n">start</span> <span class="o">=</span> <span class="n">System</span><span class="p">.</span><span class="na">currentTimeMillis</span><span class="p">();</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">System</span><span class="p">.</span><span class="na">nanoTime</span><span class="p">();</span>
         <span class="n">selectionSort</span><span class="p">(</span><span class="n">arr3</span><span class="p">);</span>
-        <span class="n">end</span> <span class="o">=</span> <span class="n">System</span><span class="p">.</span><span class="na">currentTimeMillis</span><span class="p">();</span>
+        <span class="n">end</span> <span class="o">=</span> <span class="n">System</span><span class="p">.</span><span class="na">nanoTime</span><span class="p">();</span>
         <span class="c1">// print the time it took</span>
-        <span class="n">str</span> <span class="o">+=</span> <span class="p">((</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">)</span> <span class="o">+</span> <span class="s">"ms | "</span><span class="p">);</span>
+        <span class="n">str</span> <span class="o">+=</span> <span class="p">((</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">)</span> <span class="o">+</span> <span class="s">"ns | "</span><span class="p">);</span>
         <span class="n">times</span> <span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">);</span>
 
-        <span class="n">start</span> <span class="o">=</span> <span class="n">System</span><span class="p">.</span><span class="na">currentTimeMillis</span><span class="p">();</span>
+        <span class="n">start</span> <span class="o">=</span> <span class="n">System</span><span class="p">.</span><span class="na">nanoTime</span><span class="p">();</span>
         <span class="n">insertionSort</span><span class="p">(</span><span class="n">arr4</span><span class="p">);</span>
-        <span class="n">end</span> <span class="o">=</span> <span class="n">System</span><span class="p">.</span><span class="na">currentTimeMillis</span><span class="p">();</span>
+        <span class="n">end</span> <span class="o">=</span> <span class="n">System</span><span class="p">.</span><span class="na">nanoTime</span><span class="p">();</span>
         <span class="c1">// print the time it took</span>
-        <span class="n">str</span> <span class="o">+=</span> <span class="p">((</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">)</span> <span class="o">+</span> <span class="s">"ms"</span><span class="p">);</span>
+        <span class="n">str</span> <span class="o">+=</span> <span class="p">((</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">)</span> <span class="o">+</span> <span class="s">"ns"</span><span class="p">);</span>
         <span class="n">times</span> <span class="o">[</span><span class="mi">3</span><span class="o">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">);</span>
         <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">str</span><span class="p">);</span>
 
@@ -335,7 +335,7 @@ window.onload = wrap_img;
 <span class="p">}</span>
 
 <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"-------------------------------"</span><span class="p">);</span>
-<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Average: "</span> <span class="o">+</span> <span class="n">means</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">+</span> <span class="s">"ms | "</span> <span class="o">+</span> <span class="n">means</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">+</span> <span class="s">"ms | "</span> <span class="o">+</span> <span class="n">means</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="o">+</span> <span class="s">"ms | "</span> <span class="o">+</span> <span class="n">means</span><span class="o">[</span><span class="mi">3</span><span class="o">]</span> <span class="o">+</span> <span class="s">"ms"</span><span class="p">);</span>
+<span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Average: "</span> <span class="o">+</span> <span class="n">means</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span> <span class="o">+</span> <span class="s">"ns | "</span> <span class="o">+</span> <span class="n">means</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">+</span> <span class="s">"ns | "</span> <span class="o">+</span> <span class="n">means</span><span class="o">[</span><span class="mi">2</span><span class="o">]</span> <span class="o">+</span> <span class="s">"ns | "</span> <span class="o">+</span> <span class="n">means</span><span class="o">[</span><span class="mi">3</span><span class="o">]</span> <span class="o">+</span> <span class="s">"ns"</span><span class="p">);</span>
 </pre></div>
 
     </div>
@@ -350,31 +350,31 @@ window.onload = wrap_img;
 <div class="output_subarea output_stream output_stdout output_text">
 <pre>Bubble | Merge | Selection | Insertion
 -------------------------------
-39ms | 2ms | 22ms | 6ms
+22766366ns | 1678701ns | 6293168ns | 711223ns
 -------------------------------
-38ms | 0ms | 20ms | 4ms
+15671696ns | 1275861ns | 9018750ns | 1731988ns
 -------------------------------
-44ms | 0ms | 7ms | 1ms
+15910436ns | 1457726ns | 5538702ns | 995820ns
 -------------------------------
-33ms | 9ms | 7ms | 1ms
+15863990ns | 1662630ns | 5643207ns | 595193ns
 -------------------------------
-33ms | 0ms | 7ms | 1ms
+16892075ns | 1481931ns | 6411689ns | 799843ns
 -------------------------------
-31ms | 1ms | 7ms | 0ms
+14669169ns | 2937441ns | 11171519ns | 759446ns
 -------------------------------
-33ms | 0ms | 7ms | 1ms
+16550877ns | 1888868ns | 5976734ns | 671598ns
 -------------------------------
-32ms | 0ms | 7ms | 0ms
+16588768ns | 1175102ns | 5413783ns | 683402ns
 -------------------------------
-33ms | 0ms | 7ms | 0ms
+15727435ns | 731586ns | 5742831ns | 682431ns
 -------------------------------
-20ms | 0ms | 7ms | 1ms
+15799026ns | 328186ns | 6109086ns | 601344ns
 -------------------------------
-21ms | 0ms | 7ms | 0ms
+17061466ns | 406177ns | 8231558ns | 1065207ns
 -------------------------------
-20ms | 0ms | 7ms | 0ms
+16785958ns | 343330ns | 5636475ns | 744870ns
 -------------------------------
-Average: 31.0ms | 1.0ms | 9.0ms | 1.0ms
+Average: 2147483.0ns | 1280628.0ns | 2147483.0ns | 836863.0ns
 </pre>
 </div>
 </div>
@@ -444,6 +444,7 @@ Average: 31.0ms | 1.0ms | 9.0ms | 1.0ms
         <span class="c1">// get num to search for from scanner</span>
         <span class="n">Scanner</span> <span class="n">sc</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Scanner</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="na">in</span><span class="p">);</span>
         <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Enter a number to search for: "</span><span class="p">);</span>
+        <span class="n">Integer</span> <span class="n">num</span> <span class="o">=</span> <span class="n">sc</span><span class="p">.</span><span class="na">nextInt</span><span class="p">();</span> 
 
         <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">12</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
             
@@ -451,31 +452,31 @@ Average: 31.0ms | 1.0ms | 9.0ms | 1.0ms
             <span class="n">String</span> <span class="n">str</span> <span class="o">=</span> <span class="s">"|      "</span><span class="p">;</span>
             <span class="kt">long</span> <span class="n">lut</span> <span class="o">=</span> <span class="p">(</span><span class="n">lookUp</span><span class="p">(</span><span class="n">map</span><span class="p">,</span> <span class="n">num</span><span class="p">));</span>
             <span class="n">total_lut</span> <span class="o">+=</span> <span class="n">lut</span><span class="p">;</span>
-            <span class="n">str</span> <span class="o">+=</span> <span class="p">(</span><span class="n">lut</span> <span class="o">+</span> <span class="s">"ms       |       "</span><span class="p">);</span>
+            <span class="n">str</span> <span class="o">+=</span> <span class="p">(</span><span class="n">lut</span> <span class="o">+</span> <span class="s">"ns       |       "</span><span class="p">);</span>
             
             <span class="c1">// copy array, check binary search time</span>
             <span class="kt">int</span><span class="o">[]</span> <span class="n">arra</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="mi">500000</span><span class="o">]</span><span class="p">;</span>
             <span class="n">System</span><span class="p">.</span><span class="na">arraycopy</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">arra</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">arr</span><span class="p">.</span><span class="na">length</span><span class="p">);</span>
             <span class="kt">long</span> <span class="n">bst</span> <span class="o">=</span> <span class="p">(</span><span class="n">binarySearchTime</span><span class="p">(</span><span class="n">arra</span><span class="p">,</span> <span class="n">num</span><span class="p">));</span>
             <span class="n">total_bst</span> <span class="o">+=</span> <span class="n">bst</span><span class="p">;</span>
-            <span class="n">str</span> <span class="o">+=</span> <span class="p">(</span><span class="n">bst</span> <span class="o">+</span> <span class="s">"ms      | "</span><span class="p">);</span>
+            <span class="n">str</span> <span class="o">+=</span> <span class="p">(</span><span class="n">bst</span> <span class="o">+</span> <span class="s">"ns      | "</span><span class="p">);</span>
 
             <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">str</span><span class="p">);</span>
         <span class="p">}</span>
 
         <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"-------------------------------"</span><span class="p">);</span>
-        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Average: "</span> <span class="o">+</span> <span class="p">(</span><span class="n">total_lut</span> <span class="o">/</span> <span class="mi">12</span><span class="p">)</span> <span class="o">+</span> <span class="s">"ms | "</span> <span class="o">+</span> <span class="p">(</span><span class="n">total_bst</span> <span class="o">/</span> <span class="mi">12</span><span class="p">)</span> <span class="o">+</span> <span class="s">"ms"</span><span class="p">);</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"Average: "</span> <span class="o">+</span> <span class="p">(</span><span class="n">total_lut</span> <span class="o">/</span> <span class="mi">12</span><span class="p">)</span> <span class="o">+</span> <span class="s">"ns | "</span> <span class="o">+</span> <span class="p">(</span><span class="n">total_bst</span> <span class="o">/</span> <span class="mi">12</span><span class="p">)</span> <span class="o">+</span> <span class="s">"ns"</span><span class="p">);</span>
     <span class="p">}</span>
 
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">long</span> <span class="nf">lookUp</span><span class="p">(</span><span class="n">HashMap</span><span class="o">&lt;</span><span class="n">Integer</span><span class="p">,</span> <span class="n">Integer</span><span class="o">&gt;</span> <span class="n">map</span><span class="p">,</span> <span class="n">Integer</span> <span class="n">value</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kt">long</span> <span class="n">start</span> <span class="o">=</span> <span class="n">System</span><span class="p">.</span><span class="na">currentTimeMillis</span><span class="p">();</span>
+        <span class="kt">long</span> <span class="n">start</span> <span class="o">=</span> <span class="n">System</span><span class="p">.</span><span class="na">nanoTime</span><span class="p">();</span>
         <span class="n">map</span><span class="p">.</span><span class="na">containsKey</span><span class="p">(</span><span class="n">value</span><span class="p">);</span>
-        <span class="kt">long</span> <span class="n">end</span> <span class="o">=</span> <span class="n">System</span><span class="p">.</span><span class="na">currentTimeMillis</span><span class="p">();</span>
+        <span class="kt">long</span> <span class="n">end</span> <span class="o">=</span> <span class="n">System</span><span class="p">.</span><span class="na">nanoTime</span><span class="p">();</span>
         <span class="k">return</span> <span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">);</span>
     <span class="p">}</span>
 
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">long</span> <span class="nf">binarySearchTime</span><span class="p">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">arr</span><span class="p">,</span> <span class="n">Integer</span> <span class="n">value</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kt">long</span> <span class="n">start</span> <span class="o">=</span> <span class="n">System</span><span class="p">.</span><span class="na">currentTimeMillis</span><span class="p">();</span>
+        <span class="kt">long</span> <span class="n">start</span> <span class="o">=</span> <span class="n">System</span><span class="p">.</span><span class="na">nanoTime</span><span class="p">();</span>
         <span class="c1">// binary search </span>
         <span class="kt">int</span> <span class="n">low</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
         <span class="kt">int</span> <span class="n">high</span> <span class="o">=</span> <span class="n">arr</span><span class="p">.</span><span class="na">length</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
@@ -490,7 +491,7 @@ Average: 31.0ms | 1.0ms | 9.0ms | 1.0ms
             <span class="p">}</span>
             <span class="n">mid</span> <span class="o">=</span> <span class="p">(</span><span class="n">low</span> <span class="o">+</span> <span class="n">high</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
         <span class="p">}</span>
-        <span class="kt">long</span> <span class="n">end</span> <span class="o">=</span> <span class="n">System</span><span class="p">.</span><span class="na">currentTimeMillis</span><span class="p">();</span>
+        <span class="kt">long</span> <span class="n">end</span> <span class="o">=</span> <span class="n">System</span><span class="p">.</span><span class="na">nanoTime</span><span class="p">();</span>
         <span class="k">return</span> <span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
@@ -511,20 +512,20 @@ Average: 31.0ms | 1.0ms | 9.0ms | 1.0ms
 <pre>LookUp | BinarySearch
 -------------------------------
 Enter a number to search for: 
-|      0ms       |       0ms      | 
-|      0ms       |       0ms      | 
-|      0ms       |       0ms      | 
-|      0ms       |       0ms      | 
-|      0ms       |       0ms      | 
-|      0ms       |       0ms      | 
-|      0ms       |       0ms      | 
-|      0ms       |       0ms      | 
-|      0ms       |       0ms      | 
-|      0ms       |       0ms      | 
-|      0ms       |       0ms      | 
-|      0ms       |       0ms      | 
+|      16186ns       |       7407ns      | 
+|      1051ns       |       4008ns      | 
+|      1061ns       |       4231ns      | 
+|      933ns       |       3848ns      | 
+|      1046ns       |       4067ns      | 
+|      621ns       |       3377ns      | 
+|      641ns       |       3526ns      | 
+|      612ns       |       4296ns      | 
+|      1042ns       |       3338ns      | 
+|      624ns       |       4066ns      | 
+|      831ns       |       3949ns      | 
+|      771ns       |       4909ns      | 
 -------------------------------
-Average: 0.0ms | 0.0ms
+Average: 2118.25ns | 4251.833333333333ns
 </pre>
 </div>
 </div>
