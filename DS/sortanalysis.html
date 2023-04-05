@@ -128,7 +128,11 @@ window.onload = wrap_img;
 <ul>
 <li class="toc-entry toc-h3"><a href="#Analyze-the-Big-O-complexity-on-Sorts.">Analyze the Big O complexity on Sorts. </a></li>
 <li class="toc-entry toc-h3"><a href="#Build-your-own-Hashmap.-Make-a-HashMap-to-correspond-to-a-Data-Structure-using-a-Collection.">Build your own Hashmap. Make a HashMap to correspond to a Data Structure using a Collection. </a></li>
-<li class="toc-entry toc-h3"><a href="#Extra,-Practical-learning">Extra, Practical learning </a></li>
+<li class="toc-entry toc-h3"><a href="#Extra,-Practical-learning">Extra, Practical learning </a>
+<ul>
+<li class="toc-entry toc-h4"><a href="#Pros-and-Cons-of-Collection-vs-HashMap">Pros and Cons of Collection vs HashMap </a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul><!--
@@ -530,6 +534,52 @@ Average: 0.0ms | 0.0ms
 <li>A HashMap and a Collection can be used in a Class, POJO and API.</li>
 <li>Make a Diagram on the Pros and Cons of Collection vs HashMap</li>
 </ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Pros-and-Cons-of-Collection-vs-HashMap">
+<a class="anchor" href="#Pros-and-Cons-of-Collection-vs-HashMap" aria-hidden="true"><span class="octicon octicon-link"></span></a>Pros and Cons of Collection vs HashMap<a class="anchor-link" href="#Pros-and-Cons-of-Collection-vs-HashMap"> </a>
+</h4>
+<table>
+<thead>
+<tr>
+<th>Collections</th>
+<th></th>
+<th>HashMaps</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Pros</strong></td>
+<td><strong>Cons</strong></td>
+<td><strong>Pros</strong></td>
+<td><strong>Cons</strong></td>
+</tr>
+<tr>
+<td>Store and manipulate groups of objects</td>
+<td>Java doesn't integrate any methods to search or sort</td>
+<td>Map keys to values</td>
+<td>More memory usage than collections</td>
+</tr>
+<tr>
+<td>Order of elements in a group, can reorder them too</td>
+<td>Inefficient at getting a specific value</td>
+<td>Retrieving a value from a key is very fast</td>
+<td>No order of elements, no sorting</td>
+</tr>
+<tr>
+<td>Easy for simple uses like when you don't need key:value pairs</td>
+<td>Key:value mapping isn't a thing</td>
+<td>Built-in methods for search/sort such as containsKey() or getValue()</td>
+<td>Starts to get a bit weird / errors with duplicate keys</td>
+</tr>
+</tbody>
+</table>
 
 </div>
 </div>
