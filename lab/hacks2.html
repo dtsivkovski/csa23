@@ -223,11 +223,13 @@ window.onload = wrap_img;
     <span class="kd">public</span> <span class="n">String</span> <span class="n">name</span><span class="p">;</span>
     <span class="kd">private</span> <span class="kt">long</span> <span class="n">population</span><span class="p">;</span>
 
+    <span class="c1">// constructor</span>
     <span class="kd">public</span> <span class="nf">Country</span><span class="p">(</span><span class="n">String</span> <span class="n">name</span><span class="p">,</span> <span class="kt">long</span> <span class="n">population</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">this</span><span class="p">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="p">;</span>
         <span class="k">this</span><span class="p">.</span><span class="na">population</span> <span class="o">=</span> <span class="n">population</span><span class="p">;</span>
     <span class="p">}</span>
 
+    <span class="c1">// getPop method to be able to compare two countries</span>
     <span class="kd">public</span> <span class="kt">long</span> <span class="nf">getPop</span><span class="p">()</span> <span class="p">{</span>
         <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="na">population</span><span class="p">;</span>
     <span class="p">}</span>
@@ -245,6 +247,7 @@ window.onload = wrap_img;
         <span class="p">}</span>
     <span class="p">}</span>
 
+    <span class="c1">// toString method for printing</span>
     <span class="kd">public</span> <span class="n">String</span> <span class="nf">toString</span><span class="p">()</span> <span class="p">{</span>
         <span class="n">String</span> <span class="n">string</span> <span class="o">=</span> <span class="s">"Name: "</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="na">name</span> <span class="o">+</span> <span class="s">"   | Population: "</span> <span class="o">+</span> <span class="k">this</span><span class="p">.</span><span class="na">population</span><span class="p">;</span>
         <span class="k">return</span> <span class="n">string</span><span class="p">;</span>
@@ -419,6 +422,7 @@ false
     <span class="p">}</span>
 
     <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// initialize int[] with 8 values</span>
         <span class="kt">int</span><span class="o">[]</span> <span class="n">a</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">};</span>
 
         <span class="kt">int</span><span class="o">[]</span> <span class="n">b</span> <span class="o">=</span> <span class="n">AlternateRemove</span><span class="p">.</span><span class="na">remove</span><span class="p">(</span><span class="n">a</span><span class="p">);</span>
