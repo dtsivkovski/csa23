@@ -79,7 +79,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      2 min read
+      4 min read
     
 </span></p>
 
@@ -371,6 +371,127 @@ Is latin: true
 </div>
 </div>
 </div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-java"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">StringFormatter</span> <span class="p">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">totalLetters</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">wordList</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+        <span class="c1">// iterate through list, get length of each item</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">wordList</span><span class="p">.</span><span class="na">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="n">total</span> <span class="o">+=</span> <span class="n">wordList</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">i</span><span class="p">).</span><span class="na">length</span><span class="p">();</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="n">total</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">basicGapWidth</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">wordList</span><span class="p">,</span> <span class="kt">int</span> <span class="n">formattedLen</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">wordCount</span> <span class="o">=</span> <span class="n">wordList</span><span class="p">.</span><span class="na">size</span><span class="p">();</span>
+        <span class="kt">int</span> <span class="n">totalLetters</span> <span class="o">=</span> <span class="n">totalLetters</span><span class="p">(</span><span class="n">wordList</span><span class="p">);</span>
+
+        <span class="c1">// number of spaces available</span>
+        <span class="kt">int</span> <span class="n">spaceCount</span> <span class="o">=</span> <span class="n">formattedLen</span> <span class="o">-</span> <span class="n">totalLetters</span><span class="p">;</span>
+
+        <span class="c1">// number of spaces divided by number of spaces between words</span>
+        <span class="k">return</span> <span class="n">spaceCount</span> <span class="o">/</span> <span class="p">(</span><span class="n">wordCount</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="c1">// implemented leftoverspaces so that can try out testcases</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span> <span class="nf">leftoverSpaces</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">wordList</span><span class="p">,</span> <span class="kt">int</span> <span class="n">formattedLen</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">gapWidth</span> <span class="o">=</span> <span class="n">basicGapWidth</span><span class="p">(</span><span class="n">wordList</span><span class="p">,</span> <span class="n">formattedLen</span><span class="p">);</span>
+        <span class="kt">int</span> <span class="n">gapCount</span> <span class="o">=</span> <span class="n">wordList</span><span class="p">.</span><span class="na">size</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+        
+        <span class="c1">// number of spaces available</span>
+        <span class="kt">int</span> <span class="n">spaceCount</span> <span class="o">=</span> <span class="n">formattedLen</span> <span class="o">-</span> <span class="n">totalLetters</span><span class="p">(</span><span class="n">wordList</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="p">(</span><span class="n">spaceCount</span> <span class="o">-</span> <span class="p">(</span><span class="n">gapWidth</span> <span class="o">*</span> <span class="n">gapCount</span><span class="p">));</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">String</span> <span class="nf">format</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">wordList</span><span class="p">,</span> <span class="kt">int</span> <span class="n">formattedLen</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">int</span> <span class="n">gapWidth</span> <span class="o">=</span> <span class="n">basicGapWidth</span><span class="p">(</span><span class="n">wordList</span><span class="p">,</span> <span class="n">formattedLen</span><span class="p">);</span>
+        <span class="kt">int</span> <span class="n">leftoverSpaces</span> <span class="o">=</span> <span class="n">leftoverSpaces</span><span class="p">(</span><span class="n">wordList</span><span class="p">,</span> <span class="n">formattedLen</span><span class="p">);</span>
+        <span class="n">String</span> <span class="n">formatted</span> <span class="o">=</span> <span class="s">""</span><span class="p">;</span>
+
+        <span class="c1">// for loop for number of gaps</span>
+        <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="p">(</span><span class="n">wordList</span><span class="p">.</span><span class="na">size</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// append first word</span>
+            <span class="n">formatted</span> <span class="o">+=</span> <span class="n">wordList</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">i</span><span class="p">);</span>
+
+            <span class="c1">// append number of spaces per gap</span>
+            <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">gapWidth</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">formatted</span> <span class="o">+=</span> <span class="s">" "</span><span class="p">;</span>
+            <span class="p">}</span>
+
+            <span class="c1">// append an extra space if available, decrement</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">leftoverSpaces</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+                <span class="n">formatted</span> <span class="o">+=</span> <span class="s">" "</span><span class="p">;</span>
+                <span class="n">leftoverSpaces</span><span class="o">--</span><span class="p">;</span>
+            <span class="p">}</span>
+
+        <span class="p">}</span>
+
+        <span class="c1">// append last word</span>
+        <span class="n">formatted</span> <span class="o">+=</span> <span class="n">wordList</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">wordList</span><span class="p">.</span><span class="na">size</span><span class="p">()</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="n">formatted</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">apcsa</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">();</span>
+        <span class="n">apcsa</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"AP"</span><span class="p">);</span>
+        <span class="n">apcsa</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"COMP"</span><span class="p">);</span>
+        <span class="n">apcsa</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"SCI"</span><span class="p">);</span>
+        <span class="n">apcsa</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"ROCKS"</span><span class="p">);</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">format</span><span class="p">(</span><span class="n">apcsa</span><span class="p">,</span> <span class="mi">20</span><span class="p">));</span>
+
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">geah</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">();</span>
+        <span class="n">geah</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"GREEN"</span><span class="p">);</span>
+        <span class="n">geah</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"EGGS"</span><span class="p">);</span>
+        <span class="n">geah</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"AND"</span><span class="p">);</span>
+        <span class="n">geah</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"HAM"</span><span class="p">);</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">format</span><span class="p">(</span><span class="n">geah</span><span class="p">,</span> <span class="mi">20</span><span class="p">));</span>
+
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span> <span class="n">bb</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="p">();</span>
+        <span class="n">bb</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"BEACH"</span><span class="p">);</span>
+        <span class="n">bb</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="s">"BALL"</span><span class="p">);</span>
+
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">format</span><span class="p">(</span><span class="n">bb</span><span class="p">,</span> <span class="mi">20</span><span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="n">StringFormatter</span><span class="p">.</span><span class="na">main</span><span class="p">(</span><span class="kc">null</span><span class="p">);</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>AP  COMP  SCI  ROCKS
+GREEN  EGGS  AND HAM
+BEACH           BALL
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
 </div>
 
 
