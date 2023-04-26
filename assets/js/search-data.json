@@ -25,7 +25,7 @@
     
         ,"post2": {
             "title": "Collegeboard FRQ Practice",
-            "content": "class GameSpinner { private int sectors; private int runLength; private int lastSpin; public GameSpinner(int sectors) { this.sectors = sectors; this.runLength = 0; } public int spin() { int spin = (int) (Math.random() * 4); // increment runlength if same value as last time if (this.lastSpin == spin) { runLength++; } else { runlength = 1; } // set last spin to new value this.lastSpin = spin; return spin; } public int currentRun() { return runLength; } } .",
+            "content": "2020 #2 . class GameSpinner { private int sectors; private int runLength; private int lastSpin; public GameSpinner(int sectors) { this.sectors = sectors; this.runLength = 0; } public int spin() { int spin = (int) (Math.random() * 4); // increment runlength if same value as last time if (this.lastSpin == spin) { runLength++; } else { runlength = 1; } // set last spin to new value this.lastSpin = spin; return spin; } public int currentRun() { return runLength; } } . 2020 #3 . public void addReview(ProductReview prodReview) { } .",
             "url": "https://dtsivkovski.github.io/csa23/cb/frqpractice",
             "relUrl": "/cb/frqpractice",
             "date": " • Apr 24, 2023"
