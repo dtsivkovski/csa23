@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Pickup Station - Express JS Reflection | dtsivkovski’s blog</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Pickup Station - Express JS Reflection" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A relfection and guide on how to create a project using express JS" />
+<meta property="og:description" content="A relfection and guide on how to create a project using express JS" />
+<link rel="canonical" href="https://dtsivkovski.github.io/csa23/2023/06/02/learnings.html" />
+<meta property="og:url" content="https://dtsivkovski.github.io/csa23/2023/06/02/learnings.html" />
+<meta property="og:site_name" content="dtsivkovski’s blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-06-02T00:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Pickup Station - Express JS Reflection" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2023-06-02T00:00:00-05:00","datePublished":"2023-06-02T00:00:00-05:00","description":"A relfection and guide on how to create a project using express JS","headline":"Pickup Station - Express JS Reflection","mainEntityOfPage":{"@type":"WebPage","@id":"https://dtsivkovski.github.io/csa23/2023/06/02/learnings.html"},"url":"https://dtsivkovski.github.io/csa23/2023/06/02/learnings.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/csa23/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://dtsivkovski.github.io/csa23/feed.xml" title="dtsivkovski's blog" /><link rel="shortcut icon" type="image/x-icon" href="/csa23/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/csa23/">dtsivkovski&#39;s blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/csa23/about/">About Me</a><a class="page-link" href="/csa23/search/">Search</a><a class="page-link" href="/csa23/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Pickup Station - Express JS Reflection</h1><p class="page-description">A relfection and guide on how to create a project using express JS</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2023-06-02T00:00:00-05:00" itemprop="datePublished">
+        Jun 2, 2023
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      2 min read
+    
+</span></p>
+
+    
+
+    </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul id="toc" class="section-nav">
+<li class="toc-entry toc-h1"><a href="#introduction">Introduction</a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#creating-an-ejs-server">Creating an EJS Server</a></li>
+<li class="toc-entry toc-h2"><a href="#creating-mongodb-schemas">Creating MongoDB Schemas</a></li>
+<li class="toc-entry toc-h2"><a href="#rendering-views">Rendering Views</a></li>
+<li class="toc-entry toc-h2"><a href="#creating-routes">Creating Routes</a></li>
+</ul>
+</li>
+</ul><h1 id="introduction">
+<a class="anchor" href="#introduction" aria-hidden="true"><span class="octicon octicon-link"></span></a>Introduction</h1>
+
+<p>For our pickup station project, we decided to try something new and create a website using Express JS. This was a new experience but there were a lot of similarities between it and aspects of our java projects and python projects.</p>
+
+<h2 id="creating-an-ejs-server">
+<a class="anchor" href="#creating-an-ejs-server" aria-hidden="true"><span class="octicon octicon-link"></span></a>Creating an EJS Server</h2>
+
+<p>There were quite a few steps required to set up, such as making dockerfiles and docker-compose files, but the main thing we needed to do was create an express server. This was done by creating a new file called server.js and adding the following code:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1">// import app and mongoose</span>
+<span class="kd">const</span> <span class="nx">express</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">express</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">express</span><span class="p">();</span>
+<span class="kd">const</span> <span class="nx">mongoose</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">mongoose</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">dotenv</span><span class="dl">"</span><span class="p">).</span><span class="nx">config</span><span class="p">();</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="dl">"</span><span class="s2">view engine</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">ejs</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">urlencoded</span><span class="p">({</span> <span class="na">extended</span><span class="p">:</span> <span class="kc">false</span> <span class="p">}));</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="kd">static</span><span class="p">(</span><span class="dl">"</span><span class="s2">public</span><span class="dl">"</span><span class="p">));</span>
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">express</span><span class="p">.</span><span class="nx">json</span><span class="p">());</span>
+
+<span class="nx">mongoose</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">MONGO_URL</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">useNewUrlParser</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">useUnifiedTopology</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+<span class="p">});</span>
+<span class="nx">mongoose</span><span class="p">.</span><span class="nx">connection</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">"</span><span class="s2">connected</span><span class="dl">"</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">Mongoose is connected</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">});</span>
+
+</code></pre></div></div>
+
+<p>Note that above, there is also a mention of mongoose. This is something we chose to use to connect to a database called mongoDB, which made it really easy for us to have a database hosted separately from this deployed project and made it easy to sort through and avoid any conflicts (as in previous projects there were many merge conflicts when having a database in the same project).</p>
+
+<h2 id="creating-mongodb-schemas">
+<a class="anchor" href="#creating-mongodb-schemas" aria-hidden="true"><span class="octicon octicon-link"></span></a>Creating MongoDB Schemas</h2>
+
+<p>Here is an example of a MongoDB schema. This is a schema for a user, which is used to store information about a user such as their name, email, password. This is then used to create a new user in the database, which can be used to login and access the website.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">mongoose</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">mongoose</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">userSchema</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">({</span>
+  <span class="na">fullName</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+    <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">email</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+    <span class="na">required</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="na">unique</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">password</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">createdAt</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="nb">Date</span><span class="p">,</span>
+    <span class="na">default</span><span class="p">:</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">model</span><span class="p">(</span><span class="dl">"</span><span class="s2">Users</span><span class="dl">"</span><span class="p">,</span> <span class="nx">userSchema</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>This tells the database what a user should have, and then we can import the user into server.js and use it using these lines:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">User</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">./models/user</span><span class="dl">"</span><span class="p">);</span>
+
+<span class="c1">// make sure to define email, password, and name variables</span>
+<span class="kd">const</span> <span class="nx">user</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">User</span><span class="p">({</span> <span class="nx">email</span><span class="p">,</span> <span class="na">password</span><span class="p">:</span> <span class="nx">hashedPassword</span><span class="p">,</span> <span class="na">fullName</span><span class="p">:</span> <span class="nx">name</span> <span class="p">});</span>
+</code></pre></div></div>
+
+<h2 id="rendering-views">
+<a class="anchor" href="#rendering-views" aria-hidden="true"><span class="octicon octicon-link"></span></a>Rendering Views</h2>
+
+<p>Rendering views is pretty simple, we just need to create a new folder called views and then create a new file for each page. For example, if we wanted to create a page for messages, we would create a file called messages.ejs and then we could render it using this code:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">"</span><span class="s2">/messages</span><span class="dl">"</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">res</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="dl">"</span><span class="s2">social/messages</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<h2 id="creating-routes">
+<a class="anchor" href="#creating-routes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Creating Routes</h2>
+
+<p>This is where we felt it was more similar to python than the java projects, it seemed very close to the python layout. In our server.js, we would define our routes and what method they use. For example, here is how you would define an async register post method:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="dl">"</span><span class="s2">/register</span><span class="dl">"</span><span class="p">,</span> <span class="k">async</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="c1">// function goes here</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+
+  </div><a class="u-url" href="/csa23/2023/06/02/learnings.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/csa23/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="https://dtsivkovski.github.io/csa23/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/csa23/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>Daniel Tsivkovski</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
