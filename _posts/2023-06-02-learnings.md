@@ -96,4 +96,8 @@ app.post("/register", async (req, res) => {
 });
 ```
 
+## Summary
+
+With all of this, put together, you can create a website using express JS. It was a new experience for us so it took a bit to figure out how everything worked, but it quite interesting to do something different from a standard Java project this year. Maybe you can use this for data structures next year as a way to encourage students to build more javascript skills and try something new.
+
 
